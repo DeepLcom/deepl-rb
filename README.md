@@ -319,3 +319,7 @@ To run tests (rspec and rubocop), use
 ```
 bundle exec rake test
 ```
+
+## Acknowledgements
+
+This library was originally developed by [Daniel Herzog](mailto:info@danielherzog.es), we are grateful for his contributions. Beginning with v3.0.0, DeepL took over development and officially supports and maintains the library together with Daniel.
