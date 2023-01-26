@@ -1,0 +1,87 @@
+# Note: This GitLab CI configuration is used for internal testing, users can ignore it.
+include:
+  - project: '${CI_PROJECT_NAMESPACE}/ci-libs-for-client-libraries'
+    file:
+      - '/${CI_PROJECT_NAME}/.gitlab-ci.yml'
+  - project: 'deepl/ops/ci-cd-infrastructure/gitlab-ci-lib'
+    file:
+      - '/templates/.buildkit.yml'
+
+variables:
+  DOCKER_IMAGE_PREFIX: $CONTAINER_REGISTRY/oss-client-libraries/$CI_PROJECT_NAME-build
+
+# Global --------------------------
+
+stages:
+  - build
+  - install
+  - check
+  - test
+#  - publish
+
+
+before_script:
+  - ruby --version
+  - bundle install
+
+# stage: build ----------------------
+
+build image:
+  stage: build
+  extends: .buildkit
+  variables:
+    DOCKER_IMAGE: ${DOCKER_IMAGE_PREFIX}_ruby_${RUBY_VERSION}
+    BUILDKIT_IMAGE: ${DOCKER_IMAGE}:latest
+    BUILDKIT_CACHE_IMAGE: ${DOCKER_IMAGE}:latest
+    BUILDKIT_EXTRA_ARGS: "--opt build-arg:RUBY_IMAGE=ruby:${RUBY_VERSION}"
+  parallel:
+    matrix:
+      - RUBY_VERSION: "3.2.0"
+      - RUBY_VERSION: "3.1.3"
+
+# stage: check ----------------------
+
+rubocop:
+  stage: check
+  image: ${DOCKER_IMAGE_PREFIX}_ruby_3.2.0
+  script: bundle exec rubocop
+
+# stage: install ----------------------
+
+package:
+  stage: install
+  parallel:
+      matrix:
+          - RUBY_IMAGE: 'ruby_3.2.0'
+          - RUBY_IMAGE: 'ruby_3.1.3'
+  image: ${DOCKER_IMAGE_PREFIX}_${RUBY_IMAGE}
+  script:
+    - bundle exec rake build
+  artifacts:
+    paths:
+      - pkg/
+
+# stage: test ----------------------
+
+test:
+    stage: test
+    extends: .test
+    retry: 1
+    parallel:
+        matrix:
+            - RUBY_IMAGE: 'ruby_3.2.0'
+            - RUBY_IMAGE: 'ruby_3.1.3'
+    image: ${DOCKER_IMAGE_PREFIX}_${RUBY_IMAGE}
+    script:
+        - bundle exec rake test
+        - bundle exec rspec --format RspecJunitFormatter --out rspec.xml
+    artifacts:
+        reports:
+            coverage_report:
+                coverage_format: cobertura
+                path: reports/cobertura.xml
+            junit:
+                - rspec.xml
+        when: always
+
+

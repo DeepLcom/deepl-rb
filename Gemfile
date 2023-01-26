@@ -13,10 +13,11 @@ end
 
 group :test do
   # Test
-  gem 'codecov', require: false
   gem 'rspec'
+  gem 'rspec_junit_formatter'
   gem 'rubocop'
   gem 'simplecov'
+  gem 'simplecov-cobertura'
   gem 'vcr'
   gem 'webmock'
 end
