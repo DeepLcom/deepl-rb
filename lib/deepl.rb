@@ -17,9 +17,13 @@ require 'deepl/exceptions/quota_exceeded'
 require 'deepl/exceptions/not_found'
 require 'deepl/exceptions/not_supported'
 require 'deepl/exceptions/request_entity_too_large'
+require 'deepl/exceptions/document_translation_error'
 
 # -- Requests
 require 'deepl/requests/base'
+require 'deepl/requests/document/download'
+require 'deepl/requests/document/get_status'
+require 'deepl/requests/document/upload'
 require 'deepl/requests/glossary/create'
 require 'deepl/requests/glossary/destroy'
 require 'deepl/requests/glossary/entries'
@@ -32,6 +36,8 @@ require 'deepl/requests/usage'
 
 # -- Responses and resources
 require 'deepl/resources/base'
+require 'deepl/resources/document_handle'
+require 'deepl/resources/document_translation_status'
 require 'deepl/resources/glossary'
 require 'deepl/resources/language'
 require 'deepl/resources/language_pair'
@@ -44,6 +50,7 @@ require 'deepl/utils/exception_builder'
 # -- Other wrappers
 require 'deepl/api'
 require 'deepl/configuration'
+require 'deepl/document_api'
 require 'deepl/glossary_api'
 
 # -- Gem interface
@@ -63,6 +70,11 @@ module DeepL
   def translate(text, source_lang, target_lang, options = {})
     configure if @configuration.nil?
     Requests::Translate.new(api, text, source_lang, target_lang, options).request
+  end
+
+  def document(options = {})
+    configure if @configuration.nil?
+    DocumentApi.new(api, options)
   end
 
   def glossaries(options = {})

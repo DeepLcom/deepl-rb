@@ -5,14 +5,23 @@
 
 module DeepL
   class Configuration
-    ATTRIBUTES = %i[auth_key host version].freeze
+    ATTRIBUTES = %i[auth_key host max_doc_status_queries version].freeze
 
     attr_accessor(*ATTRIBUTES)
+
+    DEEPL_SERVER_URL = 'https://api.deepl.com'
+    DEEPL_SERVER_URL_FREE = 'https://api-free.deepl.com'
+    private_constant :DEEPL_SERVER_URL, :DEEPL_SERVER_URL_FREE
 
     def initialize(data = {})
       data.each { |key, value| send("#{key}=", value) }
       @auth_key ||= ENV.fetch('DEEPL_AUTH_KEY', nil)
-      @host ||= 'https://api.deepl.com'
+      @host ||= ENV.fetch('DEEPL_SERVER_URL', nil)
+      @host ||= if self.class.free_account_auth_key?(auth_key)
+                  DEEPL_SERVER_URL_FREE
+                else
+                  DEEPL_SERVER_URL
+                end
       @version ||= 'v2'
     end
 
@@ -26,6 +35,10 @@ module DeepL
 
     def ==(other)
       attributes == other.attributes
+    end
+
+    def self.free_account_auth_key?(key)
+      key&.end_with?(':fx')
     end
   end
 end

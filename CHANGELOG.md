@@ -11,6 +11,7 @@ The change in major version is only due to the change in maintainership, there i
 ### Added
 * Added a gitlab CI pipeline
 * Added rubocop-rspec linting for rspec test files
+* Added the happy path of document translation to the ruby CL.
 ### Changed
 ### Deprecated
 ### Removed

@@ -255,6 +255,22 @@ puts usage.character_limit
 # => 1250000
 ```
 
+### Translate documents
+
+To translate a document, use the `document.translate_document` method. Example:
+
+```rb
+DeepL.document.translate_document('/path/to/spanish_document.pdf', 'ES', 'EN', '/path/to/translated_document.pdf')
+```
+
+The lower level `upload`, `get_status` and `download` methods are also exposed, as well as the convenience method `wait_until_document_translation_finished` on the `DocumentHandle` object, which would replace `get_status`:
+```rb
+doc_handle = DeepL.document.upload('/path/to/spanish_document.pdf', 'ES', 'EN')
+doc_status = doc_handle.wait_until_document_translation_finished # alternatively poll `DeepL.document.get_status`
+# until the `doc_status.successful?`
+DeepL.document.download(doc_handle, '/path/to/translated_document.pdf') unless doc_status.error?
+```
+
 ### Handle exceptions
 
 You can capture and process exceptions that may be raised during API calls. These are all the possible exceptions:
@@ -263,10 +279,12 @@ You can capture and process exceptions that may be raised during API calls. Thes
 | --------------- | ----------- |
 | `DeepL::Exceptions::AuthorizationFailed` | The authorization process has failed. Check your `auth_key` value. |
 | `DeepL::Exceptions::BadRequest` | Something is wrong in your request. Check `exception.message` for more information. |
+| `DeepL::Exceptions::DocumentTranslationError` | An error occured during document translation. Check `exception.message` for more information. |
 | `DeepL::Exceptions::LimitExceeded` | You've reached the API's call limit. |
 | `DeepL::Exceptions::QuotaExceeded` | You've reached the API's character limit. |
 | `DeepL::Exceptions::RequestError` | An unkown request error. Check `exception.response` and `exception.request` for more information. |
 | `DeepL::Exceptions::NotSupported` | The requested method or API endpoint is not supported. |
+| `DeepL::Exceptions::RequestEntityTooLarge` | Your request is too large, reduce the amount of data you are sending. The API has a request size limit of 128 KiB. |
 
 An exampling of handling a generic exception:
 

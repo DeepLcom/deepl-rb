@@ -4,15 +4,24 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
+require 'tempfile'
 
 describe DeepL do
   subject(:deepl) { described_class.dup }
+
+  around do |tests|
+    tmp_env = replace_env_preserving_deepl_vars
+    tests.call
+    ENV.replace(tmp_env)
+  end
 
   describe '#configure' do
     context 'when providing no block' do
       let(:configuration) { DeepL::Configuration.new }
 
-      before { deepl.configure }
+      before do
+        deepl.configure
+      end
 
       it 'uses default configuration' do
         expect(deepl.configuration).to eq(configuration)
@@ -52,7 +61,7 @@ describe DeepL do
     let(:options) { { param: 'fake' } }
 
     around do |example|
-      deepl.configure { |config| config.host = 'https://api-free.deepl.com' }
+      deepl.configure
       VCR.use_cassette('deepl_translate') { example.call }
     end
 
@@ -94,7 +103,7 @@ describe DeepL do
     let(:options) { {} }
 
     around do |example|
-      deepl.configure { |config| config.host = 'https://api-free.deepl.com' }
+      deepl.configure
       VCR.use_cassette('deepl_usage') { example.call }
     end
 
@@ -109,11 +118,129 @@ describe DeepL do
     end
   end
 
+  # rubocop:disable RSpec/InstanceVariable
+  describe '#document' do
+    describe '#document.upload' do
+      before do
+        @tmpfile = Tempfile.new('foo')
+        @tmpfile.write("Geology for Beginners Report
+          A test report for the DeepL API
+          It is with great pleasure, that I, Urna Semper, write this fake document on geology.
+          Geology is an excellent field that deals with how to extract oil from the earth.")
+        @tmpfile.close
+      end
+
+      after do
+        # @tmpfile.close
+        @tmpfile.unlink
+      end
+
+      let(:input_file) { File.open(@tmpfile.path) }
+      let(:source_lang) { 'EN' }
+      let(:target_lang) { 'ES' }
+      let(:output_file) { 'test_translated_doc.txt' }
+      let(:options) { { param: 'fake' } }
+
+      around do |example|
+        tmp_env = replace_env_preserving_deepl_vars
+        deepl.configure
+        VCR.use_cassette('deepl_document') { example.call }
+        ENV.replace(tmp_env)
+      end
+
+      context 'when uploading a document' do
+        it 'creates an upload object' do
+          expect(DeepL::Requests::Document::Upload).to receive(:new)
+            .with(deepl.api, input_file, source_lang, target_lang,
+                  "#{File.basename(@tmpfile.path)}.txt", options).and_call_original
+          doc_handle = deepl.document.upload(input_file, source_lang, target_lang,
+                                             "#{File.basename(@tmpfile.path)}.txt", options)
+          expect(doc_handle).to be_a(DeepL::Resources::DocumentHandle)
+        end
+      end
+    end
+    # rubocop:enable RSpec/InstanceVariable
+
+    describe '#document.get_status' do
+      let(:document_handle) do
+        DeepL::Resources::DocumentHandle.new('9D9F9BFB1D2839088BDA205A2C64FF47',
+                                             'F3D1826B4733BD3B965E435DD371C94DAB71335E4A5F5D74E3FC84F4E1949D3A', # rubocop:disable Layout/LineLength
+                                             nil,
+                                             nil)
+      end
+      let(:options) { { param: 'fake' } }
+
+      around do |example|
+        deepl.configure
+        VCR.use_cassette('deepl_document') { example.call }
+      end
+
+      context 'when querying the status of a document' do
+        it 'creates a GetStatus object' do
+          expect(DeepL::Requests::Document::GetStatus).to receive(:new)
+            .with(
+              deepl.api,
+              document_handle.document_id,
+              document_handle.document_key,
+              options
+            ).and_call_original
+          status = deepl.document.get_status(document_handle, options)
+          expect(status).to be_a(DeepL::Resources::DocumentTranslationStatus)
+        end
+      end
+    end
+
+    # rubocop:disable RSpec/InstanceVariable
+    describe '#document.download' do
+      before do
+        @tmpfile = Tempfile.new('bar')
+      end
+
+      after do
+        @tmpfile.close
+        @tmpfile.unlink
+      end
+
+      let(:document_handle) do
+        DeepL::Resources::DocumentHandle.new('9D9F9BFB1D2839088BDA205A2C64FF47',
+                                             'F3D1826B4733BD3B965E435DD371C94DAB71335E4A5F5D74E3FC84F4E1949D3A', # rubocop:disable Layout/LineLength
+                                             nil,
+                                             nil)
+      end
+      let(:output_file_path) { @tmpfile.path }
+      let(:options) { { param: 'fake' } }
+
+      around do |example|
+        deepl.configure
+        VCR.use_cassette('deepl_document_download', preserve_exact_body_bytes: true) do
+          example.call
+        end
+      end
+
+      context 'when downloading a document' do
+        it 'creates an downloading object and writes to the output file' do # rubocop:disable RSpec/ExampleLength
+          expect(DeepL::Requests::Document::Download).to receive(:new)
+            .with(
+              deepl.api,
+              document_handle.document_id,
+              document_handle.document_key,
+              output_file_path
+            ).and_call_original
+          deepl.document.download(document_handle, output_file_path)
+          file_contents = File.read(output_file_path)
+          expect(file_contents).to be_a(String)
+          expect(file_contents.length).to be > 200
+        end
+      end
+    end
+  end
+  # rubocop:enable RSpec/InstanceVariable
+
   describe '#languages' do
     let(:options) { { type: :target } }
 
     around do |example|
-      deepl.configure { |config| config.host = 'https://api-free.deepl.com' }
+      deepl.configure
       VCR.use_cassette('deepl_languages') { example.call }
     end
 
@@ -143,7 +270,7 @@ describe DeepL do
       let(:options) { { param: 'fake', entries_format: 'tsv' } }
 
       around do |example|
-        deepl.configure { |config| config.host = 'https://api-free.deepl.com' }
+        deepl.configure
         VCR.use_cassette('deepl_glossaries') { example.call }
       end
 
@@ -163,7 +290,7 @@ describe DeepL do
       let(:options) { {} }
 
       around do |example|
-        deepl.configure { |config| config.host = 'https://api-free.deepl.com' }
+        deepl.configure
         VCR.use_cassette('deepl_glossaries') { example.call }
       end
 
@@ -193,7 +320,7 @@ describe DeepL do
       let(:options) { {} }
 
       around do |example|
-        deepl.configure { |config| config.host = 'https://api-free.deepl.com' }
+        deepl.configure
         VCR.use_cassette('deepl_glossaries') { example.call }
       end
 
@@ -213,7 +340,7 @@ describe DeepL do
       let(:options) { {} }
 
       around do |example|
-        deepl.configure { |config| config.host = 'https://api-free.deepl.com' }
+        deepl.configure
         VCR.use_cassette('deepl_glossaries') { example.call }
       end
 
@@ -248,7 +375,7 @@ describe DeepL do
       let(:options) { {} }
 
       around do |example|
-        deepl.configure { |config| config.host = 'https://api-free.deepl.com' }
+        deepl.configure
         VCR.use_cassette('deepl_glossaries') { example.call }
       end
 
@@ -283,7 +410,7 @@ describe DeepL do
       let(:options) { {} }
 
       around do |example|
-        deepl.configure { |config| config.host = 'https://api-free.deepl.com' }
+        deepl.configure
         VCR.use_cassette('deepl_glossaries') { example.call }
       end
 
