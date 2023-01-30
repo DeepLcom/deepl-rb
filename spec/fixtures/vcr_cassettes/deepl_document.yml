@@ -1,0 +1,91 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.deepl.com/v2/document
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - multipart/form-data
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 05 Jul 2024 09:28:10 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Trace-Id:
+      - b75074d5fc9041e2ab0a7c1d3cec1548
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=111, l7_lb_idle;dur=3, l7_lb_receive;dur=0, l7_lb_total;dur=202
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: ASCII-8BIT
+      string: '{"document_id":"9D9F9BFB1D2839088BDA205A2C64FF47","document_key":"F3D1826B4733BD3B965E435DD371C94DAB71335E4A5F5D74E3FC84F4E1949D3A"}'
+  recorded_at: Fri, 05 Jul 2024 09:28:10 GMT
+- request:
+    method: post
+    uri: https://api.deepl.com/v2/document/9D9F9BFB1D2839088BDA205A2C64FF47?param=fake
+    body:
+      encoding: US-ASCII
+      string: document_key=F3D1826B4733BD3B965E435DD371C94DAB71335E4A5F5D74E3FC84F4E1949D3A
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 05 Jul 2024 09:28:57 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Trace-Id:
+      - 79be41e7283f4df793f29e96bff7e9fd
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=117, l7_lb_idle;dur=1, l7_lb_receive;dur=0, l7_lb_total;dur=129
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: ASCII-8BIT
+      string: '{"document_id":"9D9F9BFB1D2839088BDA205A2C64FF47","status":"done","billed_characters":256}'
+  recorded_at: Fri, 05 Jul 2024 09:28:57 GMT
+recorded_with: VCR 6.2.0

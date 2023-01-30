@@ -32,6 +32,7 @@ Gem::Specification.new do |s|
     "lib/deepl/configuration.rb",
     "lib/deepl/exceptions/authorization_failed.rb",
     "lib/deepl/exceptions/bad_request.rb",
+    "lib/deepl/exceptions/document_translation.rb",
     "lib/deepl/exceptions/error.rb",
     "lib/deepl/exceptions/limit_exceeded.rb",
     "lib/deepl/exceptions/not_found.rb",

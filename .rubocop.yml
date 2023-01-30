@@ -9,6 +9,7 @@ AllCops:
   Exclude:
     - deepl-rb.gemspec
     - vendor/**/*
+  TargetRubyVersion: 2.7.5
 
 Metrics/BlockLength:
   Exclude:

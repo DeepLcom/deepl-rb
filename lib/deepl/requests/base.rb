@@ -48,6 +48,17 @@ module DeepL
         [request, response]
       end
 
+      def post_with_file(form_data)
+        http = Net::HTTP.new(uri.host, uri.port)
+        http.use_ssl = uri.scheme == 'https'
+        request = Net::HTTP::Post.new(uri.path, headers)
+        request.set_form(form_data, 'multipart/form-data')
+        response = http.request(request)
+
+        validate_response!(request, response)
+        [request, response]
+      end
+
       def get
         request = Net::HTTP::Get.new(uri.request_uri, headers)
         response = http.request(request)

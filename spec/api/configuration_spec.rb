@@ -10,21 +10,30 @@ describe DeepL::Configuration do
 
   let(:attributes) { {} }
 
+  around do |tests|
+    tmp_env = ENV.to_hash
+    ENV.clear
+    tests.call
+    ENV.replace(tmp_env)
+  end
+
   describe '#initialize' do
     context 'when using default configuration attributes' do
       it 'uses default attributes' do
         expect(config.auth_key).to eq(ENV.fetch('DEEPL_AUTH_KEY', nil))
         expect(config.host).to eq('https://api.deepl.com')
+        expect(config.max_doc_status_queries).to be_nil
         expect(config.version).to eq('v2')
       end
     end
 
     context 'when using custom configuration attributes' do
-      let(:attributes) { { auth_key: 'SAMPLE', host: 'https://api-free.deepl.com', version: 'v1' } }
+      let(:attributes) { { auth_key: 'SAMPLE', host: 'https://api-free.deepl.com', max_doc_status_queries: 42, version: 'v1' } }
 
       it 'uses custom attributes' do
         expect(config.auth_key).to eq(attributes[:auth_key])
         expect(config.host).to eq(attributes[:host])
+        expect(config.max_doc_status_queries).to eq(attributes[:max_doc_status_queries])
         expect(config.version).to eq(attributes[:version])
       end
     end

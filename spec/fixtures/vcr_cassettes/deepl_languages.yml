@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api-free.deepl.com/v2/languages?type=target
+    uri: https://api.deepl.com/v2/languages?type=target
     body:
       encoding: US-ASCII
       string: ''
