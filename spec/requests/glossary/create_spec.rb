@@ -6,6 +6,10 @@
 require 'spec_helper'
 
 describe DeepL::Requests::Glossary::Create do
+  subject(:create) do
+    described_class.new(api, name, source_lang, target_lang, entries, options)
+  end
+
   let(:api) { build_deepl_api }
   let(:name) { 'Mi Glosario' }
   let(:source_lang) { 'EN' }
@@ -18,19 +22,16 @@ describe DeepL::Requests::Glossary::Create do
   end
   let(:entries_format) { 'tsv' }
   let(:options) { {} }
-  subject do
-    DeepL::Requests::Glossary::Create.new(api, name, source_lang, target_lang, entries, options)
-  end
 
   describe '#initialize' do
-    context 'When building a request' do
-      it 'should create a request object' do
-        expect(subject).to be_a(described_class)
+    context 'when building a request' do
+      it 'creates a request object' do
+        expect(create).to be_a(described_class)
       end
 
-      it 'should set the default value for the entries format if not specified' do
-        request = DeepL::Requests::Glossary::Create.new(api, name, source_lang, target_lang,
-                                                        entries, options)
+      it 'sets the default value for the entries format if not specified' do
+        request = described_class.new(api, name, source_lang, target_lang,
+                                      entries, options)
         expect(request.entries_format).to eq('tsv')
       end
     end
@@ -41,11 +42,11 @@ describe DeepL::Requests::Glossary::Create do
       VCR.use_cassette('glossaries') { example.call }
     end
 
-    context 'When performing a valid request with two glossary entries' do
-      it 'should return a glossaries object' do
-        glossary = subject.request
+    context 'when performing a valid request with two glossary entries' do
+      it 'returns a glossaries object' do
+        glossary = create.request
         expect(glossary).to be_a(DeepL::Resources::Glossary)
-        expect(glossary.id).to be_kind_of(String)
+        expect(glossary.id).to be_a(String)
         expect(glossary.name).to eq('Mi Glosario')
         expect(glossary.ready).to be(true).or be(false)
         expect(glossary.source_lang).to eq('en')

@@ -6,38 +6,40 @@
 require 'spec_helper'
 
 describe DeepL do
-  subject { DeepL.dup }
+  subject(:deepl) { described_class.dup }
 
   describe '#configure' do
-    context 'When providing no block' do
+    context 'when providing no block' do
       let(:configuration) { DeepL::Configuration.new }
-      before { subject.configure }
 
-      it 'should use default configuration' do
-        expect(subject.configuration).to eq(configuration)
+      before { deepl.configure }
+
+      it 'uses default configuration' do
+        expect(deepl.configuration).to eq(configuration)
       end
     end
 
-    context 'When providing a valid configuration' do
+    context 'when providing a valid configuration' do
       let(:configuration) do
         DeepL::Configuration.new(auth_key: 'VALID', host: 'http://www.example.org', version: 'v1')
       end
+
       before do
-        subject.configure do |config|
+        deepl.configure do |config|
           config.auth_key = configuration.auth_key
           config.host = configuration.host
           config.version = configuration.version
         end
       end
 
-      it 'should use the provided configuration' do
-        expect(subject.configuration).to eq(configuration)
+      it 'uses the provided configuration' do
+        expect(deepl.configuration).to eq(configuration)
       end
     end
 
-    context 'When providing an invalid configuration' do
-      it 'should raise an error' do
-        expect { subject.configure { |c| c.auth_key = '' } }
+    context 'when providing an invalid configuration' do
+      it 'raises an error' do
+        expect { deepl.configure { |c| c.auth_key = '' } }
           .to raise_error(DeepL::Exceptions::Error)
       end
     end
@@ -50,37 +52,40 @@ describe DeepL do
     let(:options) { { param: 'fake' } }
 
     around do |example|
-      subject.configure { |config| config.host = 'https://api-free.deepl.com' }
+      deepl.configure { |config| config.host = 'https://api-free.deepl.com' }
       VCR.use_cassette('deepl_translate') { example.call }
     end
 
-    context 'When translating a text' do
-      it 'should create and call a request object' do
+    context 'when translating a text' do
+      it 'creates and call a request object' do
         expect(DeepL::Requests::Translate).to receive(:new)
-          .with(subject.api, input, source_lang, target_lang, options).and_call_original
+          .with(deepl.api, input, source_lang, target_lang, options).and_call_original
 
-        text = subject.translate(input, source_lang, target_lang, options)
+        text = deepl.translate(input, source_lang, target_lang, options)
         expect(text).to be_a(DeepL::Resources::Text)
       end
     end
 
-    context 'When translating a text using a glossary' do
-      before(:each) do
-        @glossary = subject.glossaries.create('fixture', 'EN', 'ES', [%w[car auto]])
+    context 'when translating a text using a glossary' do
+      before do
+        @glossary = deepl.glossaries.create('fixture', 'EN', 'ES', [%w[car auto]])
       end
+
       let(:input) { 'I wish we had a car.' }
+      # rubocop:disable RSpec/InstanceVariable
       let(:options) { { glossary_id: @glossary.id } }
 
-      it 'should create and call a request object' do
+      after do
+        deepl.glossaries.destroy(@glossary.id)
+      end
+      # rubocop:enable RSpec/InstanceVariable
+
+      it 'creates and call a request object' do
         expect(DeepL::Requests::Translate).to receive(:new)
-          .with(subject.api, input, source_lang, target_lang, options).and_call_original
-        text = subject.translate(input, source_lang, target_lang, options)
+          .with(deepl.api, input, source_lang, target_lang, options).and_call_original
+        text = deepl.translate(input, source_lang, target_lang, options)
         expect(text).to be_a(DeepL::Resources::Text)
         expect(text.text).to eq('Ojalá tuviéramos un auto.')
-      end
-
-      after(:each) do
-        subject.glossaries.destroy(@glossary.id)
       end
     end
   end
@@ -89,16 +94,16 @@ describe DeepL do
     let(:options) { {} }
 
     around do |example|
-      subject.configure { |config| config.host = 'https://api-free.deepl.com' }
+      deepl.configure { |config| config.host = 'https://api-free.deepl.com' }
       VCR.use_cassette('deepl_usage') { example.call }
     end
 
-    context 'When checking usage' do
-      it 'should create and call a request object' do
+    context 'when checking usage' do
+      it 'creates and call a request object' do
         expect(DeepL::Requests::Usage).to receive(:new)
-          .with(subject.api, options).and_call_original
+          .with(deepl.api, options).and_call_original
 
-        usage = subject.usage(options)
+        usage = deepl.usage(options)
         expect(usage).to be_a(DeepL::Resources::Usage)
       end
     end
@@ -108,18 +113,18 @@ describe DeepL do
     let(:options) { { type: :target } }
 
     around do |example|
-      subject.configure { |config| config.host = 'https://api-free.deepl.com' }
+      deepl.configure { |config| config.host = 'https://api-free.deepl.com' }
       VCR.use_cassette('deepl_languages') { example.call }
     end
 
-    context 'When checking languages' do
-      it 'should create and call a request object' do
+    context 'when checking languages' do
+      it 'creates and call a request object' do
         expect(DeepL::Requests::Languages).to receive(:new)
-          .with(subject.api, options).and_call_original
+          .with(deepl.api, options).and_call_original
 
-        languages = subject.languages(options)
+        languages = deepl.languages(options)
         expect(languages).to be_an(Array)
-        expect(languages.all? { |l| l.is_a?(DeepL::Resources::Language) }).to be_truthy
+        expect(languages).to(be_all { |l| l.is_a?(DeepL::Resources::Language) })
       end
     end
   end
@@ -138,16 +143,16 @@ describe DeepL do
       let(:options) { { param: 'fake', entries_format: 'tsv' } }
 
       around do |example|
-        subject.configure { |config| config.host = 'https://api-free.deepl.com' }
+        deepl.configure { |config| config.host = 'https://api-free.deepl.com' }
         VCR.use_cassette('deepl_glossaries') { example.call }
       end
 
-      context 'When creating a glossary' do
-        it 'should create and call a request object' do
+      context 'when creating a glossary' do
+        it 'creates and call a request object' do
           expect(DeepL::Requests::Glossary::Create).to receive(:new)
-            .with(subject.api, name, source_lang, target_lang, entries, options).and_call_original
+            .with(deepl.api, name, source_lang, target_lang, entries, options).and_call_original
 
-          glossary = subject.glossaries.create(name, source_lang, target_lang, entries, options)
+          glossary = deepl.glossaries.create(name, source_lang, target_lang, entries, options)
           expect(glossary).to be_a(DeepL::Resources::Glossary)
         end
       end
@@ -158,27 +163,27 @@ describe DeepL do
       let(:options) { {} }
 
       around do |example|
-        subject.configure { |config| config.host = 'https://api-free.deepl.com' }
+        deepl.configure { |config| config.host = 'https://api-free.deepl.com' }
         VCR.use_cassette('deepl_glossaries') { example.call }
       end
 
-      context 'When fetching a glossary' do
-        it 'should create and call a request object' do
+      context 'when fetching a glossary' do
+        it 'creates and call a request object' do
           expect(DeepL::Requests::Glossary::Find).to receive(:new)
-            .with(subject.api, id, options).and_call_original
+            .with(deepl.api, id, options).and_call_original
 
-          glossary = subject.glossaries.find(id, options)
+          glossary = deepl.glossaries.find(id, options)
           expect(glossary).to be_a(DeepL::Resources::Glossary)
         end
       end
 
-      context 'When fetching a non existing glossary' do
+      context 'when fetching a non existing glossary' do
         let(:id) { '00000000-0000-0000-0000-000000000000' }
 
-        it 'should raise an exception when the glossary does not exist' do
+        it 'raises an exception when the glossary does not exist' do
           expect(DeepL::Requests::Glossary::Find).to receive(:new)
-            .with(subject.api, id, options).and_call_original
-          expect { subject.glossaries.find(id, options) }
+            .with(deepl.api, id, options).and_call_original
+          expect { deepl.glossaries.find(id, options) }
             .to raise_error(DeepL::Exceptions::NotFound)
         end
       end
@@ -188,16 +193,16 @@ describe DeepL do
       let(:options) { {} }
 
       around do |example|
-        subject.configure { |config| config.host = 'https://api-free.deepl.com' }
+        deepl.configure { |config| config.host = 'https://api-free.deepl.com' }
         VCR.use_cassette('deepl_glossaries') { example.call }
       end
 
-      context 'When fetching glossaries' do
-        it 'should create and call a request object' do
+      context 'when fetching glossaries' do
+        it 'creates and call a request object' do
           expect(DeepL::Requests::Glossary::List).to receive(:new)
-            .with(subject.api, options).and_call_original
+            .with(deepl.api, options).and_call_original
 
-          glossaries = subject.glossaries.list(options)
+          glossaries = deepl.glossaries.list(options)
           expect(glossaries).to all(be_a(DeepL::Resources::Glossary))
         end
       end
@@ -208,30 +213,31 @@ describe DeepL do
       let(:options) { {} }
 
       around do |example|
-        subject.configure { |config| config.host = 'https://api-free.deepl.com' }
+        deepl.configure { |config| config.host = 'https://api-free.deepl.com' }
         VCR.use_cassette('deepl_glossaries') { example.call }
       end
 
-      context 'When destroy a glossary' do
+      context 'when destroy a glossary' do
         let(:new_glossary) do
-          subject.glossaries.create('fixture', 'EN', 'ES', [%w[Hello Hola]])
+          deepl.glossaries.create('fixture', 'EN', 'ES', [%w[Hello Hola]])
         end
-        it 'should create and call a request object' do
-          expect(DeepL::Requests::Glossary::Destroy).to receive(:new)
-            .with(subject.api, new_glossary.id, options).and_call_original
 
-          glossary_id = subject.glossaries.destroy(new_glossary.id, options)
+        it 'creates and call a request object' do
+          expect(DeepL::Requests::Glossary::Destroy).to receive(:new)
+            .with(deepl.api, new_glossary.id, options).and_call_original
+
+          glossary_id = deepl.glossaries.destroy(new_glossary.id, options)
           expect(glossary_id).to eq(new_glossary.id)
         end
       end
 
-      context 'When destroying a non existing glossary' do
+      context 'when destroying a non existing glossary' do
         let(:id) { '00000000-0000-0000-0000-000000000000' }
 
-        it 'should raise an exception when the glossary does not exist' do
+        it 'raises an exception when the glossary does not exist' do
           expect(DeepL::Requests::Glossary::Destroy).to receive(:new)
-            .with(subject.api, id, options).and_call_original
-          expect { subject.glossaries.destroy(id, options) }
+            .with(deepl.api, id, options).and_call_original
+          expect { deepl.glossaries.destroy(id, options) }
             .to raise_error(DeepL::Exceptions::NotFound)
         end
       end
@@ -242,16 +248,16 @@ describe DeepL do
       let(:options) { {} }
 
       around do |example|
-        subject.configure { |config| config.host = 'https://api-free.deepl.com' }
+        deepl.configure { |config| config.host = 'https://api-free.deepl.com' }
         VCR.use_cassette('deepl_glossaries') { example.call }
       end
 
-      context 'When listing glossary entries' do
-        it 'should create and call a request object' do
+      context 'when listing glossary entries' do
+        it 'creates and call a request object' do
           expect(DeepL::Requests::Glossary::Entries).to receive(:new)
-            .with(subject.api, id, options).and_call_original
+            .with(deepl.api, id, options).and_call_original
 
-          entries = subject.glossaries.entries(id, options)
+          entries = deepl.glossaries.entries(id, options)
           expect(entries).to all(be_a(Array))
           entries.each do |entry|
             expect(entry.size).to eq(2)
@@ -261,13 +267,13 @@ describe DeepL do
         end
       end
 
-      context 'When listing entries of a non existing glossary' do
+      context 'when listing entries of a non existing glossary' do
         let(:id) { '00000000-0000-0000-0000-000000000000' }
 
-        it 'should raise an exception when the glossary does not exist' do
+        it 'raises an exception when the glossary does not exist' do
           expect(DeepL::Requests::Glossary::Entries).to receive(:new)
-            .with(subject.api, id, options).and_call_original
-          expect { subject.glossaries.entries(id, options) }
+            .with(deepl.api, id, options).and_call_original
+          expect { deepl.glossaries.entries(id, options) }
             .to raise_error(DeepL::Exceptions::NotFound)
         end
       end
@@ -277,16 +283,16 @@ describe DeepL do
       let(:options) { {} }
 
       around do |example|
-        subject.configure { |config| config.host = 'https://api-free.deepl.com' }
+        deepl.configure { |config| config.host = 'https://api-free.deepl.com' }
         VCR.use_cassette('deepl_glossaries') { example.call }
       end
 
-      context 'When fetching language pairs supported by glossaries' do
-        it 'should create and call a request object' do
+      context 'when fetching language pairs supported by glossaries' do
+        it 'creates and call a request object' do
           expect(DeepL::Requests::Glossary::LanguagePairs).to receive(:new)
-            .with(subject.api, options).and_call_original
+            .with(deepl.api, options).and_call_original
 
-          language_pairs = subject.glossaries.language_pairs(options)
+          language_pairs = deepl.glossaries.language_pairs(options)
           expect(language_pairs).to all(be_a(DeepL::Resources::LanguagePair))
         end
       end

@@ -6,14 +6,15 @@
 require 'spec_helper'
 
 describe DeepL::Requests::Glossary::LanguagePairs do
+  subject(:language_pairs_obj) { described_class.new(api, options) }
+
   let(:api) { build_deepl_api }
   let(:options) { {} }
-  subject { DeepL::Requests::Glossary::LanguagePairs.new(api, options) }
 
   describe '#initialize' do
-    context 'When building a request' do
-      it 'should create a request object' do
-        expect(subject).to be_a(described_class)
+    context 'when building a request' do
+      it 'creates a request object' do
+        expect(language_pairs_obj).to be_a(described_class)
       end
     end
   end
@@ -23,9 +24,9 @@ describe DeepL::Requests::Glossary::LanguagePairs do
       VCR.use_cassette('glossaries') { example.call }
     end
 
-    context 'When requesting a list of all language pairs supported by glossaries' do
-      it 'should return a language pairs object' do
-        language_pairs = subject.request
+    context 'when requesting a list of all language pairs supported by glossaries' do
+      it 'returns a language pairs object' do
+        language_pairs = language_pairs_obj.request
         expect(language_pairs).to be_an(Array)
       end
     end

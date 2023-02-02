@@ -6,14 +6,15 @@
 require 'spec_helper'
 
 describe DeepL::Requests::Glossary::Destroy do
+  subject(:destroy) { described_class.new(api, id) }
+
   let(:api) { build_deepl_api }
   let(:id) { '367eef44-b533-4d95-be19-74950c7760e9' }
-  subject { DeepL::Requests::Glossary::Destroy.new(api, id) }
 
   describe '#initialize' do
-    context 'When building a request' do
-      it 'should create a request object' do
-        expect(subject).to be_a(described_class)
+    context 'when building a request' do
+      it 'creates a request object' do
+        expect(destroy).to be_a(described_class)
       end
     end
   end
@@ -23,30 +24,36 @@ describe DeepL::Requests::Glossary::Destroy do
       VCR.use_cassette('glossaries') { example.call }
     end
 
-    context 'When performing a valid request' do
+    context 'when performing a valid request' do
+      subject(:destroy) { described_class.new(api, new_glossary.id) }
+
       let(:new_glossary) do
         DeepL::Requests::Glossary::Create.new(api, 'fixture', 'EN', 'ES', [%w[Hello Hola]]).request
       end
-      subject { DeepL::Requests::Glossary::Destroy.new(api, new_glossary.id) }
-      it 'should return an empty object' do
-        response = subject.request
+
+      it 'returns an empty object' do
+        response = destroy.request
         expect(response).to eq(new_glossary.id)
       end
     end
 
-    context 'When deleting a non existing glossary with a valid id' do
+    context 'when deleting a non existing glossary with a valid id' do
+      subject(:destroy) { described_class.new(api, id) }
+
       let(:id) { '00000000-0000-0000-0000-000000000000' }
-      subject { DeepL::Requests::Glossary::Destroy.new(api, id) }
-      it 'should raise a not found error' do
-        expect { subject.request }.to raise_error(DeepL::Exceptions::NotFound)
+
+      it 'raises a not found error' do
+        expect { destroy.request }.to raise_error(DeepL::Exceptions::NotFound)
       end
     end
 
-    context 'When deleting a non existing glossary with an invalid id' do
+    context 'when deleting a non existing glossary with an invalid id' do
+      subject(:destroy) { described_class.new(api, id) }
+
       let(:id) { 'invalid-uuid' }
-      subject { DeepL::Requests::Glossary::Destroy.new(api, id) }
-      it 'should raise a bad request error' do
-        expect { subject.request }.to raise_error(DeepL::Exceptions::BadRequest)
+
+      it 'raises a bad request error' do
+        expect { destroy.request }.to raise_error(DeepL::Exceptions::BadRequest)
       end
     end
   end

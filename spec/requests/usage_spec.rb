@@ -6,14 +6,15 @@
 require 'spec_helper'
 
 describe DeepL::Requests::Usage do
+  subject(:usage_req) { described_class.new(api, options) }
+
   let(:api) { build_deepl_api }
   let(:options) { {} }
-  subject { DeepL::Requests::Usage.new(api, options) }
 
   describe '#initialize' do
-    context 'When building a request' do
-      it 'should create a request object' do
-        expect(subject).to be_a(DeepL::Requests::Usage)
+    context 'when building a request' do
+      it 'creates a request object' do
+        expect(usage_req).to be_a(described_class)
       end
     end
   end
@@ -23,9 +24,9 @@ describe DeepL::Requests::Usage do
       VCR.use_cassette('usage') { example.call }
     end
 
-    context 'When performing a valid request' do
-      it 'should return an usage object' do
-        usage = subject.request
+    context 'when performing a valid request' do
+      it 'returns an usage object' do
+        usage = usage_req.request
 
         expect(usage).to be_a(DeepL::Resources::Usage)
         expect(usage.character_count).to be_a(Numeric)

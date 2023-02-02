@@ -6,29 +6,29 @@
 require 'spec_helper'
 
 describe DeepL::Resources::Usage do
-  subject { described_class.new(3, 5, nil, nil) }
+  subject(:usage) { described_class.new(3, 5, nil, nil) }
 
   describe '#initialize' do
-    context 'When building a basic object' do
-      it 'should create a resource' do
-        expect(subject).to be_a(described_class)
+    context 'when building a basic object' do
+      it 'creates a resource' do
+        expect(usage).to be_a(described_class)
       end
 
-      it 'should assign the attributes' do
-        expect(subject.character_count).to eq(3)
-        expect(subject.character_limit).to eq(5)
+      it 'assigns the attributes' do
+        expect(usage.character_count).to eq(3)
+        expect(usage.character_limit).to eq(5)
       end
 
-      it 'should not exceed the quota' do
-        expect(subject.quota_exceeded?).to be_falsey
+      it 'does not exceed the quota' do
+        expect(usage).not_to be_quota_exceeded
       end
     end
 
-    context 'When building a quota exceeded object' do
-      subject { described_class.new(5, 5, nil, nil) }
+    context 'when building a quota exceeded object' do
+      subject(:usage) { described_class.new(5, 5, nil, nil) }
 
-      it 'should exceed the quota' do
-        expect(subject.quota_exceeded?).to be_truthy
+      it 'exceeds the quota' do
+        expect(usage).to be_quota_exceeded
       end
     end
   end

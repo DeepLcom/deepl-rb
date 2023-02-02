@@ -6,17 +6,17 @@
 require 'spec_helper'
 
 describe DeepL::Resources::LanguagePair do
-  subject { described_class.new('en', 'de', nil, nil) }
+  subject(:language_pair) { described_class.new('en', 'de', nil, nil) }
 
   describe '#initialize' do
-    context 'When building a basic object' do
-      it 'should create a resource' do
-        expect(subject).to be_a(described_class)
+    context 'when building a basic object' do
+      it 'creates a resource' do
+        expect(language_pair).to be_a(described_class)
       end
 
-      it 'should assign the attributes' do
-        expect(subject.source_lang).to eq('en')
-        expect(subject.target_lang).to eq('de')
+      it 'assigns the attributes' do
+        expect(language_pair.source_lang).to eq('en')
+        expect(language_pair.target_lang).to eq('de')
       end
     end
   end

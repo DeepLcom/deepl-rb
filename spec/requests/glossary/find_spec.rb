@@ -6,15 +6,16 @@
 require 'spec_helper'
 
 describe DeepL::Requests::Glossary::Find do
+  subject(:glossary_find) { described_class.new(api, id, options) }
+
   let(:api) { build_deepl_api }
   let(:id) { 'd9ad833f-c818-430c-a3c9-47071384fa3e' }
   let(:options) { {} }
-  subject { DeepL::Requests::Glossary::Find.new(api, id, options) }
 
   describe '#initialize' do
-    context 'When building a request' do
-      it 'should create a request object' do
-        expect(subject).to be_a(described_class)
+    context 'when building a request' do
+      it 'creates a request object' do
+        expect(glossary_find).to be_a(described_class)
       end
     end
   end
@@ -24,9 +25,9 @@ describe DeepL::Requests::Glossary::Find do
       VCR.use_cassette('glossaries') { example.call }
     end
 
-    context 'When performing a valid request' do
-      it 'should return a glossary object' do
-        glossary = subject.request
+    context 'when performing a valid request' do
+      it 'returns a glossary object' do
+        glossary = glossary_find.request
         expect(glossary).to be_a(DeepL::Resources::Glossary)
         expect(glossary.id).to eq('d9ad833f-c818-430c-a3c9-47071384fa3e')
         expect(glossary.name).to eq('Mi Glosario')
@@ -38,19 +39,23 @@ describe DeepL::Requests::Glossary::Find do
       end
     end
 
-    context 'When requesting a non existing glossary with a valid id' do
+    context 'when requesting a non existing glossary with a valid id' do
+      subject(:glossary_find) { described_class.new(api, id, options) }
+
       let(:id) { 'a0af40e1-d81b-4aab-a95c-7cafbcfd1eb1' }
-      subject { DeepL::Requests::Glossary::Find.new(api, id, options) }
-      it 'should raise a not found error' do
-        expect { subject.request }.to raise_error(DeepL::Exceptions::NotFound)
+
+      it 'raises a not found error' do
+        expect { glossary_find.request }.to raise_error(DeepL::Exceptions::NotFound)
       end
     end
 
-    context 'When requesting a non existing glossary with an invalid id' do
+    context 'when requesting a non existing glossary with an invalid id' do
+      subject(:glossary_find) { described_class.new(api, id, options) }
+
       let(:id) { 'invalid-uuid' }
-      subject { DeepL::Requests::Glossary::Find.new(api, id, options) }
-      it 'should raise a bad request error' do
-        expect { subject.request }.to raise_error(DeepL::Exceptions::BadRequest)
+
+      it 'raises a bad request error' do
+        expect { glossary_find.request }.to raise_error(DeepL::Exceptions::BadRequest)
       end
     end
   end

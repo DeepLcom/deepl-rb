@@ -6,39 +6,39 @@
 require 'spec_helper'
 
 describe DeepL::Resources::Language do
-  subject { described_class.new('EN', 'English', nil, nil, nil) }
+  subject(:language) { described_class.new('EN', 'English', nil, nil, nil) }
 
   describe '#initialize' do
-    context 'When building a basic object' do
-      it 'should create a resource' do
-        expect(subject).to be_a(described_class)
+    context 'when building a basic object' do
+      it 'creates a resource' do
+        expect(language).to be_a(described_class)
       end
 
-      it 'should assign the attributes' do
-        expect(subject.code).to eq('EN')
-        expect(subject.name).to eq('English')
+      it 'assigns the attributes' do
+        expect(language.code).to eq('EN')
+        expect(language.name).to eq('English')
       end
 
-      it 'should not define the supports formality method' do
-        expect { subject.supports_formality? }.to raise_error(DeepL::Exceptions::NotSupported)
+      it 'does not define the supports formality method' do
+        expect { language.supports_formality? }.to raise_error(DeepL::Exceptions::NotSupported)
       end
     end
 
     context 'when building a target language object' do
-      subject { described_class.new('EN', 'English', true, nil, nil) }
+      subject(:language) { described_class.new('EN', 'English', true, nil, nil) }
 
-      it 'should create a resource' do
-        expect(subject).to be_a(described_class)
+      it 'creates a resource' do
+        expect(language).to be_a(described_class)
       end
 
-      it 'should assign the attributes' do
-        expect(subject.code).to eq('EN')
-        expect(subject.name).to eq('English')
+      it 'assigns the attributes' do
+        expect(language.code).to eq('EN')
+        expect(language.name).to eq('English')
       end
 
-      it 'should include the supports formality method' do
-        expect { subject.supports_formality? }.not_to raise_error
-        expect(subject.supports_formality?).to be_truthy
+      it 'includes the supports formality method' do
+        expect { language.supports_formality? }.not_to raise_error
+        expect(language).to be_supports_formality
       end
     end
   end

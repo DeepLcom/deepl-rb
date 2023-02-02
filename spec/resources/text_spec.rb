@@ -6,17 +6,17 @@
 require 'spec_helper'
 
 describe DeepL::Resources::Text do
-  subject { described_class.new('Target', 'es', nil, nil) }
+  subject(:text) { described_class.new('Target', 'es', nil, nil) }
 
   describe '#initialize' do
-    context 'When building a basic object' do
-      it 'should create a resource' do
-        expect(subject).to be_a(described_class)
+    context 'when building a basic object' do
+      it 'creates a resource' do
+        expect(text).to be_a(described_class)
       end
 
-      it 'should assign the attributes' do
-        expect(subject.text).to eq('Target')
-        expect(subject.detected_source_language).to eq('es')
+      it 'assigns the attributes' do
+        expect(text.text).to eq('Target')
+        expect(text.detected_source_language).to eq('es')
       end
     end
   end

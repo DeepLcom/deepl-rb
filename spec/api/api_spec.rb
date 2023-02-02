@@ -6,13 +6,14 @@
 require 'spec_helper'
 
 describe DeepL::API do
+  subject(:api) { described_class.new(configuration) }
+
   let(:configuration) { DeepL::Configuration.new }
-  subject { DeepL::API.new(configuration) }
 
   describe '#initialize' do
-    context 'When building an API object' do
-      it 'should save the configuration' do
-        expect(subject.configuration).to be(configuration)
+    context 'when building an API object' do
+      it 'saves the configuration' do
+        expect(api.configuration).to be(configuration)
       end
     end
   end

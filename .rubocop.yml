@@ -1,5 +1,8 @@
 # Custom rubocop configuration
 
+require:
+  - rubocop-rspec
+
 AllCops:
   DisplayCopNames: true
   NewCops: enable
@@ -16,6 +19,25 @@ Metrics/ParameterLists:
 
 Layout/LineLength:
   Max: 100
+
+RSpec/ExampleLength:
+  Max: 10
+  CountAsOne: ['heredoc']
+
+RSpec/FilePath:
+  SpecSuffixOnly: true
+
+RSpec/MessageSpies:
+  EnforcedStyle: 'receive'
+
+RSpec/MultipleExpectations:
+  Max: 8
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 7
+
+RSpec/NestedGroups:
+  Max: 4
 
 Style/Documentation:
   Enabled: false

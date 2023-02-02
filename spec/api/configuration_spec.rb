@@ -6,25 +6,26 @@
 require 'spec_helper'
 
 describe DeepL::Configuration do
+  subject(:config) { described_class.new(attributes) }
+
   let(:attributes) { {} }
-  subject { DeepL::Configuration.new(attributes) }
 
   describe '#initialize' do
-    context 'When using default configuration attributes' do
-      it 'should use default attributes' do
-        expect(subject.auth_key).to eq(ENV.fetch('DEEPL_AUTH_KEY', nil))
-        expect(subject.host).to eq('https://api.deepl.com')
-        expect(subject.version).to eq('v2')
+    context 'when using default configuration attributes' do
+      it 'uses default attributes' do
+        expect(config.auth_key).to eq(ENV.fetch('DEEPL_AUTH_KEY', nil))
+        expect(config.host).to eq('https://api.deepl.com')
+        expect(config.version).to eq('v2')
       end
     end
 
-    context 'When using custom configuration attributes' do
+    context 'when using custom configuration attributes' do
       let(:attributes) { { auth_key: 'SAMPLE', host: 'https://api-free.deepl.com', version: 'v1' } }
 
-      it 'should use custom attributes' do
-        expect(subject.auth_key).to eq(attributes[:auth_key])
-        expect(subject.host).to eq(attributes[:host])
-        expect(subject.version).to eq(attributes[:version])
+      it 'uses custom attributes' do
+        expect(config.auth_key).to eq(attributes[:auth_key])
+        expect(config.host).to eq(attributes[:host])
+        expect(config.version).to eq(attributes[:version])
       end
     end
   end
@@ -32,19 +33,19 @@ describe DeepL::Configuration do
   describe '#validate!' do
     let(:auth_message) { 'auth_key not provided' }
 
-    context 'When providing a valid auth key' do
+    context 'when providing a valid auth key' do
       let(:attributes) { { auth_key: '' } }
 
-      it 'should raise an error' do
-        expect { subject.validate! }.to raise_error(DeepL::Exceptions::Error, auth_message)
+      it 'raises an error' do
+        expect { config.validate! }.to raise_error(DeepL::Exceptions::Error, auth_message)
       end
     end
 
-    context 'When providing an invalid auth key' do
+    context 'when providing an invalid auth key' do
       let(:attributes) { { auth_key: 'not-empty' } }
 
-      it 'should not raise an error' do
-        expect { subject.validate! }.not_to raise_error
+      it 'does not raise an error' do
+        expect { config.validate! }.not_to raise_error
       end
     end
   end
