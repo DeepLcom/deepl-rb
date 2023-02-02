@@ -1,3 +1,6 @@
+# Copyright 2021 Daniel Herzog
+# Use of this source code is governed by an MIT
+# license that can be found in the LICENSE.md file.
 # frozen_string_literal: true
 
 require 'spec_helper'
