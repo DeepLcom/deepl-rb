@@ -1,5 +1,3 @@
----
-
 # Work in progress
 
 DeepL is working with the original creator of deepl-rb to take over
