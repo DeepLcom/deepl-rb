@@ -1,3 +1,19 @@
+---
+
+# Work in progress
+
+DeepL is working with the original creator of deepl-rb to take over
+responsibility for the project. This fork will eventually be the the basis for
+the gem and the place where future development will occur.
+
+In the meanwhile, though, the gem still points to https://github.com/wikiti/deepl-rb.
+
+When the handover is complete and we consider the fork "ready for release" (and
+the gem has been updated to point to our fork), we'll add the Ruby library to
+our API documentation: https://www.deepl.com/docs-api/api-access/client-libraries/
+
+---
+
 [![Gem Version](https://badge.fury.io/rb/deepl-rb.svg)](https://badge.fury.io/rb/deepl-rb) [![CircleCI](https://circleci.com/gh/wikiti/deepl-rb.svg?style=shield)](https://circleci.com/gh/wikiti/deepl-rb) [![CodeCov](https://codecov.io/gh/wikiti/deepl-rb/branch/master/graph/badge.svg?token=SHLgQNlZ4o)](https://codecov.io/gh/wikiti/deepl-rb)
 
 # DeepL for ruby
