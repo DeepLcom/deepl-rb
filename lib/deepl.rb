@@ -47,6 +47,9 @@ require 'deepl/resources/usage'
 # -- Utils
 require 'deepl/utils/exception_builder'
 
+# -- HTTP Utils
+require 'http_client_options'
+
 # -- Other wrappers
 require 'deepl/api'
 require 'deepl/configuration'
@@ -85,6 +88,21 @@ module DeepL
   def usage(options = {})
     configure if @configuration.nil?
     Requests::Usage.new(api, options).request
+  end
+
+  def http_client
+    @http_client
+  end
+
+  def with_session(options = {})
+    raise ArgumentError 'This method requires a block to be passed in which contains the actual API calls, see README for example usage.' unless block_given? # rubocop:disable Layout/LineLength
+
+    has_proxy = options.key?('proxy_addr') and options.key?('proxy_port')
+    http_client = Net::HTTP.new(hostname, nil, has_proxy ? options['proxy_addr'] : nil,
+                                has_proxy ? options['proxy_port'] : nil)
+    http_client.start
+    yield
+    http_client.finish
   end
 
   # -- Configuration
