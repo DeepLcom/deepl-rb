@@ -9,7 +9,7 @@ include:
       - '/templates/.secret-detection.yml'
 
 variables:
-  DOCKER_IMAGE_PREFIX: $CONTAINER_REGISTRY/oss-client-libraries/$CI_PROJECT_NAME-build
+  DOCKER_IMAGE_PREFIX: ${HARBOR_REGISTRY}/${HARBOR_REGISTRY_PROJECT}/oss-client-libraries/$CI_PROJECT_NAME-build
 
 # Global --------------------------
 
@@ -39,7 +39,6 @@ build image:
   variables:
     DOCKER_IMAGE: ${DOCKER_IMAGE_PREFIX}_ruby_${RUBY_VERSION}
     BUILDKIT_IMAGE: ${DOCKER_IMAGE}:latest
-    BUILDKIT_CACHE_IMAGE: ${DOCKER_IMAGE}:latest
     BUILDKIT_EXTRA_ARGS: "--opt build-arg:RUBY_IMAGE=ruby:${RUBY_VERSION}"
   parallel:
     matrix:
@@ -48,10 +47,21 @@ build image:
 
 # stage: check ----------------------
 
-rubocop:
+.rubocop_base:
   stage: check
   image: ${DOCKER_IMAGE_PREFIX}_ruby_3.2.0
   script: bundle exec rubocop
+
+rubocop_scheduled:
+  extends: .rubocop_base
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+  retry: 2
+
+rubocop_manual:
+  extends: .rubocop_base
+  rules:
+    - if: $CI_PIPELINE_SOURCE != "schedule"
 
 secret_detection:
   extends: .secret-detection
@@ -79,10 +89,9 @@ package:
 
 # stage: test ----------------------
 
-test:
+.test_base:
     stage: test
     extends: .test
-    retry: 1
     parallel:
         matrix:
             - RUBY_IMAGE: 'ruby_3.2.0'
@@ -100,4 +109,14 @@ test:
                 - rspec.xml
         when: always
 
+test_scheduled:
+  extends: .test_base
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+  retry: 2
 
+test_manual:
+  stage: test
+  extends: .test_base
+  rules:
+    - if: $CI_PIPELINE_SOURCE != "schedule"
