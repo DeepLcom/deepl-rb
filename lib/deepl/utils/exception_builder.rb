@@ -15,17 +15,17 @@ module DeepL
         '404' => Exceptions::NotFound,
         '413' => Exceptions::RequestEntityTooLarge,
         '429' => Exceptions::LimitExceeded,
-        '456' => Exceptions::QuotaExceeded
+        '456' => Exceptions::QuotaExceeded,
+        '500' => Exceptions::ServerError
       }.freeze
 
-      def initialize(request, response)
-        @request = request
+      def initialize(response)
         @response = response
       end
 
       def build
         error_class = ERROR_CODE_CLASS_MAP[response.code.to_s] || Exceptions::RequestError
-        error_class.new(request, response)
+        error_class.new(response)
       end
     end
   end

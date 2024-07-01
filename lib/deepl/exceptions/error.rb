@@ -6,6 +6,9 @@
 module DeepL
   module Exceptions
     class Error < StandardError
+      def should_retry
+        false
+      end
     end
   end
 end

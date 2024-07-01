@@ -8,9 +8,8 @@ module DeepL
     class RequestError < Error
       attr_reader :request, :response
 
-      def initialize(request, response)
+      def initialize(response)
         super()
-        @request = request
         @response = response
       end
 
