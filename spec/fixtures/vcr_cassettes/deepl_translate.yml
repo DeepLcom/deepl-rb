@@ -14,7 +14,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - Ruby
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
       Content-Type:
       - application/x-www-form-urlencoded
   response:
@@ -52,7 +52,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - Ruby
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
       Content-Type:
       - application/x-www-form-urlencoded
   response:
@@ -88,7 +88,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - Ruby
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
       Content-Type:
       - application/x-www-form-urlencoded
   response:
@@ -113,141 +113,6 @@ http_interactions:
       string: '{"translations":[{"detected_source_language":"EN","text":"Hola Tierra"}]}'
   recorded_at: Mon, 24 Jan 2022 23:22:47 GMT
 - request:
-    method: delete
-    uri: https://api-free.deepl.com/v2/glossaries/c8ec9224-f13c-4af5-94eb-25e2d6112d34
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Authorization:
-      - DeepL-Auth-Key VALID_TOKEN
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 204
-      message: No Content
-    headers:
-      Server:
-      - nginx
-      Date:
-      - Mon, 24 Jan 2022 23:22:48 GMT
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: ''
-  recorded_at: Mon, 24 Jan 2022 23:22:48 GMT
-- request:
-    method: post
-    uri: https://api-free.deepl.com/v2/glossaries
-    body:
-      encoding: US-ASCII
-      string: name=fixture&source_lang=EN&target_lang=ES&entries=car%09auto%0A&entries_format=tsv
-    headers:
-      Authorization:
-      - DeepL-Auth-Key VALID_TOKEN
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-      Content-Type:
-      - application/x-www-form-urlencoded
-  response:
-    status:
-      code: 201
-      message: Created
-    headers:
-      Server:
-      - nginx
-      Date:
-      - Tue, 25 Jan 2022 00:52:04 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: '{"glossary_id":"0d425d16-dbdf-4d26-aca1-12d41e9ea484","name":"fixture","ready":true,"source_lang":"en","target_lang":"es","creation_time":"2022-01-25T00:52:04.21883+00:00","entry_count":1}'
-  recorded_at: Tue, 25 Jan 2022 00:52:04 GMT
-- request:
-    method: post
-    uri: https://api-free.deepl.com/v2/translate?glossary_id=0d425d16-dbdf-4d26-aca1-12d41e9ea484
-    body:
-      encoding: US-ASCII
-      string: text=I+wish+we+had+a+car.&source_lang=EN&target_lang=ES
-    headers:
-      Authorization:
-      - DeepL-Auth-Key VALID_TOKEN
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-      Content-Type:
-      - application/x-www-form-urlencoded
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - nginx
-      Date:
-      - Tue, 25 Jan 2022 00:52:04 GMT
-      Content-Type:
-      - application/json
-      Content-Length:
-      - '89'
-      Connection:
-      - keep-alive
-      Access-Control-Allow-Origin:
-      - "*"
-    body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        eyJ0cmFuc2xhdGlvbnMiOlt7ImRldGVjdGVkX3NvdXJjZV9sYW5ndWFnZSI6IkVOIiwidGV4dCI6Ik9qYWzDoSB0dXZpw6lyYW1vcyB1biBhdXRvLiJ9XX0=
-  recorded_at: Tue, 25 Jan 2022 00:52:04 GMT
-- request:
-    method: delete
-    uri: https://api-free.deepl.com/v2/glossaries/0d425d16-dbdf-4d26-aca1-12d41e9ea484
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Authorization:
-      - DeepL-Auth-Key VALID_TOKEN
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 204
-      message: No Content
-    headers:
-      Server:
-      - nginx
-      Date:
-      - Tue, 25 Jan 2022 00:52:05 GMT
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: ''
-  recorded_at: Tue, 25 Jan 2022 00:52:05 GMT
-- request:
     method: post
     uri: https://api.deepl.com/v2/translate?param=fake
     body:
@@ -261,7 +126,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - Ruby
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
       Content-Type:
       - application/x-www-form-urlencoded
   response:
@@ -287,107 +152,207 @@ http_interactions:
   recorded_at: Wed, 01 Feb 2023 14:39:00 GMT
 - request:
     method: post
-    uri: https://api.deepl.com/v2/glossaries
-    body:
-      encoding: US-ASCII
-      string: name=fixture&source_lang=EN&target_lang=ES&entries=car%09auto%0A&entries_format=tsv
-    headers:
-      Authorization:
-      - DeepL-Auth-Key VALID_TOKEN
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-      Content-Type:
-      - application/x-www-form-urlencoded
-  response:
-    status:
-      code: 201
-      message: Created
-    headers:
-      Date:
-      - Wed, 01 Feb 2023 14:39:00 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      X-Trace-Id:
-      - e58b117ea9b15b16e5f9b780de60a40f
-      Strict-Transport-Security:
-      - max-age=63072000; includeSubDomains; preload
+    uri: https://api.deepl.com/v2/translate
     body:
       encoding: UTF-8
-      string: '{"glossary_id":"f7ea3369-c25d-4c51-9a29-cde331cf8c99","name":"fixture","ready":true,"source_lang":"en","target_lang":"es","creation_time":"2023-02-01T14:39:00.236932Z","entry_count":1}'
-  recorded_at: Wed, 01 Feb 2023 14:39:00 GMT
-- request:
-    method: post
-    uri: https://api.deepl.com/v2/translate?glossary_id=f7ea3369-c25d-4c51-9a29-cde331cf8c99
-    body:
-      encoding: US-ASCII
-      string: text=I+wish+we+had+a+car.&source_lang=EN&target_lang=ES
+      string: '{"text":"Sample","source_lang":"EN","target_lang":"ES","param":"fake"}'
     headers:
       Authorization:
       - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/2.5.3(darwin23) ruby/3.3.3
+      Content-Type:
+      - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - Ruby
-      Content-Type:
-      - application/x-www-form-urlencoded
   response:
     status:
-      code: 200
-      message: OK
+      code: 403
+      message: Forbidden
     headers:
-      Server:
-      - nginx
       Date:
-      - Wed, 01 Feb 2023 14:39:00 GMT
-      Content-Type:
-      - application/json
+      - Tue, 02 Jul 2024 13:44:23 GMT
       Transfer-Encoding:
       - chunked
       Access-Control-Allow-Origin:
       - "*"
       Strict-Transport-Security:
       - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=101, l7_lb_idle;dur=1, l7_lb_receive;dur=0, l7_lb_total;dur=107
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      X-Trace-Id:
+      - d76fa5ee2e5643368519529f5de9d4ea
     body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        eyJ0cmFuc2xhdGlvbnMiOlt7ImRldGVjdGVkX3NvdXJjZV9sYW5ndWFnZSI6IkVOIiwidGV4dCI6Ik9qYWzDoSB0dXZpw6lyYW1vcyBhdXRvLiJ9XX0=
-  recorded_at: Wed, 01 Feb 2023 14:39:00 GMT
-- request:
-    method: delete
-    uri: https://api.deepl.com/v2/glossaries/f7ea3369-c25d-4c51-9a29-cde331cf8c99
-    body:
-      encoding: US-ASCII
+      encoding: UTF-8
       string: ''
+  recorded_at: Tue, 02 Jul 2024 13:44:23 GMT
+- request:
+    method: post
+    uri: https://api.deepl.com/v2/translate
+    body:
+      encoding: UTF-8
+      string: '{"text":["Sample"],"source_lang":"EN","target_lang":"ES","param":"fake"}'
     headers:
       Authorization:
       - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Content-Type:
+      - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 02 Jul 2024 16:02:26 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=111, l7_lb_idle;dur=2, l7_lb_receive;dur=0, l7_lb_total;dur=164
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      X-Trace-Id:
+      - 7085263a2c734f6bbc0ef2a3248d11a2
+    body:
+      encoding: ASCII-8BIT
+      string: '{"translations":[{"detected_source_language":"EN","text":"Muestra"}]}'
+  recorded_at: Tue, 02 Jul 2024 16:02:26 GMT
+- request:
+    method: post
+    uri: https://api.deepl.com/v2/glossaries
+    body:
+      encoding: UTF-8
+      string: '{"name":"fixture","source_lang":"EN","target_lang":"ES","entries":"car\tauto\n","entries_format":"tsv"}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
       User-Agent:
-      - Ruby
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Tue, 09 Jul 2024 01:50:11 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Trace-Id:
+      - 12c5d435de7a492b93f26cd05a8c6b2d
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=105, l7_lb_idle;dur=5, l7_lb_receive;dur=0, l7_lb_total;dur=128
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: UTF-8
+      string: '{"glossary_id":"b5972112-b74d-447f-92ff-888db3df7e5d","name":"fixture","ready":true,"source_lang":"en","target_lang":"es","creation_time":"2024-07-09T01:50:11.109588Z","entry_count":1}'
+  recorded_at: Tue, 09 Jul 2024 01:50:11 GMT
+- request:
+    method: post
+    uri: https://api.deepl.com/v2/translate
+    body:
+      encoding: UTF-8
+      string: '{"text":["I wish we had a car."],"source_lang":"EN","target_lang":"ES","glossary_id":"b5972112-b74d-447f-92ff-888db3df7e5d"}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 09 Jul 2024 01:50:11 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=278, l7_lb_idle;dur=2, l7_lb_receive;dur=0, l7_lb_total;dur=355
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      X-Trace-Id:
+      - ab9c20ae972946cf9e001a0e7b0aa7dc
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJ0cmFuc2xhdGlvbnMiOlt7ImRldGVjdGVkX3NvdXJjZV9sYW5ndWFnZSI6IkVOIiwidGV4dCI6Ik9qYWzDoSB0dXZpw6lyYW1vcyBhdXRvLiJ9XX0=
+  recorded_at: Tue, 09 Jul 2024 01:50:11 GMT
+- request:
+    method: delete
+    uri: https://api.deepl.com/v2/glossaries/b5972112-b74d-447f-92ff-888db3df7e5d
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
   response:
     status:
       code: 204
       message: No Content
     headers:
       Date:
-      - Wed, 01 Feb 2023 14:39:01 GMT
+      - Tue, 09 Jul 2024 01:50:12 GMT
       X-Trace-Id:
-      - e174df9212a1a7ca67df5ad01425559b
+      - 4b145ebec675432e98119ac4449f764f
       Strict-Transport-Security:
       - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=151, l7_lb_idle;dur=2, l7_lb_receive;dur=0, l7_lb_total;dur=1007
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
     body:
       encoding: UTF-8
       string: ''
-  recorded_at: Wed, 01 Feb 2023 14:39:01 GMT
-recorded_with: VCR 6.1.0
+  recorded_at: Tue, 09 Jul 2024 01:50:12 GMT
+recorded_with: VCR 6.2.0

@@ -339,6 +339,18 @@ To run tests (rspec and rubocop), use
 bundle exec rake test
 ```
 
+### Caution: Changing VCR Tests
+
+If you need to rerecord some of the VCR tests, simply setting `record: :new_episodes` and rerunning `rspec` won't be enough in some cases, specifically around document translation (due to its statefulness) and glossaries (since a glossary ID is associated with a specific API account).
+For example, there are document translations tests that split up the `upload`, `get_status` and `download` calls into separate test cases. You need to first rerecord the `upload` call, you can do execute a single test like this:
+
+```sh
+rspec ./spec/api/deepl_spec.rb:152
+```
+
+This will return a `document_id` and a `document_key`, you will need to update the values in the `get_status` and `download` tests accordingly. You can find examples for this in the git history.
+Similarly, for the glossary tests you will need to delete the recorded HTTP requests for certain glossary IDs so that `rspec` will create the glossaries on your account instead. Feel free to reach out on our discord if you run into any trouble here.
+
 ## Acknowledgements
 
 This library was originally developed by [Daniel Herzog](mailto:info@danielherzog.es), we are grateful for his contributions. Beginning with v3.0.0, DeepL took over development and officially supports and maintains the library together with Daniel.

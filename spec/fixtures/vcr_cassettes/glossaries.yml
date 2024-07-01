@@ -14,7 +14,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - Ruby
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
       Content-Type:
       - application/x-www-form-urlencoded
   response:
@@ -50,7 +50,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - Ruby
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
   response:
     status:
       code: 200
@@ -84,7 +84,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - Ruby
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
   response:
     status:
       code: 404
@@ -118,7 +118,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - Ruby
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
   response:
     status:
       code: 400
@@ -152,7 +152,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - Ruby
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
   response:
     status:
       code: 200
@@ -187,7 +187,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - Ruby
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
   response:
     status:
       code: 401
@@ -221,7 +221,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - Ruby
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
   response:
     status:
       code: 404
@@ -255,7 +255,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - Ruby
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
   response:
     status:
       code: 400
@@ -289,7 +289,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - Ruby
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
   response:
     status:
       code: 200
@@ -323,7 +323,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - Ruby
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
   response:
     status:
       code: 404
@@ -357,7 +357,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - Ruby
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
   response:
     status:
       code: 400
@@ -391,7 +391,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - Ruby
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
   response:
     status:
       code: 200
@@ -425,7 +425,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - Ruby
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
       Content-Type:
       - application/x-www-form-urlencoded
   response:
@@ -461,7 +461,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - Ruby
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
   response:
     status:
       code: 204
@@ -477,4 +477,1226 @@ http_interactions:
       encoding: UTF-8
       string: ''
   recorded_at: Tue, 25 Jan 2022 00:56:19 GMT
-recorded_with: VCR 6.0.0
+- request:
+    method: get
+    uri: https://api-free.deepl.com/v2/glossaries
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - DeepL-Auth-Key invalid
+      User-Agent:
+      - deepl-ruby/2.5.3(darwin23) ruby/3.3.3
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Tue, 02 Jul 2024 13:54:06 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Trace-Id:
+      - 67992b0faeb74a78bd240f91794c7aa4
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=106, l7_lb_idle;dur=3, l7_lb_receive;dur=0, l7_lb_total;dur=111
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: UTF-8
+      string: '{"message":"Unauthorized"}'
+  recorded_at: Tue, 02 Jul 2024 13:54:06 GMT
+- request:
+    method: post
+    uri: https://api.deepl.com/v2/glossaries
+    body:
+      encoding: UTF-8
+      string: '{"name":"Mi Glosario","source_lang":"EN","target_lang":"ES","entries":"Hello\tHola\nWorld\tMundo\n","entries_format":"tsv"}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Tue, 02 Jul 2024 15:04:50 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Trace-Id:
+      - cd39089c800c4100838fd995e796fc03
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=111, l7_lb_idle;dur=2, l7_lb_receive;dur=0, l7_lb_total;dur=136
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: UTF-8
+      string: '{"glossary_id":"9ab5dac2-b7b2-4b4a-808a-e8e305df5ecb","name":"Mi Glosario","ready":true,"source_lang":"en","target_lang":"es","creation_time":"2024-07-02T15:04:50.832836Z","entry_count":2}'
+  recorded_at: Tue, 02 Jul 2024 15:04:50 GMT
+- request:
+    method: delete
+    uri: https://api.deepl.com/v2/glossaries/00000000-0000-0000-0000-000000000000
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Tue, 02 Jul 2024 15:04:52 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Trace-Id:
+      - 2d69f738aa284353b0f2eb58d9a033f9
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=103, l7_lb_idle;dur=2, l7_lb_receive;dur=0, l7_lb_total;dur=119
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: ASCII-8BIT
+      string: '{"message":"Not found"}'
+  recorded_at: Tue, 02 Jul 2024 15:04:52 GMT
+- request:
+    method: delete
+    uri: https://api.deepl.com/v2/glossaries/invalid-uuid
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Tue, 02 Jul 2024 15:04:52 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Trace-Id:
+      - 015d984f05c8472787f92c1af0481f63
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=114, l7_lb_idle;dur=2, l7_lb_receive;dur=0, l7_lb_total;dur=127
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: UTF-8
+      string: '{"message":"Invalid or missing glossary id"}'
+  recorded_at: Tue, 02 Jul 2024 15:04:52 GMT
+- request:
+    method: get
+    uri: https://api.deepl.com/v2/glossaries/012a5576-b551-4d4c-b917-ce01bc8debb6/entries
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Tue, 02 Jul 2024 15:04:52 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Trace-Id:
+      - b5db58d025374b7783e866dbcf579dd9
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=123, l7_lb_idle;dur=0, l7_lb_receive;dur=0, l7_lb_total;dur=139
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: ASCII-8BIT
+      string: '{"message":"Not found"}'
+  recorded_at: Tue, 02 Jul 2024 15:04:52 GMT
+- request:
+    method: get
+    uri: https://api.deepl.com/v2/glossaries/00000000-0000-0000-0000-000000000000/entries
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Tue, 02 Jul 2024 15:04:53 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Trace-Id:
+      - 632a206d5a0245569da50830bfb12ca2
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=117, l7_lb_idle;dur=1, l7_lb_receive;dur=0, l7_lb_total;dur=138
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: ASCII-8BIT
+      string: '{"message":"Not found"}'
+  recorded_at: Tue, 02 Jul 2024 15:04:53 GMT
+- request:
+    method: get
+    uri: https://api.deepl.com/v2/glossaries/invalid-uuid/entries
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Tue, 02 Jul 2024 15:04:53 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Trace-Id:
+      - 792c3fec4bf94dca9364027f7784407b
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=102, l7_lb_idle;dur=3, l7_lb_receive;dur=0, l7_lb_total;dur=114
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: UTF-8
+      string: '{"message":"Invalid or missing glossary id"}'
+  recorded_at: Tue, 02 Jul 2024 15:04:53 GMT
+- request:
+    method: get
+    uri: https://api.deepl.com/v2/glossaries/d9ad833f-c818-430c-a3c9-47071384fa3e
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Tue, 02 Jul 2024 15:04:53 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Trace-Id:
+      - 7f77a7ef2b78458798ccad59f7abf48c
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=102, l7_lb_idle;dur=2, l7_lb_receive;dur=0, l7_lb_total;dur=117
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: ASCII-8BIT
+      string: '{"message":"Not found"}'
+  recorded_at: Tue, 02 Jul 2024 15:04:53 GMT
+- request:
+    method: get
+    uri: https://api.deepl.com/v2/glossaries/a0af40e1-d81b-4aab-a95c-7cafbcfd1eb1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Tue, 02 Jul 2024 15:04:53 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Trace-Id:
+      - aa36353d3214428093f41e6177f79cf5
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=101, l7_lb_idle;dur=2, l7_lb_receive;dur=0, l7_lb_total;dur=118
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: ASCII-8BIT
+      string: '{"message":"Not found"}'
+  recorded_at: Tue, 02 Jul 2024 15:04:53 GMT
+- request:
+    method: get
+    uri: https://api.deepl.com/v2/glossaries/invalid-uuid
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Tue, 02 Jul 2024 15:04:54 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Trace-Id:
+      - 224aecec11cd43ebbcbd6e479d180855
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=103, l7_lb_idle;dur=2, l7_lb_receive;dur=0, l7_lb_total;dur=115
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: UTF-8
+      string: '{"message":"Invalid or missing glossary id"}'
+  recorded_at: Tue, 02 Jul 2024 15:04:54 GMT
+- request:
+    method: get
+    uri: https://api.deepl.com/v2/glossary-language-pairs
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 02 Jul 2024 15:04:54 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Trace-Id:
+      - ace8596e7ffa4a09a9fd4dfacf740a3c
+      X-Cache-Status:
+      - MISS
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=111, l7_lb_idle;dur=3, l7_lb_receive;dur=0, l7_lb_total;dur=128
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: ASCII-8BIT
+      string: '{"supported_languages":[{"source_lang":"de","target_lang":"en"},{"source_lang":"de","target_lang":"es"},{"source_lang":"de","target_lang":"fr"},{"source_lang":"de","target_lang":"ja"},{"source_lang":"de","target_lang":"it"},{"source_lang":"de","target_lang":"pl"},{"source_lang":"de","target_lang":"nl"},{"source_lang":"de","target_lang":"zh"},{"source_lang":"de","target_lang":"ru"},{"source_lang":"de","target_lang":"pt"},{"source_lang":"de","target_lang":"ko"},{"source_lang":"de","target_lang":"da"},{"source_lang":"de","target_lang":"sv"},{"source_lang":"de","target_lang":"nb"},{"source_lang":"en","target_lang":"de"},{"source_lang":"en","target_lang":"es"},{"source_lang":"en","target_lang":"fr"},{"source_lang":"en","target_lang":"ja"},{"source_lang":"en","target_lang":"it"},{"source_lang":"en","target_lang":"pl"},{"source_lang":"en","target_lang":"nl"},{"source_lang":"en","target_lang":"zh"},{"source_lang":"en","target_lang":"ru"},{"source_lang":"en","target_lang":"pt"},{"source_lang":"en","target_lang":"ko"},{"source_lang":"en","target_lang":"da"},{"source_lang":"en","target_lang":"sv"},{"source_lang":"en","target_lang":"nb"},{"source_lang":"es","target_lang":"de"},{"source_lang":"es","target_lang":"en"},{"source_lang":"es","target_lang":"fr"},{"source_lang":"es","target_lang":"ja"},{"source_lang":"es","target_lang":"it"},{"source_lang":"es","target_lang":"pl"},{"source_lang":"es","target_lang":"nl"},{"source_lang":"es","target_lang":"zh"},{"source_lang":"es","target_lang":"ru"},{"source_lang":"es","target_lang":"pt"},{"source_lang":"es","target_lang":"ko"},{"source_lang":"es","target_lang":"da"},{"source_lang":"es","target_lang":"sv"},{"source_lang":"es","target_lang":"nb"},{"source_lang":"fr","target_lang":"de"},{"source_lang":"fr","target_lang":"en"},{"source_lang":"fr","target_lang":"es"},{"source_lang":"fr","target_lang":"ja"},{"source_lang":"fr","target_lang":"it"},{"source_lang":"fr","target_lang":"pl"},{"source_lang":"fr","target_lang":"nl"},{"source_lang":"fr","target_lang":"zh"},{"source_lang":"fr","target_lang":"ru"},{"source_lang":"fr","target_lang":"pt"},{"source_lang":"fr","target_lang":"ko"},{"source_lang":"fr","target_lang":"da"},{"source_lang":"fr","target_lang":"sv"},{"source_lang":"fr","target_lang":"nb"},{"source_lang":"ja","target_lang":"de"},{"source_lang":"ja","target_lang":"en"},{"source_lang":"ja","target_lang":"es"},{"source_lang":"ja","target_lang":"fr"},{"source_lang":"ja","target_lang":"it"},{"source_lang":"ja","target_lang":"pl"},{"source_lang":"ja","target_lang":"nl"},{"source_lang":"ja","target_lang":"zh"},{"source_lang":"ja","target_lang":"ru"},{"source_lang":"ja","target_lang":"pt"},{"source_lang":"ja","target_lang":"ko"},{"source_lang":"ja","target_lang":"da"},{"source_lang":"ja","target_lang":"sv"},{"source_lang":"ja","target_lang":"nb"},{"source_lang":"it","target_lang":"de"},{"source_lang":"it","target_lang":"en"},{"source_lang":"it","target_lang":"es"},{"source_lang":"it","target_lang":"fr"},{"source_lang":"it","target_lang":"ja"},{"source_lang":"it","target_lang":"pl"},{"source_lang":"it","target_lang":"nl"},{"source_lang":"it","target_lang":"zh"},{"source_lang":"it","target_lang":"ru"},{"source_lang":"it","target_lang":"pt"},{"source_lang":"it","target_lang":"ko"},{"source_lang":"it","target_lang":"da"},{"source_lang":"it","target_lang":"sv"},{"source_lang":"it","target_lang":"nb"},{"source_lang":"pl","target_lang":"de"},{"source_lang":"pl","target_lang":"en"},{"source_lang":"pl","target_lang":"es"},{"source_lang":"pl","target_lang":"fr"},{"source_lang":"pl","target_lang":"ja"},{"source_lang":"pl","target_lang":"it"},{"source_lang":"pl","target_lang":"nl"},{"source_lang":"pl","target_lang":"zh"},{"source_lang":"pl","target_lang":"ru"},{"source_lang":"pl","target_lang":"pt"},{"source_lang":"pl","target_lang":"ko"},{"source_lang":"pl","target_lang":"da"},{"source_lang":"pl","target_lang":"sv"},{"source_lang":"pl","target_lang":"nb"},{"source_lang":"nl","target_lang":"de"},{"source_lang":"nl","target_lang":"en"},{"source_lang":"nl","target_lang":"es"},{"source_lang":"nl","target_lang":"fr"},{"source_lang":"nl","target_lang":"ja"},{"source_lang":"nl","target_lang":"it"},{"source_lang":"nl","target_lang":"pl"},{"source_lang":"nl","target_lang":"zh"},{"source_lang":"nl","target_lang":"ru"},{"source_lang":"nl","target_lang":"pt"},{"source_lang":"nl","target_lang":"ko"},{"source_lang":"nl","target_lang":"da"},{"source_lang":"nl","target_lang":"sv"},{"source_lang":"nl","target_lang":"nb"},{"source_lang":"zh","target_lang":"de"},{"source_lang":"zh","target_lang":"en"},{"source_lang":"zh","target_lang":"es"},{"source_lang":"zh","target_lang":"fr"},{"source_lang":"zh","target_lang":"ja"},{"source_lang":"zh","target_lang":"it"},{"source_lang":"zh","target_lang":"pl"},{"source_lang":"zh","target_lang":"nl"},{"source_lang":"zh","target_lang":"ru"},{"source_lang":"zh","target_lang":"pt"},{"source_lang":"zh","target_lang":"ko"},{"source_lang":"zh","target_lang":"da"},{"source_lang":"zh","target_lang":"sv"},{"source_lang":"zh","target_lang":"nb"},{"source_lang":"ru","target_lang":"de"},{"source_lang":"ru","target_lang":"en"},{"source_lang":"ru","target_lang":"es"},{"source_lang":"ru","target_lang":"fr"},{"source_lang":"ru","target_lang":"ja"},{"source_lang":"ru","target_lang":"it"},{"source_lang":"ru","target_lang":"pl"},{"source_lang":"ru","target_lang":"nl"},{"source_lang":"ru","target_lang":"zh"},{"source_lang":"ru","target_lang":"pt"},{"source_lang":"ru","target_lang":"ko"},{"source_lang":"ru","target_lang":"da"},{"source_lang":"ru","target_lang":"sv"},{"source_lang":"ru","target_lang":"nb"},{"source_lang":"pt","target_lang":"de"},{"source_lang":"pt","target_lang":"en"},{"source_lang":"pt","target_lang":"es"},{"source_lang":"pt","target_lang":"fr"},{"source_lang":"pt","target_lang":"ja"},{"source_lang":"pt","target_lang":"it"},{"source_lang":"pt","target_lang":"pl"},{"source_lang":"pt","target_lang":"nl"},{"source_lang":"pt","target_lang":"zh"},{"source_lang":"pt","target_lang":"ru"},{"source_lang":"pt","target_lang":"ko"},{"source_lang":"pt","target_lang":"da"},{"source_lang":"pt","target_lang":"sv"},{"source_lang":"pt","target_lang":"nb"},{"source_lang":"ko","target_lang":"de"},{"source_lang":"ko","target_lang":"en"},{"source_lang":"ko","target_lang":"es"},{"source_lang":"ko","target_lang":"fr"},{"source_lang":"ko","target_lang":"ja"},{"source_lang":"ko","target_lang":"it"},{"source_lang":"ko","target_lang":"pl"},{"source_lang":"ko","target_lang":"nl"},{"source_lang":"ko","target_lang":"zh"},{"source_lang":"ko","target_lang":"ru"},{"source_lang":"ko","target_lang":"pt"},{"source_lang":"ko","target_lang":"da"},{"source_lang":"ko","target_lang":"sv"},{"source_lang":"ko","target_lang":"nb"},{"source_lang":"da","target_lang":"de"},{"source_lang":"da","target_lang":"en"},{"source_lang":"da","target_lang":"es"},{"source_lang":"da","target_lang":"fr"},{"source_lang":"da","target_lang":"ja"},{"source_lang":"da","target_lang":"it"},{"source_lang":"da","target_lang":"pl"},{"source_lang":"da","target_lang":"nl"},{"source_lang":"da","target_lang":"zh"},{"source_lang":"da","target_lang":"ru"},{"source_lang":"da","target_lang":"pt"},{"source_lang":"da","target_lang":"ko"},{"source_lang":"da","target_lang":"sv"},{"source_lang":"da","target_lang":"nb"},{"source_lang":"sv","target_lang":"de"},{"source_lang":"sv","target_lang":"en"},{"source_lang":"sv","target_lang":"es"},{"source_lang":"sv","target_lang":"fr"},{"source_lang":"sv","target_lang":"ja"},{"source_lang":"sv","target_lang":"it"},{"source_lang":"sv","target_lang":"pl"},{"source_lang":"sv","target_lang":"nl"},{"source_lang":"sv","target_lang":"zh"},{"source_lang":"sv","target_lang":"ru"},{"source_lang":"sv","target_lang":"pt"},{"source_lang":"sv","target_lang":"ko"},{"source_lang":"sv","target_lang":"da"},{"source_lang":"sv","target_lang":"nb"},{"source_lang":"nb","target_lang":"de"},{"source_lang":"nb","target_lang":"en"},{"source_lang":"nb","target_lang":"es"},{"source_lang":"nb","target_lang":"fr"},{"source_lang":"nb","target_lang":"ja"},{"source_lang":"nb","target_lang":"it"},{"source_lang":"nb","target_lang":"pl"},{"source_lang":"nb","target_lang":"nl"},{"source_lang":"nb","target_lang":"zh"},{"source_lang":"nb","target_lang":"ru"},{"source_lang":"nb","target_lang":"pt"},{"source_lang":"nb","target_lang":"ko"},{"source_lang":"nb","target_lang":"da"},{"source_lang":"nb","target_lang":"sv"}]}'
+  recorded_at: Tue, 02 Jul 2024 15:04:54 GMT
+- request:
+    method: get
+    uri: https://api.deepl.com/v2/glossaries
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 02 Jul 2024 15:04:54 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Trace-Id:
+      - da0bbb205a4a4535aa02fad10a603b08
+      X-Cache-Status:
+      - MISS
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=111, l7_lb_idle;dur=3, l7_lb_receive;dur=0, l7_lb_total;dur=127
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: ASCII-8BIT
+      string: '{"glossaries":[{"glossary_id":"6a507253-97bd-4c58-af74-ad44cb9b29bd","name":"TestGlossar","ready":true,"source_lang":"en","target_lang":"ja","creation_time":"2024-03-27T08:47:11.406903Z","entry_count":2},{"glossary_id":"5ed6cb7c-7d55-4fc9-8e6d-a8c88996dab3","name":"TestGlossar","ready":true,"source_lang":"de","target_lang":"en","creation_time":"2024-04-22T11:53:34.461272Z","entry_count":9958},{"glossary_id":"22b9e3f1-df87-471a-b947-8e974194e4df","name":"My
+        Glossary","ready":true,"source_lang":"en","target_lang":"sv","creation_time":"2024-05-03T13:54:03.920701Z","entry_count":1},{"glossary_id":"9ab5dac2-b7b2-4b4a-808a-e8e305df5ecb","name":"Mi
+        Glosario","ready":true,"source_lang":"en","target_lang":"es","creation_time":"2024-07-02T15:04:50.832836Z","entry_count":2},{"glossary_id":"e7a62637-7ef4-4959-a355-09ba61dd0126","name":"Mi
+        Glosario","ready":true,"source_lang":"en","target_lang":"es","creation_time":"2024-07-02T15:04:46.016123Z","entry_count":2}]}'
+  recorded_at: Tue, 02 Jul 2024 15:04:54 GMT
+- request:
+    method: get
+    uri: https://api.deepl.com/v2/glossaries
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - DeepL-Auth-Key invalid
+      User-Agent:
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Tue, 02 Jul 2024 15:04:54 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Trace-Id:
+      - 606d9b8ed2fb4a78b4f2595ce6c3e79e
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=107, l7_lb_idle;dur=2, l7_lb_receive;dur=0, l7_lb_total;dur=113
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: UTF-8
+      string: '{"message":"Unauthorized"}'
+  recorded_at: Tue, 02 Jul 2024 15:04:54 GMT
+- request:
+    method: delete
+    uri: https://api.deepl.com/v2/glossaries/00000000-0000-0000-0000-000000000000
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Tue, 09 Jul 2024 01:36:08 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Trace-Id:
+      - 0db4a8a4daf2441e919a9492fe58ae40
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=109, l7_lb_idle;dur=2, l7_lb_receive;dur=0, l7_lb_total;dur=123
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: ASCII-8BIT
+      string: '{"message":"Not found"}'
+  recorded_at: Tue, 09 Jul 2024 01:36:08 GMT
+- request:
+    method: delete
+    uri: https://api.deepl.com/v2/glossaries/invalid-uuid
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Tue, 09 Jul 2024 01:36:08 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Trace-Id:
+      - b97f50352495442e82c43b27d50be2d5
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=107, l7_lb_idle;dur=1, l7_lb_receive;dur=0, l7_lb_total;dur=121
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: UTF-8
+      string: '{"message":"Invalid or missing glossary id"}'
+  recorded_at: Tue, 09 Jul 2024 01:36:08 GMT
+- request:
+    method: get
+    uri: https://api.deepl.com/v2/glossaries/9ab5dac2-b7b2-4b4a-808a-e8e305df5ecb/entries
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 09 Jul 2024 01:38:02 GMT
+      Content-Type:
+      - text/tab-separated-values; charset=UTF-8
+      Content-Length:
+      - '22'
+      X-Trace-Id:
+      - 35a1e6a266a042baa8885957d6d3feff
+      X-Cache-Status:
+      - MISS
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=211, l7_lb_idle;dur=2, l7_lb_receive;dur=0, l7_lb_total;dur=230
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: UTF-8
+      string: "Hello\tHola\nWorld\tMundo"
+  recorded_at: Tue, 09 Jul 2024 01:38:02 GMT
+- request:
+    method: get
+    uri: https://api.deepl.com/v2/glossaries/00000000-0000-0000-0000-000000000000/entries
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Tue, 09 Jul 2024 01:38:02 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Trace-Id:
+      - 44f16e89c2c24d199c886f96fc246793
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=146, l7_lb_idle;dur=1, l7_lb_receive;dur=0, l7_lb_total;dur=157
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: ASCII-8BIT
+      string: '{"message":"Not found"}'
+  recorded_at: Tue, 09 Jul 2024 01:38:02 GMT
+- request:
+    method: get
+    uri: https://api.deepl.com/v2/glossaries/invalid-uuid/entries
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Tue, 09 Jul 2024 01:38:03 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Trace-Id:
+      - 45a064d4cbe74dd9b3798a9cf9228ef0
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=132, l7_lb_idle;dur=0, l7_lb_receive;dur=0, l7_lb_total;dur=144
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: UTF-8
+      string: '{"message":"Invalid or missing glossary id"}'
+  recorded_at: Tue, 09 Jul 2024 01:38:03 GMT
+- request:
+    method: get
+    uri: https://api.deepl.com/v2/glossaries/9ab5dac2-b7b2-4b4a-808a-e8e305df5ecb
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 09 Jul 2024 01:38:35 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Trace-Id:
+      - 6fccdc02fea14204bb458f814c96641b
+      X-Cache-Status:
+      - MISS
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=114, l7_lb_idle;dur=2, l7_lb_receive;dur=0, l7_lb_total;dur=126
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: ASCII-8BIT
+      string: '{"glossary_id":"9ab5dac2-b7b2-4b4a-808a-e8e305df5ecb","name":"Mi Glosario","ready":true,"source_lang":"en","target_lang":"es","creation_time":"2024-07-02T15:04:50.832836Z","entry_count":2}'
+  recorded_at: Tue, 09 Jul 2024 01:38:35 GMT
+- request:
+    method: get
+    uri: https://api.deepl.com/v2/glossaries/a0af40e1-d81b-4aab-a95c-7cafbcfd1eb1
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Tue, 09 Jul 2024 01:38:35 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Trace-Id:
+      - 927a34c4f7f64ff4bb595b4e7f94b7c1
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=141, l7_lb_idle;dur=0, l7_lb_receive;dur=0, l7_lb_total;dur=157
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: ASCII-8BIT
+      string: '{"message":"Not found"}'
+  recorded_at: Tue, 09 Jul 2024 01:38:35 GMT
+- request:
+    method: get
+    uri: https://api.deepl.com/v2/glossaries/invalid-uuid
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Tue, 09 Jul 2024 01:38:35 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Trace-Id:
+      - 31f23ffabcd149beb3029eb85a3fae74
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=126, l7_lb_idle;dur=1, l7_lb_receive;dur=0, l7_lb_total;dur=140
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: UTF-8
+      string: '{"message":"Invalid or missing glossary id"}'
+  recorded_at: Tue, 09 Jul 2024 01:38:35 GMT
+- request:
+    method: get
+    uri: https://api.deepl.com/v2/glossary-language-pairs
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 09 Jul 2024 01:39:15 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Trace-Id:
+      - f8138a6e475a4a02a897f1ee734178a0
+      X-Cache-Status:
+      - MISS
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=57, l7_lb_idle;dur=0, l7_lb_receive;dur=0, l7_lb_total;dur=70
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: ASCII-8BIT
+      string: '{"supported_languages":[{"source_lang":"de","target_lang":"en"},{"source_lang":"de","target_lang":"es"},{"source_lang":"de","target_lang":"fr"},{"source_lang":"de","target_lang":"ja"},{"source_lang":"de","target_lang":"it"},{"source_lang":"de","target_lang":"pl"},{"source_lang":"de","target_lang":"nl"},{"source_lang":"de","target_lang":"zh"},{"source_lang":"de","target_lang":"ru"},{"source_lang":"de","target_lang":"pt"},{"source_lang":"de","target_lang":"ko"},{"source_lang":"de","target_lang":"da"},{"source_lang":"de","target_lang":"sv"},{"source_lang":"de","target_lang":"nb"},{"source_lang":"de","target_lang":"ro"},{"source_lang":"en","target_lang":"de"},{"source_lang":"en","target_lang":"es"},{"source_lang":"en","target_lang":"fr"},{"source_lang":"en","target_lang":"ja"},{"source_lang":"en","target_lang":"it"},{"source_lang":"en","target_lang":"pl"},{"source_lang":"en","target_lang":"nl"},{"source_lang":"en","target_lang":"zh"},{"source_lang":"en","target_lang":"ru"},{"source_lang":"en","target_lang":"pt"},{"source_lang":"en","target_lang":"ko"},{"source_lang":"en","target_lang":"da"},{"source_lang":"en","target_lang":"sv"},{"source_lang":"en","target_lang":"nb"},{"source_lang":"en","target_lang":"ro"},{"source_lang":"es","target_lang":"de"},{"source_lang":"es","target_lang":"en"},{"source_lang":"es","target_lang":"fr"},{"source_lang":"es","target_lang":"ja"},{"source_lang":"es","target_lang":"it"},{"source_lang":"es","target_lang":"pl"},{"source_lang":"es","target_lang":"nl"},{"source_lang":"es","target_lang":"zh"},{"source_lang":"es","target_lang":"ru"},{"source_lang":"es","target_lang":"pt"},{"source_lang":"es","target_lang":"ko"},{"source_lang":"es","target_lang":"da"},{"source_lang":"es","target_lang":"sv"},{"source_lang":"es","target_lang":"nb"},{"source_lang":"es","target_lang":"ro"},{"source_lang":"fr","target_lang":"de"},{"source_lang":"fr","target_lang":"en"},{"source_lang":"fr","target_lang":"es"},{"source_lang":"fr","target_lang":"ja"},{"source_lang":"fr","target_lang":"it"},{"source_lang":"fr","target_lang":"pl"},{"source_lang":"fr","target_lang":"nl"},{"source_lang":"fr","target_lang":"zh"},{"source_lang":"fr","target_lang":"ru"},{"source_lang":"fr","target_lang":"pt"},{"source_lang":"fr","target_lang":"ko"},{"source_lang":"fr","target_lang":"da"},{"source_lang":"fr","target_lang":"sv"},{"source_lang":"fr","target_lang":"nb"},{"source_lang":"fr","target_lang":"ro"},{"source_lang":"ja","target_lang":"de"},{"source_lang":"ja","target_lang":"en"},{"source_lang":"ja","target_lang":"es"},{"source_lang":"ja","target_lang":"fr"},{"source_lang":"ja","target_lang":"it"},{"source_lang":"ja","target_lang":"pl"},{"source_lang":"ja","target_lang":"nl"},{"source_lang":"ja","target_lang":"zh"},{"source_lang":"ja","target_lang":"ru"},{"source_lang":"ja","target_lang":"pt"},{"source_lang":"ja","target_lang":"ko"},{"source_lang":"ja","target_lang":"da"},{"source_lang":"ja","target_lang":"sv"},{"source_lang":"ja","target_lang":"nb"},{"source_lang":"ja","target_lang":"ro"},{"source_lang":"it","target_lang":"de"},{"source_lang":"it","target_lang":"en"},{"source_lang":"it","target_lang":"es"},{"source_lang":"it","target_lang":"fr"},{"source_lang":"it","target_lang":"ja"},{"source_lang":"it","target_lang":"pl"},{"source_lang":"it","target_lang":"nl"},{"source_lang":"it","target_lang":"zh"},{"source_lang":"it","target_lang":"ru"},{"source_lang":"it","target_lang":"pt"},{"source_lang":"it","target_lang":"ko"},{"source_lang":"it","target_lang":"da"},{"source_lang":"it","target_lang":"sv"},{"source_lang":"it","target_lang":"nb"},{"source_lang":"it","target_lang":"ro"},{"source_lang":"pl","target_lang":"de"},{"source_lang":"pl","target_lang":"en"},{"source_lang":"pl","target_lang":"es"},{"source_lang":"pl","target_lang":"fr"},{"source_lang":"pl","target_lang":"ja"},{"source_lang":"pl","target_lang":"it"},{"source_lang":"pl","target_lang":"nl"},{"source_lang":"pl","target_lang":"zh"},{"source_lang":"pl","target_lang":"ru"},{"source_lang":"pl","target_lang":"pt"},{"source_lang":"pl","target_lang":"ko"},{"source_lang":"pl","target_lang":"da"},{"source_lang":"pl","target_lang":"sv"},{"source_lang":"pl","target_lang":"nb"},{"source_lang":"pl","target_lang":"ro"},{"source_lang":"nl","target_lang":"de"},{"source_lang":"nl","target_lang":"en"},{"source_lang":"nl","target_lang":"es"},{"source_lang":"nl","target_lang":"fr"},{"source_lang":"nl","target_lang":"ja"},{"source_lang":"nl","target_lang":"it"},{"source_lang":"nl","target_lang":"pl"},{"source_lang":"nl","target_lang":"zh"},{"source_lang":"nl","target_lang":"ru"},{"source_lang":"nl","target_lang":"pt"},{"source_lang":"nl","target_lang":"ko"},{"source_lang":"nl","target_lang":"da"},{"source_lang":"nl","target_lang":"sv"},{"source_lang":"nl","target_lang":"nb"},{"source_lang":"nl","target_lang":"ro"},{"source_lang":"zh","target_lang":"de"},{"source_lang":"zh","target_lang":"en"},{"source_lang":"zh","target_lang":"es"},{"source_lang":"zh","target_lang":"fr"},{"source_lang":"zh","target_lang":"ja"},{"source_lang":"zh","target_lang":"it"},{"source_lang":"zh","target_lang":"pl"},{"source_lang":"zh","target_lang":"nl"},{"source_lang":"zh","target_lang":"ru"},{"source_lang":"zh","target_lang":"pt"},{"source_lang":"zh","target_lang":"ko"},{"source_lang":"zh","target_lang":"da"},{"source_lang":"zh","target_lang":"sv"},{"source_lang":"zh","target_lang":"nb"},{"source_lang":"zh","target_lang":"ro"},{"source_lang":"ru","target_lang":"de"},{"source_lang":"ru","target_lang":"en"},{"source_lang":"ru","target_lang":"es"},{"source_lang":"ru","target_lang":"fr"},{"source_lang":"ru","target_lang":"ja"},{"source_lang":"ru","target_lang":"it"},{"source_lang":"ru","target_lang":"pl"},{"source_lang":"ru","target_lang":"nl"},{"source_lang":"ru","target_lang":"zh"},{"source_lang":"ru","target_lang":"pt"},{"source_lang":"ru","target_lang":"ko"},{"source_lang":"ru","target_lang":"da"},{"source_lang":"ru","target_lang":"sv"},{"source_lang":"ru","target_lang":"nb"},{"source_lang":"ru","target_lang":"ro"},{"source_lang":"pt","target_lang":"de"},{"source_lang":"pt","target_lang":"en"},{"source_lang":"pt","target_lang":"es"},{"source_lang":"pt","target_lang":"fr"},{"source_lang":"pt","target_lang":"ja"},{"source_lang":"pt","target_lang":"it"},{"source_lang":"pt","target_lang":"pl"},{"source_lang":"pt","target_lang":"nl"},{"source_lang":"pt","target_lang":"zh"},{"source_lang":"pt","target_lang":"ru"},{"source_lang":"pt","target_lang":"ko"},{"source_lang":"pt","target_lang":"da"},{"source_lang":"pt","target_lang":"sv"},{"source_lang":"pt","target_lang":"nb"},{"source_lang":"pt","target_lang":"ro"},{"source_lang":"ko","target_lang":"de"},{"source_lang":"ko","target_lang":"en"},{"source_lang":"ko","target_lang":"es"},{"source_lang":"ko","target_lang":"fr"},{"source_lang":"ko","target_lang":"ja"},{"source_lang":"ko","target_lang":"it"},{"source_lang":"ko","target_lang":"pl"},{"source_lang":"ko","target_lang":"nl"},{"source_lang":"ko","target_lang":"zh"},{"source_lang":"ko","target_lang":"ru"},{"source_lang":"ko","target_lang":"pt"},{"source_lang":"ko","target_lang":"da"},{"source_lang":"ko","target_lang":"sv"},{"source_lang":"ko","target_lang":"nb"},{"source_lang":"ko","target_lang":"ro"},{"source_lang":"da","target_lang":"de"},{"source_lang":"da","target_lang":"en"},{"source_lang":"da","target_lang":"es"},{"source_lang":"da","target_lang":"fr"},{"source_lang":"da","target_lang":"ja"},{"source_lang":"da","target_lang":"it"},{"source_lang":"da","target_lang":"pl"},{"source_lang":"da","target_lang":"nl"},{"source_lang":"da","target_lang":"zh"},{"source_lang":"da","target_lang":"ru"},{"source_lang":"da","target_lang":"pt"},{"source_lang":"da","target_lang":"ko"},{"source_lang":"da","target_lang":"sv"},{"source_lang":"da","target_lang":"nb"},{"source_lang":"da","target_lang":"ro"},{"source_lang":"sv","target_lang":"de"},{"source_lang":"sv","target_lang":"en"},{"source_lang":"sv","target_lang":"es"},{"source_lang":"sv","target_lang":"fr"},{"source_lang":"sv","target_lang":"ja"},{"source_lang":"sv","target_lang":"it"},{"source_lang":"sv","target_lang":"pl"},{"source_lang":"sv","target_lang":"nl"},{"source_lang":"sv","target_lang":"zh"},{"source_lang":"sv","target_lang":"ru"},{"source_lang":"sv","target_lang":"pt"},{"source_lang":"sv","target_lang":"ko"},{"source_lang":"sv","target_lang":"da"},{"source_lang":"sv","target_lang":"nb"},{"source_lang":"sv","target_lang":"ro"},{"source_lang":"nb","target_lang":"de"},{"source_lang":"nb","target_lang":"en"},{"source_lang":"nb","target_lang":"es"},{"source_lang":"nb","target_lang":"fr"},{"source_lang":"nb","target_lang":"ja"},{"source_lang":"nb","target_lang":"it"},{"source_lang":"nb","target_lang":"pl"},{"source_lang":"nb","target_lang":"nl"},{"source_lang":"nb","target_lang":"zh"},{"source_lang":"nb","target_lang":"ru"},{"source_lang":"nb","target_lang":"pt"},{"source_lang":"nb","target_lang":"ko"},{"source_lang":"nb","target_lang":"da"},{"source_lang":"nb","target_lang":"sv"},{"source_lang":"nb","target_lang":"ro"},{"source_lang":"ro","target_lang":"de"},{"source_lang":"ro","target_lang":"en"},{"source_lang":"ro","target_lang":"es"},{"source_lang":"ro","target_lang":"fr"},{"source_lang":"ro","target_lang":"ja"},{"source_lang":"ro","target_lang":"it"},{"source_lang":"ro","target_lang":"pl"},{"source_lang":"ro","target_lang":"nl"},{"source_lang":"ro","target_lang":"zh"},{"source_lang":"ro","target_lang":"ru"},{"source_lang":"ro","target_lang":"pt"},{"source_lang":"ro","target_lang":"ko"},{"source_lang":"ro","target_lang":"da"},{"source_lang":"ro","target_lang":"sv"},{"source_lang":"ro","target_lang":"nb"}]}'
+  recorded_at: Tue, 09 Jul 2024 01:39:15 GMT
+- request:
+    method: get
+    uri: https://api.deepl.com/v2/glossaries
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 09 Jul 2024 01:39:28 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Trace-Id:
+      - e61239757a64492f961d1557aa8c9be0
+      X-Cache-Status:
+      - MISS
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=106, l7_lb_idle;dur=2, l7_lb_receive;dur=0, l7_lb_total;dur=117
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: ASCII-8BIT
+      string: '{"glossaries":[{"glossary_id":"6a507253-97bd-4c58-af74-ad44cb9b29bd","name":"TestGlossar","ready":true,"source_lang":"en","target_lang":"ja","creation_time":"2024-03-27T08:47:11.406903Z","entry_count":2},{"glossary_id":"5ed6cb7c-7d55-4fc9-8e6d-a8c88996dab3","name":"TestGlossar","ready":true,"source_lang":"de","target_lang":"en","creation_time":"2024-04-22T11:53:34.461272Z","entry_count":9958},{"glossary_id":"22b9e3f1-df87-471a-b947-8e974194e4df","name":"My
+        Glossary","ready":true,"source_lang":"en","target_lang":"sv","creation_time":"2024-05-03T13:54:03.920701Z","entry_count":1},{"glossary_id":"9ab5dac2-b7b2-4b4a-808a-e8e305df5ecb","name":"Mi
+        Glosario","ready":true,"source_lang":"en","target_lang":"es","creation_time":"2024-07-02T15:04:50.832836Z","entry_count":2},{"glossary_id":"e7a62637-7ef4-4959-a355-09ba61dd0126","name":"Mi
+        Glosario","ready":true,"source_lang":"en","target_lang":"es","creation_time":"2024-07-02T15:04:46.016123Z","entry_count":2}]}'
+  recorded_at: Tue, 09 Jul 2024 01:39:28 GMT
+- request:
+    method: get
+    uri: https://api.deepl.com/v2/glossaries
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Authorization:
+      - DeepL-Auth-Key invalid
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Tue, 09 Jul 2024 01:39:28 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Trace-Id:
+      - '09e9bdf2e75b4c65a4246b0e36f569f6'
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=105, l7_lb_idle;dur=0, l7_lb_receive;dur=0, l7_lb_total;dur=110
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: UTF-8
+      string: '{"message":"Unauthorized"}'
+  recorded_at: Tue, 09 Jul 2024 01:39:28 GMT
+- request:
+    method: post
+    uri: https://api.deepl.com/v2/glossaries
+    body:
+      encoding: UTF-8
+      string: '{"name":"fixture","source_lang":"EN","target_lang":"ES","entries":"Hello\tHola\n","entries_format":"tsv"}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Tue, 09 Jul 2024 01:44:30 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Trace-Id:
+      - aacd2cf177c04eac8cbaf72b7bb8bb81
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=107, l7_lb_idle;dur=2, l7_lb_receive;dur=0, l7_lb_total;dur=134
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: UTF-8
+      string: '{"glossary_id":"8daf880c-f9e5-4de5-9711-3e1f9534a0fa","name":"fixture","ready":true,"source_lang":"en","target_lang":"es","creation_time":"2024-07-09T01:44:30.175739Z","entry_count":1}'
+  recorded_at: Tue, 09 Jul 2024 01:44:30 GMT
+- request:
+    method: delete
+    uri: https://api.deepl.com/v2/glossaries/8daf880c-f9e5-4de5-9711-3e1f9534a0fa
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Date:
+      - Tue, 09 Jul 2024 01:44:31 GMT
+      X-Trace-Id:
+      - 9f7d59c4d11f4f038d00adcba2671cdd
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=112, l7_lb_idle;dur=2, l7_lb_receive;dur=0, l7_lb_total;dur=986
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Tue, 09 Jul 2024 01:44:31 GMT
+- request:
+    method: get
+    uri: https://api.deepl.com/v2/glossaries
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Authorization:
+      - DeepL-Auth-Key invalid
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Tue, 09 Jul 2024 09:32:28 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Trace-Id:
+      - a4b05362154c4864a945a5eec5cbaae6
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=103, l7_lb_idle;dur=1, l7_lb_receive;dur=0, l7_lb_total;dur=120
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: UTF-8
+      string: '{"message":"Unauthorized"}'
+  recorded_at: Tue, 09 Jul 2024 09:32:28 GMT
+- request:
+    method: get
+    uri: https://api.deepl.com/v2/glossaries
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 09 Jul 2024 09:57:48 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Trace-Id:
+      - 315e904c95804eabb456486d0f24992c
+      X-Cache-Status:
+      - MISS
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=111, l7_lb_idle;dur=0, l7_lb_receive;dur=0, l7_lb_total;dur=124
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: ASCII-8BIT
+      string: '{"glossaries":[{"glossary_id":"6a507253-97bd-4c58-af74-ad44cb9b29bd","name":"TestGlossar","ready":true,"source_lang":"en","target_lang":"ja","creation_time":"2024-03-27T08:47:11.406903Z","entry_count":2},{"glossary_id":"5ed6cb7c-7d55-4fc9-8e6d-a8c88996dab3","name":"TestGlossar","ready":true,"source_lang":"de","target_lang":"en","creation_time":"2024-04-22T11:53:34.461272Z","entry_count":9958},{"glossary_id":"22b9e3f1-df87-471a-b947-8e974194e4df","name":"My
+        Glossary","ready":true,"source_lang":"en","target_lang":"sv","creation_time":"2024-05-03T13:54:03.920701Z","entry_count":1},{"glossary_id":"9ab5dac2-b7b2-4b4a-808a-e8e305df5ecb","name":"Mi
+        Glosario","ready":true,"source_lang":"en","target_lang":"es","creation_time":"2024-07-02T15:04:50.832836Z","entry_count":2},{"glossary_id":"e7a62637-7ef4-4959-a355-09ba61dd0126","name":"Mi
+        Glosario","ready":true,"source_lang":"en","target_lang":"es","creation_time":"2024-07-02T15:04:46.016123Z","entry_count":2}]}'
+  recorded_at: Tue, 09 Jul 2024 09:57:48 GMT
+- request:
+    method: get
+    uri: https://api.deepl.com/v2/glossaries
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 09 Jul 2024 10:04:17 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Trace-Id:
+      - 0a0f2605f2ca4050a454e74bfd37b498
+      X-Cache-Status:
+      - MISS
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=62, l7_lb_idle;dur=1, l7_lb_receive;dur=0, l7_lb_total;dur=75
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: ASCII-8BIT
+      string: '{"glossaries":[{"glossary_id":"6a507253-97bd-4c58-af74-ad44cb9b29bd","name":"TestGlossar","ready":true,"source_lang":"en","target_lang":"ja","creation_time":"2024-03-27T08:47:11.406903Z","entry_count":2},{"glossary_id":"5ed6cb7c-7d55-4fc9-8e6d-a8c88996dab3","name":"TestGlossar","ready":true,"source_lang":"de","target_lang":"en","creation_time":"2024-04-22T11:53:34.461272Z","entry_count":9958},{"glossary_id":"22b9e3f1-df87-471a-b947-8e974194e4df","name":"My
+        Glossary","ready":true,"source_lang":"en","target_lang":"sv","creation_time":"2024-05-03T13:54:03.920701Z","entry_count":1},{"glossary_id":"9ab5dac2-b7b2-4b4a-808a-e8e305df5ecb","name":"Mi
+        Glosario","ready":true,"source_lang":"en","target_lang":"es","creation_time":"2024-07-02T15:04:50.832836Z","entry_count":2},{"glossary_id":"e7a62637-7ef4-4959-a355-09ba61dd0126","name":"Mi
+        Glosario","ready":true,"source_lang":"en","target_lang":"es","creation_time":"2024-07-02T15:04:46.016123Z","entry_count":2}]}'
+  recorded_at: Tue, 09 Jul 2024 10:04:17 GMT
+- request:
+    method: get
+    uri: https://api.deepl.com/v2/glossaries
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Authorization:
+      - DeepL-Auth-Key invalid
+      User-Agent:
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Tue, 09 Jul 2024 10:04:23 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Trace-Id:
+      - fb2937f8608b4245976cf5a301177068
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=106, l7_lb_idle;dur=2, l7_lb_receive;dur=0, l7_lb_total;dur=112
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: UTF-8
+      string: '{"message":"Unauthorized"}'
+  recorded_at: Tue, 09 Jul 2024 10:04:23 GMT
+recorded_with: VCR 6.2.0

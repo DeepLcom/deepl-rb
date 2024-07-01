@@ -25,11 +25,11 @@ describe DeepL::Requests::Languages do
     end
 
     context 'when requesting source languages' do
-      it 'returns an usage object' do
+      it 'returns a valid list of source languages' do
         languages = languages_obj.request
 
         expect(languages).to be_an(Array)
-        expect(languages.size).to eq(24)
+        expect(languages.size).to eq(29)
         expect(languages).to(be_any { |l| l.code == 'EN' && l.name == 'English' })
         expect(languages).to(be_any { |l| l.code == 'ES' && l.name == 'Spanish' })
       end
@@ -38,11 +38,11 @@ describe DeepL::Requests::Languages do
     context 'when requesting target languages' do
       let(:options) { { type: :target } }
 
-      it 'returns an usage object' do
+      it 'returns a valid list of target languages' do
         languages = languages_obj.request
 
         expect(languages).to be_an(Array)
-        expect(languages.size).to eq(26)
+        expect(languages.size).to eq(31)
         expect(languages).not_to(be_any { |l| l.code == 'EN' && l.name == 'English' })
         expect(languages).to(be_any { |l| l.code == 'ES' && l.name == 'Spanish' })
         expect(languages)

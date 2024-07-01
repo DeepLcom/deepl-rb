@@ -18,7 +18,7 @@ module DeepL
       data.each { |key, value| send("#{key}=", value) }
       @auth_key ||= ENV.fetch('DEEPL_AUTH_KEY', nil)
       @host ||= ENV.fetch('DEEPL_SERVER_URL', nil)
-      @host ||= if self.class.free_account_auth_key?(auth_key)
+      @host ||= if self.class.free_account_auth_key?(@auth_key)
                   DEEPL_SERVER_URL_FREE
                 else
                   DEEPL_SERVER_URL

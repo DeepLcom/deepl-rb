@@ -9,7 +9,7 @@ describe DeepL::Requests::Glossary::Entries do
   subject(:entries_obj) { described_class.new(api, id) }
 
   let(:api) { build_deepl_api }
-  let(:id) { '012a5576-b551-4d4c-b917-ce01bc8debb6' }
+  let(:id) { '9ab5dac2-b7b2-4b4a-808a-e8e305df5ecb' }
 
   describe '#initialize' do
     context 'when building a request' do

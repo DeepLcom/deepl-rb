@@ -95,7 +95,7 @@ describe DeepL do
           .with(deepl.api, input, source_lang, target_lang, options).and_call_original
         text = deepl.translate(input, source_lang, target_lang, options)
         expect(text).to be_a(DeepL::Resources::Text)
-        expect(text.text).to eq('Ojalá tuviéramos un auto.')
+        expect(text.text).to eq('Ojalá tuviéramos auto.')
       end
     end
   end
@@ -135,7 +135,7 @@ describe DeepL do
         @tmpfile.unlink
       end
 
-      let(:input_file) { File.open(@tmpfile.path) }
+      let(:input_file) { @tmpfile.path }
       let(:source_lang) { 'EN' }
       let(:target_lang) { 'ES' }
       let(:output_file) { 'test_translated_doc.txt' }
@@ -163,8 +163,8 @@ describe DeepL do
 
     describe '#document.get_status' do
       let(:document_handle) do
-        DeepL::Resources::DocumentHandle.new('9D9F9BFB1D2839088BDA205A2C64FF47',
-                                             'F3D1826B4733BD3B965E435DD371C94DAB71335E4A5F5D74E3FC84F4E1949D3A', # rubocop:disable Layout/LineLength
+        DeepL::Resources::DocumentHandle.new('9B7CB9418DCDEBF2C4C519F65A32B99F',
+                                             'EA637EA43BB3F8A52A2A25B76EF3E0C72CE9CD00C881148D1236CB584CB34815', # rubocop:disable Layout/LineLength
                                              nil,
                                              nil)
       end
@@ -202,8 +202,8 @@ describe DeepL do
       end
 
       let(:document_handle) do
-        DeepL::Resources::DocumentHandle.new('9D9F9BFB1D2839088BDA205A2C64FF47',
-                                             'F3D1826B4733BD3B965E435DD371C94DAB71335E4A5F5D74E3FC84F4E1949D3A', # rubocop:disable Layout/LineLength
+        DeepL::Resources::DocumentHandle.new('9B7CB9418DCDEBF2C4C519F65A32B99F',
+                                             'EA637EA43BB3F8A52A2A25B76EF3E0C72CE9CD00C881148D1236CB584CB34815', # rubocop:disable Layout/LineLength
                                              nil,
                                              nil)
       end
@@ -286,7 +286,7 @@ describe DeepL do
     end
 
     describe '#glossaries.find' do
-      let(:id) { 'd9ad833f-c818-430c-a3c9-47071384fa3e' }
+      let(:id) { 'e7a62637-7ef4-4959-a355-09ba61dd0126' }
       let(:options) { {} }
 
       around do |example|
@@ -336,7 +336,7 @@ describe DeepL do
     end
 
     describe '#glossaries.destroy' do
-      let(:id) { 'd9ad833f-c818-430c-a3c9-47071384fa3e' }
+      let(:id) { 'e7a62637-7ef4-4959-a355-09ba61dd0126' }
       let(:options) { {} }
 
       around do |example|
@@ -371,7 +371,7 @@ describe DeepL do
     end
 
     describe '#glossaries.entries' do
-      let(:id) { '012a5576-b551-4d4c-b917-ce01bc8debb6' }
+      let(:id) { 'e7a62637-7ef4-4959-a355-09ba61dd0126' }
       let(:options) { {} }
 
       around do |example|

@@ -9,7 +9,7 @@ describe DeepL::Requests::Glossary::Destroy do
   subject(:destroy) { described_class.new(api, id) }
 
   let(:api) { build_deepl_api }
-  let(:id) { '367eef44-b533-4d95-be19-74950c7760e9' }
+  let(:id) { '9ab5dac2-b7b2-4b4a-808a-e8e305df5ecb' }
 
   describe '#initialize' do
     context 'when building a request' do

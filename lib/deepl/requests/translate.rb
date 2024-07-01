@@ -6,15 +6,24 @@
 module DeepL
   module Requests
     class Translate < Base
-      BOOLEAN_CONVERSION = { true => '1', false => '0' }.freeze
-      ARRAY_CONVERSION = ->(value) { value.is_a?(Array) ? value.join(',') : value }.freeze
+      STRING_TO_BOOLEAN_MAP = { '1' => true, '0' => false }.freeze
+      BOOLEAN_TO_STRING_MAP = { true => '1', false => '0' }.freeze
+      STRING_TO_BOOLEAN_CONVERSION = ->(value) { STRING_TO_BOOLEAN_MAP[value] }
+      BOOLEAN_TO_STRING_CONVERSION = ->(value) { BOOLEAN_TO_STRING_MAP[value] }
+      STRING_TO_ARRAY_CONVERSION = lambda { |value|
+        if value.nil?
+          nil
+        else
+          (value.is_a?(Array) ? value : value.split(','))
+        end
+      }.freeze
       OPTIONS_CONVERSIONS = {
-        split_sentences: BOOLEAN_CONVERSION,
-        preserve_formatting: BOOLEAN_CONVERSION,
-        outline_detection: BOOLEAN_CONVERSION,
-        splitting_tags: ARRAY_CONVERSION,
-        non_splitting_tags: ARRAY_CONVERSION,
-        ignore_tags: ARRAY_CONVERSION
+        split_sentences: BOOLEAN_TO_STRING_CONVERSION,
+        preserve_formatting: STRING_TO_BOOLEAN_CONVERSION,
+        outline_detection: STRING_TO_BOOLEAN_CONVERSION,
+        splitting_tags: STRING_TO_ARRAY_CONVERSION,
+        non_splitting_tags: STRING_TO_ARRAY_CONVERSION,
+        ignore_tags: STRING_TO_ARRAY_CONVERSION
       }.freeze
 
       attr_reader :text, :source_lang, :target_lang, :ignore_tags, :splitting_tags,
@@ -30,8 +39,14 @@ module DeepL
       end
 
       def request
-        payload = { text: text, source_lang: source_lang, target_lang: target_lang }
+        text_arrayified = text.is_a?(Array) ? text : [text]
+        payload = { text: text_arrayified, source_lang: source_lang, target_lang: target_lang }
         build_texts(*execute_request_with_retries(post_request(payload)))
+      end
+
+      def details
+        "HTTP Headers: #{headers}\nPayload #{{ text: text, source_lang: source_lang,
+                                               target_lang: target_lang }}"
       end
 
       def to_s
@@ -42,7 +57,7 @@ module DeepL
 
       def tweak_parameters!
         OPTIONS_CONVERSIONS.each do |param, converter|
-          next unless option?(param) && converter[option(param)]
+          next unless option?(param) && !converter[option(param)].nil?
 
           set_option(param, converter[option(param)])
         end
