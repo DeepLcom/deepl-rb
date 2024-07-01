@@ -32,17 +32,17 @@ describe DeepL::Requests::Translate do
 
       it 'works with a blank list' do
         request = described_class.new(api, nil, nil, nil, splitting_tags: '')
-        expect(request.options[:splitting_tags]).to eq('')
+        expect(request.options[:splitting_tags]).to eq([])
       end
 
-      it 'works with a comma-separated list and leaves strings as they are' do
+      it 'works with a comma-separated list and converts strings to an array' do
         request = described_class.new(api, nil, nil, nil, splitting_tags: tags_str)
-        expect(request.options[:splitting_tags]).to eq(tags_str)
+        expect(request.options[:splitting_tags]).to eq(tags_array)
       end
 
-      it 'converts arrays to strings' do
+      it 'works with an array of tags and leaves it as is' do
         request = described_class.new(api, nil, nil, nil, splitting_tags: tags_array)
-        expect(request.options[:splitting_tags]).to eq(tags_str)
+        expect(request.options[:splitting_tags]).to eq(tags_array)
       end
     end
 
@@ -54,17 +54,17 @@ describe DeepL::Requests::Translate do
 
       it 'works with a blank list' do
         request = described_class.new(api, nil, nil, nil, non_splitting_tags: '')
-        expect(request.options[:non_splitting_tags]).to eq('')
+        expect(request.options[:non_splitting_tags]).to eq([])
       end
 
-      it 'works with a comma-separated list and leaves strings as they are' do
+      it 'works with a comma-separated list and converts strings to an array' do
         request = described_class.new(api, nil, nil, nil, non_splitting_tags: tags_str)
-        expect(request.options[:non_splitting_tags]).to eq(tags_str)
+        expect(request.options[:non_splitting_tags]).to eq(tags_array)
       end
 
-      it 'converts arrays to strings' do
+      it 'works with an array and leaves it as it is' do
         request = described_class.new(api, nil, nil, nil, non_splitting_tags: tags_array)
-        expect(request.options[:non_splitting_tags]).to eq(tags_str)
+        expect(request.options[:non_splitting_tags]).to eq(tags_array)
       end
     end
 
@@ -76,17 +76,17 @@ describe DeepL::Requests::Translate do
 
       it 'works with a blank list' do
         request = described_class.new(api, nil, nil, nil, ignore_tags: '')
-        expect(request.options[:ignore_tags]).to eq('')
+        expect(request.options[:ignore_tags]).to eq([])
       end
 
-      it 'works with a comma-separated list and leaves strings as they are' do
+      it 'works with a comma-separated list and converts a string to an array' do
         request = described_class.new(api, nil, nil, nil, ignore_tags: tags_str)
-        expect(request.options[:ignore_tags]).to eq(tags_str)
+        expect(request.options[:ignore_tags]).to eq(tags_array)
       end
 
-      it 'converts arrays to strings' do
+      it 'works with an array and leaves it as it is' do
         request = described_class.new(api, nil, nil, nil, ignore_tags: tags_array)
-        expect(request.options[:ignore_tags]).to eq(tags_str)
+        expect(request.options[:ignore_tags]).to eq(tags_array)
       end
     end
 
@@ -118,46 +118,46 @@ describe DeepL::Requests::Translate do
     end
 
     context 'when using `preserve_formatting` options' do
-      it 'converts `true` to `1`' do
+      it 'leaves `true` as is' do
         request = described_class.new(api, nil, nil, nil, preserve_formatting: true)
-        expect(request.options[:preserve_formatting]).to eq('1')
+        expect(request.options[:preserve_formatting]).to be(true)
       end
 
-      it 'converts `false` to `0`' do
+      it 'leaves `false` as is' do
         request = described_class.new(api, nil, nil, nil, preserve_formatting: false)
-        expect(request.options[:preserve_formatting]).to eq('0')
+        expect(request.options[:preserve_formatting]).to be(false)
       end
 
-      it 'leaves `0` as is' do
+      it 'converts `0` to `false`' do
         request = described_class.new(api, nil, nil, nil, preserve_formatting: '0')
-        expect(request.options[:preserve_formatting]).to eq('0')
+        expect(request.options[:preserve_formatting]).to be(false)
       end
 
-      it 'leaves `1` as is' do
+      it 'converts `1` to `true`' do
         request = described_class.new(api, nil, nil, nil, preserve_formatting: '1')
-        expect(request.options[:preserve_formatting]).to eq('1')
+        expect(request.options[:preserve_formatting]).to be(true)
       end
     end
 
     context 'when using `outline_detection` options' do
-      it 'converts `true` to `1`' do
+      it 'leaves `true` as is' do
         request = described_class.new(api, nil, nil, nil, outline_detection: true)
-        expect(request.options[:outline_detection]).to eq('1')
+        expect(request.options[:outline_detection]).to be(true)
       end
 
-      it 'converts `false` to `0`' do
+      it 'leaves `false` as is' do
         request = described_class.new(api, nil, nil, nil, outline_detection: false)
-        expect(request.options[:outline_detection]).to eq('0')
+        expect(request.options[:outline_detection]).to be(false)
       end
 
-      it 'leaves `0` as is' do
+      it 'converts `0` to `false`' do
         request = described_class.new(api, nil, nil, nil, outline_detection: '0')
-        expect(request.options[:outline_detection]).to eq('0')
+        expect(request.options[:outline_detection]).to be(false)
       end
 
-      it 'leaves `1` as is' do
+      it 'converts `1` to `true`' do
         request = described_class.new(api, nil, nil, nil, outline_detection: '1')
-        expect(request.options[:outline_detection]).to eq('1')
+        expect(request.options[:outline_detection]).to be(true)
       end
     end
 
@@ -273,7 +273,7 @@ describe DeepL::Requests::Translate do
           <<~XML
             <document>
               <meta>
-                <title>El título de un documento</title>
+                <title>Título de un documento</title>
               </meta>
               <content>
                 <par>Es la primera frase. Seguido de una segunda.</par>
@@ -303,7 +303,7 @@ describe DeepL::Requests::Translate do
         let(:text) { nil }
 
         it 'raises a bad request error' do
-          message = "Parameter 'text' not specified."
+          message = "Invalid request: Expected 'text' parameter to be an array of strings"
           expect { translate.request }.to raise_error(DeepL::Exceptions::BadRequest, message)
         end
       end

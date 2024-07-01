@@ -5,11 +5,18 @@
 
 module DeepL
   class API
-    attr_reader :configuration
+    attr_reader :configuration, :http_client
 
     def initialize(configuration)
       @configuration = configuration
       configuration.validate!
+      uri = URI(configuration.host)
+      @http_client = Net::HTTP.new(uri.host, uri.port)
+      @http_client.use_ssl = URI(configuration.host).scheme == 'https'
+    end
+
+    def update_http_client(client)
+      @http_client = client
     end
   end
 end

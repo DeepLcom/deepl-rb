@@ -16,7 +16,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - Ruby
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
       Content-Type:
       - application/x-www-form-urlencoded
   response:
@@ -1158,30 +1158,30 @@ http_interactions:
   recorded_at: Wed, 01 Feb 2023 16:51:31 GMT
 - request:
     method: post
-    uri: https://api.deepl.com/v2/document/9D9F9BFB1D2839088BDA205A2C64FF47/result
+    uri: https://api.deepl.com/v2/document/9B7CB9418DCDEBF2C4C519F65A32B99F/result
     body:
-      encoding: US-ASCII
+      encoding: UTF-8
       base64_string: |
-        ZG9jdW1lbnRfa2V5PUYzRDE4MjZCNDczM0JEM0I5NjVFNDM1REQzNzFDOTRE
-        QUI3MTMzNUU0QTVGNUQ3NEUzRkM4NEY0RTE5NDlEM0E=
+        eyJkb2N1bWVudF9rZXkiOiJFQTYzN0VBNDNCQjNGOEE1MkEyQTI1Qjc2RUYz
+        RTBDNzJDRTlDRDAwQzg4MTE0OEQxMjM2Q0I1ODRDQjM0ODE1In0=
     headers:
       Authorization:
       - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Content-Type:
+      - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - Ruby
-      Content-Type:
-      - application/x-www-form-urlencoded
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Fri, 05 Jul 2024 09:28:57 GMT
+      - Tue, 09 Jul 2024 02:04:03 GMT
       Content-Type:
       - text/plain
       Transfer-Encoding:
@@ -1191,13 +1191,13 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       X-Trace-Id:
-      - 3f6b75b240a3417e8bac8b1f1d777267
+      - 853790e2d4e04ec9a946ee27c953c0e1
       Content-Disposition:
-      - attachment; filename=9D9F9BFB1D2839088BDA205A2C64FF47.txt; filename*=UTF-8''9D9F9BFB1D2839088BDA205A2C64FF47.txt
+      - attachment; filename=9B7CB9418DCDEBF2C4C519F65A32B99F.txt; filename*=UTF-8''9B7CB9418DCDEBF2C4C519F65A32B99F.txt
       Strict-Transport-Security:
       - max-age=63072000; includeSubDomains; preload
       Server-Timing:
-      - l7_lb_tls;dur=123, l7_lb_idle;dur=1, l7_lb_receive;dur=0, l7_lb_total;dur=185
+      - l7_lb_tls;dur=115, l7_lb_idle;dur=8, l7_lb_receive;dur=0, l7_lb_total;dur=193
       Access-Control-Expose-Headers:
       - Server-Timing, X-Trace-ID
     body:
@@ -1210,5 +1210,5 @@ http_interactions:
         b2xvZ8OtYS4KICAgICAgICAgIExhIGdlb2xvZ8OtYSBlcyB1biBleGNlbGVu
         dGUgY2FtcG8gcXVlIHNlIG9jdXBhIGRlIGPDs21vIGV4dHJhZXIgcGV0csOz
         bGVvIGRlIGxhIHRpZXJyYS4=
-  recorded_at: Fri, 05 Jul 2024 09:28:57 GMT
+  recorded_at: Tue, 09 Jul 2024 02:04:03 GMT
 recorded_with: VCR 6.2.0

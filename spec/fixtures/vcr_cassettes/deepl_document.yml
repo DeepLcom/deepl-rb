@@ -9,21 +9,21 @@ http_interactions:
     headers:
       Authorization:
       - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Content-Type:
+      - multipart/form-data
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - Ruby
-      Content-Type:
-      - multipart/form-data
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Fri, 05 Jul 2024 09:28:10 GMT
+      - Tue, 09 Jul 2024 02:02:17 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -33,41 +33,41 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       X-Trace-Id:
-      - b75074d5fc9041e2ab0a7c1d3cec1548
+      - cdde031b7a5e48d7a8c4a5a2f1b9dc6e
       Strict-Transport-Security:
       - max-age=63072000; includeSubDomains; preload
       Server-Timing:
-      - l7_lb_tls;dur=111, l7_lb_idle;dur=3, l7_lb_receive;dur=0, l7_lb_total;dur=202
+      - l7_lb_tls;dur=100, l7_lb_idle;dur=2, l7_lb_receive;dur=0, l7_lb_total;dur=192
       Access-Control-Expose-Headers:
       - Server-Timing, X-Trace-ID
     body:
       encoding: ASCII-8BIT
-      string: '{"document_id":"9D9F9BFB1D2839088BDA205A2C64FF47","document_key":"F3D1826B4733BD3B965E435DD371C94DAB71335E4A5F5D74E3FC84F4E1949D3A"}'
-  recorded_at: Fri, 05 Jul 2024 09:28:10 GMT
+      string: '{"document_id":"9B7CB9418DCDEBF2C4C519F65A32B99F","document_key":"EA637EA43BB3F8A52A2A25B76EF3E0C72CE9CD00C881148D1236CB584CB34815"}'
+  recorded_at: Tue, 09 Jul 2024 02:02:17 GMT
 - request:
     method: post
-    uri: https://api.deepl.com/v2/document/9D9F9BFB1D2839088BDA205A2C64FF47?param=fake
+    uri: https://api.deepl.com/v2/document/9B7CB9418DCDEBF2C4C519F65A32B99F
     body:
-      encoding: US-ASCII
-      string: document_key=F3D1826B4733BD3B965E435DD371C94DAB71335E4A5F5D74E3FC84F4E1949D3A
+      encoding: UTF-8
+      string: '{"document_key":"EA637EA43BB3F8A52A2A25B76EF3E0C72CE9CD00C881148D1236CB584CB34815","param":"fake"}'
     headers:
       Authorization:
       - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Content-Type:
+      - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - Ruby
-      Content-Type:
-      - application/x-www-form-urlencoded
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Fri, 05 Jul 2024 09:28:57 GMT
+      - Tue, 09 Jul 2024 02:03:49 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -77,15 +77,15 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       X-Trace-Id:
-      - 79be41e7283f4df793f29e96bff7e9fd
+      - 73fc4be8f3964b4080f89ee686c090be
       Strict-Transport-Security:
       - max-age=63072000; includeSubDomains; preload
       Server-Timing:
-      - l7_lb_tls;dur=117, l7_lb_idle;dur=1, l7_lb_receive;dur=0, l7_lb_total;dur=129
+      - l7_lb_tls;dur=152, l7_lb_idle;dur=9, l7_lb_receive;dur=0, l7_lb_total;dur=166
       Access-Control-Expose-Headers:
       - Server-Timing, X-Trace-ID
     body:
       encoding: ASCII-8BIT
-      string: '{"document_id":"9D9F9BFB1D2839088BDA205A2C64FF47","status":"done","billed_characters":256}'
-  recorded_at: Fri, 05 Jul 2024 09:28:57 GMT
+      string: '{"document_id":"9B7CB9418DCDEBF2C4C519F65A32B99F","status":"done","billed_characters":256}'
+  recorded_at: Tue, 09 Jul 2024 02:03:49 GMT
 recorded_with: VCR 6.2.0

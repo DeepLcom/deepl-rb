@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api-free.deepl.com/v2/languages
+    uri: https://api.deepl.com/v2/languages
     body:
-      encoding: US-ASCII
-      string: ''
+      encoding: UTF-8
+      string: "{}"
     headers:
       Authorization:
       - DeepL-Auth-Key VALID_TOKEN
@@ -13,102 +13,217 @@ http_interactions:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - Ruby
   response:
     status:
       code: 200
       message: OK
     headers:
-      Server:
-      - nginx
       Date:
-      - Mon, 17 May 2021 14:49:42 GMT
+      - Mon, 08 Jul 2024 09:58:27 GMT
       Content-Type:
       - application/json
-      Content-Length:
-      - '845'
-      Connection:
-      - keep-alive
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
       Access-Control-Allow-Origin:
       - "*"
+      X-Cache-Status:
+      - MISS
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=108, l7_lb_idle;dur=0, l7_lb_receive;dur=1, l7_lb_total;dur=111
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      X-Trace-Id:
+      - 219e287aedb54e73953a9e3efba26e13
     body:
-      encoding: UTF-8
-      string: '[{"language":"BG","name":"Bulgarian"},{"language":"CS","name":"Czech"},{"language":"DA","name":"Danish"},{"language":"DE","name":"German"},{"language":"EL","name":"Greek"},{"language":"EN","name":"English"},{"language":"ES","name":"Spanish"},{"language":"ET","name":"Estonian"},{"language":"FI","name":"Finnish"},{"language":"FR","name":"French"},{"language":"HU","name":"Hungarian"},{"language":"IT","name":"Italian"},{"language":"JA","name":"Japanese"},{"language":"LT","name":"Lithuanian"},{"language":"LV","name":"Latvian"},{"language":"NL","name":"Dutch"},{"language":"PL","name":"Polish"},{"language":"PT","name":"Portuguese"},{"language":"RO","name":"Romanian"},{"language":"RU","name":"Russian"},{"language":"SK","name":"Slovak"},{"language":"SL","name":"Slovenian"},{"language":"SV","name":"Swedish"},{"language":"ZH","name":"Chinese"}]'
-  recorded_at: Mon, 17 May 2021 14:49:42 GMT
+      encoding: ASCII-8BIT
+      string: '[{"language":"BG","name":"Bulgarian"},{"language":"CS","name":"Czech"},{"language":"DA","name":"Danish"},{"language":"DE","name":"German"},{"language":"EL","name":"Greek"},{"language":"EN","name":"English"},{"language":"ES","name":"Spanish"},{"language":"ET","name":"Estonian"},{"language":"FI","name":"Finnish"},{"language":"FR","name":"French"},{"language":"HU","name":"Hungarian"},{"language":"ID","name":"Indonesian"},{"language":"IT","name":"Italian"},{"language":"JA","name":"Japanese"},{"language":"KO","name":"Korean"},{"language":"LT","name":"Lithuanian"},{"language":"LV","name":"Latvian"},{"language":"NB","name":"Norwegian"},{"language":"NL","name":"Dutch"},{"language":"PL","name":"Polish"},{"language":"PT","name":"Portuguese"},{"language":"RO","name":"Romanian"},{"language":"RU","name":"Russian"},{"language":"SK","name":"Slovak"},{"language":"SL","name":"Slovenian"},{"language":"SV","name":"Swedish"},{"language":"TR","name":"Turkish"},{"language":"UK","name":"Ukrainian"},{"language":"ZH","name":"Chinese"}]'
+  recorded_at: Mon, 08 Jul 2024 09:58:27 GMT
 - request:
     method: get
-    uri: https://api-free.deepl.com/v2/languages?type=target
+    uri: https://api.deepl.com/v2/languages
     body:
-      encoding: US-ASCII
-      string: ''
+      encoding: UTF-8
+      string: "{}"
     headers:
       Authorization:
       - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Content-Type:
+      - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - Ruby
   response:
     status:
       code: 200
       message: OK
     headers:
-      Server:
-      - nginx
       Date:
-      - Mon, 17 May 2021 14:55:30 GMT
+      - Mon, 08 Jul 2024 11:27:22 GMT
       Content-Type:
       - application/json
-      Content-Length:
-      - '1667'
-      Connection:
-      - keep-alive
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
       Access-Control-Allow-Origin:
       - "*"
+      X-Cache-Status:
+      - MISS
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=101, l7_lb_idle;dur=1, l7_lb_receive;dur=0, l7_lb_total;dur=124
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      X-Trace-Id:
+      - a6ee4f394fe142e398267aa0ba99e1db
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"language":"BG","name":"Bulgarian"},{"language":"CS","name":"Czech"},{"language":"DA","name":"Danish"},{"language":"DE","name":"German"},{"language":"EL","name":"Greek"},{"language":"EN","name":"English"},{"language":"ES","name":"Spanish"},{"language":"ET","name":"Estonian"},{"language":"FI","name":"Finnish"},{"language":"FR","name":"French"},{"language":"HU","name":"Hungarian"},{"language":"ID","name":"Indonesian"},{"language":"IT","name":"Italian"},{"language":"JA","name":"Japanese"},{"language":"KO","name":"Korean"},{"language":"LT","name":"Lithuanian"},{"language":"LV","name":"Latvian"},{"language":"NB","name":"Norwegian"},{"language":"NL","name":"Dutch"},{"language":"PL","name":"Polish"},{"language":"PT","name":"Portuguese"},{"language":"RO","name":"Romanian"},{"language":"RU","name":"Russian"},{"language":"SK","name":"Slovak"},{"language":"SL","name":"Slovenian"},{"language":"SV","name":"Swedish"},{"language":"TR","name":"Turkish"},{"language":"UK","name":"Ukrainian"},{"language":"ZH","name":"Chinese"}]'
+  recorded_at: Mon, 08 Jul 2024 11:27:22 GMT
+- request:
+    method: get
+    uri: https://api.deepl.com/v2/languages
     body:
       encoding: UTF-8
+      string: '{"type":"target"}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 08 Jul 2024 11:27:22 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Cache-Status:
+      - MISS
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=185, l7_lb_idle;dur=2, l7_lb_receive;dur=0, l7_lb_total;dur=213
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      X-Trace-Id:
+      - d6a4a3b54c1b453d8ecd106a16d69b53
+    body:
+      encoding: ASCII-8BIT
       string: '[{"language":"BG","name":"Bulgarian","supports_formality":false},{"language":"CS","name":"Czech","supports_formality":false},{"language":"DA","name":"Danish","supports_formality":false},{"language":"DE","name":"German","supports_formality":true},{"language":"EL","name":"Greek","supports_formality":false},{"language":"EN-GB","name":"English
         (British)","supports_formality":false},{"language":"EN-US","name":"English
-        (American)","supports_formality":false},{"language":"ES","name":"Spanish","supports_formality":true},{"language":"ET","name":"Estonian","supports_formality":false},{"language":"FI","name":"Finnish","supports_formality":false},{"language":"FR","name":"French","supports_formality":true},{"language":"HU","name":"Hungarian","supports_formality":false},{"language":"IT","name":"Italian","supports_formality":true},{"language":"JA","name":"Japanese","supports_formality":false},{"language":"LT","name":"Lithuanian","supports_formality":false},{"language":"LV","name":"Latvian","supports_formality":false},{"language":"NL","name":"Dutch","supports_formality":true},{"language":"PL","name":"Polish","supports_formality":true},{"language":"PT-BR","name":"Portuguese
+        (American)","supports_formality":false},{"language":"ES","name":"Spanish","supports_formality":true},{"language":"ET","name":"Estonian","supports_formality":false},{"language":"FI","name":"Finnish","supports_formality":false},{"language":"FR","name":"French","supports_formality":true},{"language":"HU","name":"Hungarian","supports_formality":false},{"language":"ID","name":"Indonesian","supports_formality":false},{"language":"IT","name":"Italian","supports_formality":true},{"language":"JA","name":"Japanese","supports_formality":true},{"language":"KO","name":"Korean","supports_formality":false},{"language":"LT","name":"Lithuanian","supports_formality":false},{"language":"LV","name":"Latvian","supports_formality":false},{"language":"NB","name":"Norwegian","supports_formality":false},{"language":"NL","name":"Dutch","supports_formality":true},{"language":"PL","name":"Polish","supports_formality":true},{"language":"PT-BR","name":"Portuguese
         (Brazilian)","supports_formality":true},{"language":"PT-PT","name":"Portuguese
-        (European)","supports_formality":true},{"language":"RO","name":"Romanian","supports_formality":false},{"language":"RU","name":"Russian","supports_formality":true},{"language":"SK","name":"Slovak","supports_formality":false},{"language":"SL","name":"Slovenian","supports_formality":false},{"language":"SV","name":"Swedish","supports_formality":false},{"language":"ZH","name":"Chinese","supports_formality":false}]'
-  recorded_at: Mon, 17 May 2021 14:55:30 GMT
+        (European)","supports_formality":true},{"language":"RO","name":"Romanian","supports_formality":false},{"language":"RU","name":"Russian","supports_formality":true},{"language":"SK","name":"Slovak","supports_formality":false},{"language":"SL","name":"Slovenian","supports_formality":false},{"language":"SV","name":"Swedish","supports_formality":false},{"language":"TR","name":"Turkish","supports_formality":false},{"language":"UK","name":"Ukrainian","supports_formality":false},{"language":"ZH","name":"Chinese
+        (simplified)","supports_formality":false}]'
+  recorded_at: Mon, 08 Jul 2024 11:27:22 GMT
 - request:
     method: get
-    uri: https://api-free.deepl.com/v2/languages?type=invalid
+    uri: https://api.deepl.com/v2/languages
     body:
-      encoding: US-ASCII
-      string: ''
+      encoding: UTF-8
+      string: '{"type":"invalid"}'
     headers:
       Authorization:
       - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      Content-Type:
+      - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - Ruby
   response:
     status:
       code: 400
       message: Bad Request
     headers:
-      Server:
-      - nginx
       Date:
-      - Mon, 17 May 2021 14:57:00 GMT
-      Content-Length:
-      - '82'
-      Connection:
-      - keep-alive
+      - Mon, 08 Jul 2024 11:27:22 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
       Access-Control-Allow-Origin:
       - "*"
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=129, l7_lb_idle;dur=2, l7_lb_receive;dur=0, l7_lb_total;dur=148
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      X-Trace-Id:
+      - 13e4846db29d425397f8f13783631f53
     body:
       encoding: UTF-8
       string: '{"message":"Parameter ''type'' is invalid. ''source'' and ''target''
         are valid values."}'
-  recorded_at: Mon, 17 May 2021 14:57:00 GMT
-recorded_with: VCR 6.0.0
+  recorded_at: Mon, 08 Jul 2024 11:27:22 GMT
+- request:
+    method: get
+    uri: https://api.deepl.com/v2/languages
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 09 Jul 2024 09:34:12 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Cache-Status:
+      - MISS
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=101, l7_lb_idle;dur=1, l7_lb_receive;dur=0, l7_lb_total;dur=121
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      X-Trace-Id:
+      - 43c2bc53a69c40dfb2e30f58fca8c3ef
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"language":"BG","name":"Bulgarian"},{"language":"CS","name":"Czech"},{"language":"DA","name":"Danish"},{"language":"DE","name":"German"},{"language":"EL","name":"Greek"},{"language":"EN","name":"English"},{"language":"ES","name":"Spanish"},{"language":"ET","name":"Estonian"},{"language":"FI","name":"Finnish"},{"language":"FR","name":"French"},{"language":"HU","name":"Hungarian"},{"language":"ID","name":"Indonesian"},{"language":"IT","name":"Italian"},{"language":"JA","name":"Japanese"},{"language":"KO","name":"Korean"},{"language":"LT","name":"Lithuanian"},{"language":"LV","name":"Latvian"},{"language":"NB","name":"Norwegian"},{"language":"NL","name":"Dutch"},{"language":"PL","name":"Polish"},{"language":"PT","name":"Portuguese"},{"language":"RO","name":"Romanian"},{"language":"RU","name":"Russian"},{"language":"SK","name":"Slovak"},{"language":"SL","name":"Slovenian"},{"language":"SV","name":"Swedish"},{"language":"TR","name":"Turkish"},{"language":"UK","name":"Ukrainian"},{"language":"ZH","name":"Chinese"}]'
+  recorded_at: Tue, 09 Jul 2024 09:34:12 GMT
+recorded_with: VCR 6.2.0

@@ -36,6 +36,20 @@ uri_ignoring_deepl_api_subdomain = lambda do |request1, request2|
   end
 end
 
+headers_ignoring_user_agent = lambda do |request1, request2|
+  user_agent_key = 'User-Agent'
+  # Pass by reference, so we need to use a copy of the headers
+  headers1 = request1.headers.dup
+  headers2 = request2.headers.dup
+  headers1_has_user_agent = headers1.key?(user_agent_key)
+  headers2_has_user_agent = headers2.key?(user_agent_key)
+  return false if headers1_has_user_agent != headers2_has_user_agent
+
+  headers1.delete(user_agent_key)
+  headers2.delete(user_agent_key)
+  headers1 == headers2
+end
+
 # VCR tapes configuration
 require 'vcr'
 VCR.configure do |config|
@@ -45,7 +59,8 @@ VCR.configure do |config|
   config.default_cassette_options = {
     # Uncomment this line when adding new tests, run the tests once, then comment it again
     # record: :new_episodes,
-    match_requests_on: [:method, uri_ignoring_deepl_api_subdomain, :body, :headers]
+    match_requests_on: [:method, uri_ignoring_deepl_api_subdomain, :body,
+                        headers_ignoring_user_agent]
   }
 end
 

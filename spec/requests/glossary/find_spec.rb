@@ -9,7 +9,7 @@ describe DeepL::Requests::Glossary::Find do
   subject(:glossary_find) { described_class.new(api, id, options) }
 
   let(:api) { build_deepl_api }
-  let(:id) { 'd9ad833f-c818-430c-a3c9-47071384fa3e' }
+  let(:id) { '9ab5dac2-b7b2-4b4a-808a-e8e305df5ecb' }
   let(:options) { {} }
 
   describe '#initialize' do
@@ -29,7 +29,7 @@ describe DeepL::Requests::Glossary::Find do
       it 'returns a glossary object' do
         glossary = glossary_find.request
         expect(glossary).to be_a(DeepL::Resources::Glossary)
-        expect(glossary.id).to eq('d9ad833f-c818-430c-a3c9-47071384fa3e')
+        expect(glossary.id).to eq('9ab5dac2-b7b2-4b4a-808a-e8e305df5ecb')
         expect(glossary.name).to eq('Mi Glosario')
         expect(glossary.ready).to be(true).or be(false)
         expect(glossary.source_lang).to eq('en')
