@@ -285,6 +285,7 @@ You can capture and process exceptions that may be raised during API calls. Thes
 | `DeepL::Exceptions::RequestError` | An unkown request error. Check `exception.response` and `exception.request` for more information. |
 | `DeepL::Exceptions::NotSupported` | The requested method or API endpoint is not supported. |
 | `DeepL::Exceptions::RequestEntityTooLarge` | Your request is too large, reduce the amount of data you are sending. The API has a request size limit of 128 KiB. |
+| `DeepL::Exceptions::ServerError` | An error occured in the DeepL API, wait a short amount of time and retry. |
 
 An exampling of handling a generic exception:
 

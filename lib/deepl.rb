@@ -18,6 +18,7 @@ require 'deepl/exceptions/not_found'
 require 'deepl/exceptions/not_supported'
 require 'deepl/exceptions/request_entity_too_large'
 require 'deepl/exceptions/document_translation_error'
+require 'deepl/exceptions/server_error'
 
 # -- Requests
 require 'deepl/requests/base'
