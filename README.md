@@ -309,7 +309,7 @@ backend services to translate content.
 Clone the repository, and install its dependencies:
 
 ```sh
-git clone https://github.com/wikiti/deepl-rb
+git clone https://github.com/DeepLcom/deepl-rb
 cd deepl-rb
 bundle install
 ```
