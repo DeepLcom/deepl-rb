@@ -7,7 +7,7 @@ module DeepL
   module Requests
     class Languages < Base
       def initialize(api, options = {})
-        super(api, options)
+        super
       end
 
       def request

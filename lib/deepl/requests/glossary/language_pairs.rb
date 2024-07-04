@@ -8,7 +8,7 @@ module DeepL
     module Glossary
       class LanguagePairs < Base
         def initialize(api, options = {})
-          super(api, options)
+          super
         end
 
         def request

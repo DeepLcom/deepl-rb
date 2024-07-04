@@ -24,9 +24,6 @@ RSpec/ExampleLength:
   Max: 10
   CountAsOne: ['heredoc']
 
-RSpec/FilePath:
-  SpecSuffixOnly: true
-
 RSpec/MessageSpies:
   EnforcedStyle: 'receive'
 
@@ -38,6 +35,13 @@ RSpec/MultipleMemoizedHelpers:
 
 RSpec/NestedGroups:
   Max: 4
+
+RSpec/SpecFilePathSuffix:
+  Enabled: false
+
+RSpec/SpecFilePathFormat:
+  CustomTransform:
+    DeepL: ''
 
 Style/Documentation:
   Enabled: false

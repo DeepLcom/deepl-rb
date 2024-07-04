@@ -8,9 +8,6 @@ include:
       - '/templates/.buildkit.yml'
       - '/templates/.secret-detection.yml'
 
-variables:
-  DOCKER_IMAGE_PREFIX: ${HARBOR_REGISTRY}/${HARBOR_REGISTRY_PROJECT}/oss-client-libraries/$CI_PROJECT_NAME-build
-
 # Global --------------------------
 
 workflow:
@@ -20,7 +17,6 @@ workflow:
     - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
 
 stages:
-  - build
   - install
   - check
   - test
@@ -31,25 +27,31 @@ before_script:
   - ruby --version
   - bundle install
 
-# stage: build ----------------------
+# stage: install ----------------------
 
-build image:
-  stage: build
-  extends: .buildkit
-  variables:
-    DOCKER_IMAGE: ${DOCKER_IMAGE_PREFIX}_ruby_${RUBY_VERSION}
-    BUILDKIT_IMAGE: ${DOCKER_IMAGE}:latest
-    BUILDKIT_EXTRA_ARGS: "--opt build-arg:RUBY_IMAGE=ruby:${RUBY_VERSION}"
+package:
+  stage: install
   parallel:
-    matrix:
-      - RUBY_VERSION: "3.2.0"
-      - RUBY_VERSION: "3.1.3"
+      matrix:
+          - DOCKER_IMAGE: 'ruby:2.7'
+          - DOCKER_IMAGE: 'ruby:3.2'
+          - DOCKER_IMAGE: 'ruby:3.3'
+  image:
+    name: ${DOCKER_IMAGE}
+    entrypoint: ['/builds/deepl/backend/oss-client-libs/deepl-ruby']
+  script:
+    - bundle exec rake build
+  artifacts:
+    paths:
+      - pkg/
 
 # stage: check ----------------------
 
 .rubocop_base:
   stage: check
-  image: ${DOCKER_IMAGE_PREFIX}_ruby_3.2.0
+  image:
+    name: ruby:2.7
+    entrypoint: ['/builds/deepl/backend/oss-client-libs/deepl-ruby']
   script: bundle exec rubocop
 
 rubocop_scheduled:
@@ -72,21 +74,6 @@ secret_detection:
   rules:
     - if: $CI_MERGE_REQUEST_ID
 
-# stage: install ----------------------
-
-package:
-  stage: install
-  parallel:
-      matrix:
-          - RUBY_IMAGE: 'ruby_3.2.0'
-          - RUBY_IMAGE: 'ruby_3.1.3'
-  image: ${DOCKER_IMAGE_PREFIX}_${RUBY_IMAGE}
-  script:
-    - bundle exec rake build
-  artifacts:
-    paths:
-      - pkg/
-
 # stage: test ----------------------
 
 .test_base:
@@ -94,9 +81,12 @@ package:
     extends: .test
     parallel:
         matrix:
-            - RUBY_IMAGE: 'ruby_3.2.0'
-            - RUBY_IMAGE: 'ruby_3.1.3'
-    image: ${DOCKER_IMAGE_PREFIX}_${RUBY_IMAGE}
+          - DOCKER_IMAGE: 'ruby:2.7'
+          - DOCKER_IMAGE: 'ruby:3.2'
+          - DOCKER_IMAGE: 'ruby:3.3'
+    image:
+      name: ${DOCKER_IMAGE}
+      entrypoint: ['/builds/deepl/backend/oss-client-libs/deepl-ruby']
     script:
         - bundle exec rake test
         - bundle exec rspec --format RspecJunitFormatter --out rspec.xml
@@ -104,7 +94,7 @@ package:
         reports:
             coverage_report:
                 coverage_format: cobertura
-                path: reports/cobertura.xml
+                path: coverage/coverage.xml
             junit:
                 - rspec.xml
         when: always

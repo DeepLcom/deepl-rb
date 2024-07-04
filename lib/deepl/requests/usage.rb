@@ -7,7 +7,7 @@ module DeepL
   module Requests
     class Usage < Base
       def initialize(api, options = {})
-        super(api, options)
+        super
       end
 
       def request
