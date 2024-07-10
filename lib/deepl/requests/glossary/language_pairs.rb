@@ -15,6 +15,10 @@ module DeepL
           build_language_pair_list(*execute_request_with_retries(get_request))
         end
 
+        def to_s
+          "GET #{uri.request_uri}"
+        end
+
         private
 
         def build_language_pair_list(request, response)

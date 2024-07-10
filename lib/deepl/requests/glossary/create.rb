@@ -26,6 +26,17 @@ module DeepL
           build_glossary(*execute_request_with_retries(post_request(payload)))
         end
 
+        def details
+          "HTTP Headers: #{headers}\nPayload #{{
+            name: name, source_lang: source_lang, target_lang: target_lang, entries: entries_to_tsv,
+            entries_format: entries_format
+          }}"
+        end
+
+        def to_s
+          "POST #{uri.request_uri}"
+        end
+
         private
 
         def entries_to_tsv

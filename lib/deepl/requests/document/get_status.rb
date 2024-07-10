@@ -17,6 +17,14 @@ module DeepL
           build_doc_translation_status(*execute_request_with_retries(post_request(payload)))
         end
 
+        def details
+          "HTTP Headers: #{headers}\nPayload #{{ document_key: document_key }}"
+        end
+
+        def to_s
+          "POST #{uri.request_uri}"
+        end
+
         private
 
         def build_doc_translation_status(request, response)

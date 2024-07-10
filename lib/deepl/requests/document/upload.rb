@@ -31,6 +31,17 @@ module DeepL
           build_doc_handle(*execute_request_with_retries(post_request_with_file(form_data)))
         end
 
+        def details
+          "HTTP Headers: #{headers}\nPayload #{[
+            ['file', "File at #{input_file_path} opened in binary mode"],
+            ['source_lang', source_lang], ['target_lang', target_lang], ['filename', filename]
+          ]}"
+        end
+
+        def to_s
+          "POST #{uri.request_uri}"
+        end
+
         private
 
         def build_doc_handle(request, response)
