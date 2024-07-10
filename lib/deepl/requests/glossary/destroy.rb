@@ -15,7 +15,7 @@ module DeepL
         end
 
         def request
-          build_response(*delete)
+          build_response(*execute_request_with_retries(delete_request))
         end
 
         private

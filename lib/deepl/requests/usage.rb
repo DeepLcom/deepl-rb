@@ -11,7 +11,7 @@ module DeepL
       end
 
       def request
-        build_usage(*get)
+        build_usage(*execute_request_with_retries(get_request))
       end
 
       private

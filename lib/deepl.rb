@@ -47,6 +47,7 @@ require 'deepl/resources/usage'
 
 # -- Utils
 require 'deepl/utils/exception_builder'
+require 'deepl/utils/backoff_timer'
 
 # -- HTTP Utils
 require 'http_client_options'

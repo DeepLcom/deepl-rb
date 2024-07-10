@@ -15,7 +15,7 @@ module DeepL
         end
 
         def request
-          build_glossary(*get)
+          build_glossary(*execute_request_with_retries(get_request))
         end
 
         private

@@ -31,7 +31,7 @@ module DeepL
 
       def request
         payload = { text: text, source_lang: source_lang, target_lang: target_lang }
-        build_texts(*post(payload))
+        build_texts(*execute_request_with_retries(post_request(payload)))
       end
 
       private

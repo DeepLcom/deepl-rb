@@ -14,7 +14,7 @@ module DeepL
 
         def request
           payload = { document_key: document_key }
-          build_doc_translation_status(*post(payload))
+          build_doc_translation_status(*execute_request_with_retries(post_request(payload)))
         end
 
         private

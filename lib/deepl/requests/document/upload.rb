@@ -27,7 +27,7 @@ module DeepL
           SUPPORTED_OPTIONS.each do |option|
             form_data.push([option, options[option]]) unless options[option].nil?
           end
-          build_doc_handle(*post_with_file(form_data))
+          build_doc_handle(*execute_request_with_retries(post_request_with_file(form_data)))
         end
 
         private
