@@ -10,7 +10,7 @@ module DeepL
         'Limit exceeded. Please wait and send your request once again.'
       end
 
-      def should_retry
+      def should_retry?
         true
       end
     end

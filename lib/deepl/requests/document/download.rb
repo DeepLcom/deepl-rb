@@ -15,7 +15,7 @@ module DeepL
 
         def request
           payload = { document_key: document_key }
-          extract_file(*post(payload))
+          extract_file(*execute_request_with_retries(post_request(payload)))
         end
 
         private

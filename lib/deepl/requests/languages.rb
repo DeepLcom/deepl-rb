@@ -11,7 +11,7 @@ module DeepL
       end
 
       def request
-        build_languages(*get)
+        build_languages(*execute_request_with_retries(get_request))
       end
 
       private

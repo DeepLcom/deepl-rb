@@ -7,7 +7,7 @@ module DeepL
         'An internal server error occured. Try again after waiting a short period.'
       end
 
-      def should_retry
+      def should_retry?
         true
       end
     end

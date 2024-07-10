@@ -23,7 +23,7 @@ module DeepL
             name: name, source_lang: source_lang, target_lang: target_lang, entries: entries_to_tsv,
             entries_format: entries_format
           }
-          build_glossary(*post(payload))
+          build_glossary(*execute_request_with_retries(post_request(payload)))
         end
 
         private
