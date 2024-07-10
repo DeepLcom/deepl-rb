@@ -18,7 +18,7 @@ ENV['DEEPL_AUTH_KEY'] ||= 'TEST-TOKEN'
 
 # General helpers
 def build_deepl_api
-  DeepL::API.new(DeepL::Configuration.new(host: 'https://api-free.deepl.com'))
+  DeepL::API.new(DeepL::Configuration.new)
 end
 
 uri_ignoring_deepl_api_subdomain = lambda do |request1, request2|

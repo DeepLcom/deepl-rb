@@ -30,7 +30,8 @@ describe DeepL do
 
     context 'when providing a valid configuration' do
       let(:configuration) do
-        DeepL::Configuration.new(auth_key: 'VALID', host: 'http://www.example.org', version: 'v1')
+        DeepL::Configuration.new({ auth_key: 'VALID', host: 'http://www.example.org',
+                                   version: 'v1' })
       end
 
       before do
@@ -131,7 +132,6 @@ describe DeepL do
       end
 
       after do
-        # @tmpfile.close
         @tmpfile.unlink
       end
 

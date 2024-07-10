@@ -5,7 +5,8 @@
 
 module DeepL
   class Configuration
-    ATTRIBUTES = %i[auth_key host max_doc_status_queries version].freeze
+    ATTRIBUTES = %i[auth_key host max_doc_status_queries max_network_retries user_agent
+                    version].freeze
 
     attr_accessor(*ATTRIBUTES)
 
@@ -13,7 +14,7 @@ module DeepL
     DEEPL_SERVER_URL_FREE = 'https://api-free.deepl.com'
     private_constant :DEEPL_SERVER_URL, :DEEPL_SERVER_URL_FREE
 
-    def initialize(data = {})
+    def initialize(data = {}, app_info_name = nil, app_info_version = nil, send_platform_info = true) # rubocop:disable all
       data.each { |key, value| send("#{key}=", value) }
       @auth_key ||= ENV.fetch('DEEPL_AUTH_KEY', nil)
       @host ||= ENV.fetch('DEEPL_SERVER_URL', nil)
@@ -23,6 +24,8 @@ module DeepL
                   DEEPL_SERVER_URL
                 end
       @version ||= 'v2'
+      @user_agent ||= construct_user_agent(send_platform_info, app_info_name, app_info_version)
+      @max_network_retries ||= 5
     end
 
     def validate!
@@ -39,6 +42,17 @@ module DeepL
 
     def self.free_account_auth_key?(key)
       key&.end_with?(':fx')
+    end
+
+    def construct_user_agent(send_platform_info, app_info_name, app_info_version)
+      library_info_str = 'deepl-ruby/2.5.3'
+      if send_platform_info
+        library_info_str += " (#{RbConfig::CONFIG['host_os']}) ruby/#{RUBY_VERSION}"
+      end
+      if app_info_name && app_info_version
+        library_info_str += " #{app_info_name}/#{app_info_version}"
+      end
+      library_info_str
     end
   end
 end
