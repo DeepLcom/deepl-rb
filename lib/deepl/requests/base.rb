@@ -46,14 +46,22 @@ module DeepL
       end
 
       def execute_request_with_retries(req) # rubocop:disable all
+        api.configuration.logger&.info("Request to the DeepL API: #{self}")
+        api.configuration.logger&.debug("Request details: #{details}")
         loop do
           resp = api.http_client.request(req)
-          validate_response!(req, resp)
+          validate_response!(resp)
           return [req, resp]
         rescue DeepL::Exceptions::Error => e
           raise e unless should_retry(resp, e, @backoff_timer.num_retries)
 
-          backoff_timer.sleep_until_deadline
+          unless e.nil?
+            api.configuration.logger&.info("Encountered a retryable exception: #{e.message}")
+          end
+          api.configuration.logger&.info("Starting retry #{@backoff_timer.num_retries + 1} for " \
+                                         "request #{request} after sleeping for " \
+                                         "#{format('%.2f', @backoff_timer.time_until_deadline)}")
+          @backoff_timer.sleep_until_deadline
           next
         end
       end

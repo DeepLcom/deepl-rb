@@ -18,6 +18,10 @@ module DeepL
           build_response(*execute_request_with_retries(delete_request))
         end
 
+        def to_s
+          "DELETE #{uri.request_uri}"
+        end
+
         private
 
         def build_response(_, _)

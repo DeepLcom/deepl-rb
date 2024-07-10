@@ -18,6 +18,14 @@ module DeepL
           extract_file(*execute_request_with_retries(post_request(payload)))
         end
 
+        def details
+          "HTTP Headers: #{headers}\nPayload #{{ document_key: document_key }}"
+        end
+
+        def to_s
+          "POST #{uri.request_uri}"
+        end
+
         private
 
         def extract_file(_request, response)

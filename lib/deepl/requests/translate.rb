@@ -34,6 +34,10 @@ module DeepL
         build_texts(*execute_request_with_retries(post_request(payload)))
       end
 
+      def to_s
+        "POST #{uri.request_uri}"
+      end
+
       private
 
       def tweak_parameters!

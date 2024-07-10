@@ -5,7 +5,7 @@
 
 module DeepL
   class Configuration
-    ATTRIBUTES = %i[auth_key host max_doc_status_queries max_network_retries user_agent
+    ATTRIBUTES = %i[auth_key host logger max_doc_status_queries max_network_retries user_agent
                     version].freeze
 
     attr_accessor(*ATTRIBUTES)
@@ -26,6 +26,7 @@ module DeepL
       @version ||= 'v2'
       @user_agent ||= construct_user_agent(send_platform_info, app_info_name, app_info_version)
       @max_network_retries ||= 5
+      @logger ||= nil
     end
 
     def validate!

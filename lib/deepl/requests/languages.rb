@@ -14,6 +14,10 @@ module DeepL
         build_languages(*execute_request_with_retries(get_request))
       end
 
+      def to_s
+        "GET #{uri.request_uri}"
+      end
+
       private
 
       def build_languages(request, response)
