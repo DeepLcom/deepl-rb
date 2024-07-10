@@ -9,10 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 Beginning with version 3, deepl-rb is officially supported by DeepL, and maintained together with [Daniel Herzog](mailto:info@danielherzog.es) the developer of earlier versions of this library.
 The change in major version is only due to the change in maintainership, there is no migration necessary from v2 to v3.
 ### Added
-* Added a gitlab CI pipeline
 * Added rubocop-rspec linting for rspec test files
-* Added the happy path of document translation to the ruby CL.
+* Added document translation to the ruby CL
+* Added possibility to use one HTTP session for multiple calls
+* Added platform and ruby version information to the user-agent string that is sent with API calls, along with an opt-out
+* Added support for logging of HTTP requests
+* Added support for using a proxy and a custom certificate file
+* Added a gitlab CI pipeline
 ### Changed
+* HTTP requests to the DeepL API now use `application/json`, rather than `application/www-form-unencoded`
+* HTTP requests now automatically retry on transient failures, using exponential backoff
 ### Deprecated
 ### Removed
 * Removed CircleCI and CodeCov upload

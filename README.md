@@ -85,7 +85,7 @@ puts DeepL.languages(type: :target).count
 ```
 
 All languages are also defined on the
-[official API documentation](https://www.deepl.com/docs-api/translating-text/).
+[official API documentation](https://developers.deepl.com/docs/api-reference/translate).
 
 Note that target languages may include the `supports_formality` flag, which may be checked
 using the `DeepL::Resources::Language#supports_formality?`.
@@ -299,6 +299,75 @@ rescue DeepL::Exceptions::RequestError => e
   puts "Request body: #{e.request.body}"
 end
 ```
+
+### Logging
+
+To enable logging, pass a suitable logging object (e.g. the default `Logger` from the Ruby standard library) when configuring the library. The library logs HTTP requests to `INFO` and debug information to `DEBUG`. Example:
+
+```rb
+require 'logger'
+
+logger = Logger.new(STDOUT)
+logger.level = Logger::INFO
+
+deepl.configure do |config|
+  config.auth_key = configuration.auth_key
+  config.logger = logger
+end
+```
+
+### Proxy configuration
+
+To use HTTP proxies, a session needs to be used. The proxy can then be configured as part of the HTTP client options:
+
+```rb
+client_options = HTTPClientOptions.new({ 'proxy_addr' => 'http://localhost', 'proxy_port' => 80 })
+deepl.with_session(client_options) do |session|
+  # ...
+end
+```
+
+### Anonymous platform information
+
+By default, we send some basic information about the platform the client library is running on with each request, see [here for an explanation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent). This data is completely anonymous and only used to improve our product, not track any individual users. If you do not wish to send this data, you can opt-out by setting the `send_platform_info` flag in the configuration to `false` like so:
+
+```rb
+deepl.configure({}, nil, nil, false) do |config|
+  # ...
+end
+```
+
+You can also complete customize the `User-Agent` header like so:
+
+```rb
+deepl.configure do |config|
+  config.user_agent = 'myCustomUserAgent'
+end
+```
+
+### Sending multiple requests
+
+When writing an application that send multiple requests, using a HTTP session will give better performance through [HTTP Keep-Alive](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Keep-Alive). You can use it by simply wrapping your requests in a `with_session` block:
+
+```rb
+deepl.with_session do |session|
+  deepl.translate(sentence1, 'DE', 'EN-GB')
+  deepl.translate(sentence2, 'DE', 'EN-GB')
+  deepl.translate(sentence3, 'DE', 'EN-GB')
+end
+```
+
+### Writing a plugin
+
+If you use this library in an application, please identify the application by setting the name and version of the plugin:
+
+```rb
+deepl.configure({}, 'MyTranslationPlugin', '1.0.1') do |config|
+  # ...
+end
+```
+
+This information is passed along when the library makes calls to the DeepL API. Both name and version are required. Please note that setting the `User-Agent` header via `deepl.configure` will override this setting, if you need to use this, please manually identify your Application in the `User-Agent` header.
 
 ## Integrations
 
