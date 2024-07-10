@@ -123,7 +123,8 @@ module DeepL
       end
 
       def headers
-        { 'Authorization' => "DeepL-Auth-Key #{api.configuration.auth_key}" }
+        { 'Authorization' => "DeepL-Auth-Key #{api.configuration.auth_key}",
+          'User-Agent' => api.configuration.user_agent }
       end
 
       def add_json_content_type(headers_to_add_to)
