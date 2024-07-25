@@ -2,7 +2,7 @@
 
 require 'tempfile'
 
-module IntegrationTestUtils
+module IntegrationTestUtils # rubocop:disable Metrics/ModuleLength
   EXAMPLE_TEXT = {
     'BG' => 'протонен лъч',
     'CS' => 'protonový paprsek',
@@ -91,6 +91,43 @@ module IntegrationTestUtils
 
   # TODO: When adding E2E tests like in remaining CLs:
   # Add fixtures for mock server, etc
+
+  # For detailed explanations of these header, check the deepl-mock README.md
+  def no_response_header(no_response_count)
+    { 'mock-server-session-no-response-count' => no_response_count.to_s }
+  end
+
+  def respond_with_429_header(response_count)
+    { 'mock-server-session-429-count' => response_count.to_s }
+  end
+
+  def set_character_limit_header(response_count) # rubocop:disable Naming/AccessorMethodName
+    { 'mock-server-session-init-character-limit' => response_count.to_s }
+  end
+
+  def set_document_limit_header(response_count) # rubocop:disable Naming/AccessorMethodName
+    { 'mock-server-session-init-document-limit' => response_count.to_s }
+  end
+
+  def set_team_document_limit_header(response_count) # rubocop:disable Naming/AccessorMethodName
+    { 'mock-server-session-init-team-document-limit' => response_count.to_s }
+  end
+
+  def fail_docs_header(response_count)
+    { 'mock-server-session-doc-failure' => response_count.to_s }
+  end
+
+  def doc_translation_queue_time_header(response_count)
+    { 'mock-server-session-doc-queue-time' => response_count.to_s }
+  end
+
+  def doc_translation_translation_time_header(response_count)
+    { 'mock-server-session-doc-translate-time' => response_count.to_s }
+  end
+
+  def expect_proxy_header(response_count)
+    { 'mock-server-session-expect-proxy' => response_count.to_s }
+  end
 end
 
 shared_context 'with temp dir' do

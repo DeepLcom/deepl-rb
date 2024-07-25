@@ -36,8 +36,26 @@ describe DeepL::DocumentApi do
       source_lang = default_lang_args[:source_lang]
       target_lang = default_lang_args[:target_lang]
       example_doc_path = example_document_path(source_lang)
-      handle = DeepL.document.upload(example_document_path, source_lang, target_lang,
+
+      handle = DeepL.document.upload(example_doc_path, source_lang, target_lang,
                                      File.basename(example_doc_path), {})
+      doc_status = handle.wait_until_document_translation_finished
+      DeepL.document.download(handle, output_document_path) if doc_status.status != 'error'
+      output_file_contents = File.read(output_document_path)
+
+      expect(example_document_translation(target_lang)).to eq(output_file_contents)
+      expect(doc_status.billed_characters).to eq(example_document_translation(source_lang).length)
+      expect(doc_status.status).to eq('done')
+    end
+
+    it 'Translates a document after retrying the upload once' do # rubocop:disable RSpec/ExampleLength
+      skip 'Only runs on mock server' if real_server?
+      File.unlink(output_document_path)
+      source_lang = default_lang_args[:source_lang]
+      target_lang = default_lang_args[:target_lang]
+      example_doc_path = example_document_path(source_lang)
+      handle = DeepL.document.upload(example_doc_path, source_lang, target_lang,
+                                     File.basename(example_doc_path), no_response_header(1))
       doc_status = handle.wait_until_document_translation_finished
       DeepL.document.download(handle, output_document_path) if doc_status.status != 'error'
       output_file_contents = File.read(output_document_path)

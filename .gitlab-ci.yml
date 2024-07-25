@@ -84,12 +84,26 @@ secret_detection:
           - DOCKER_IMAGE: 'ruby:2.7'
           - DOCKER_IMAGE: 'ruby:3.2'
           - DOCKER_IMAGE: 'ruby:3.3'
+          - DOCKER_IMAGE: 'ruby:2.7'
+            USE_MOCK_SERVER: "use mock server"
+          - DOCKER_IMAGE: 'ruby:3.2'
+            USE_MOCK_SERVER: "use mock server"
+          - DOCKER_IMAGE: 'ruby:3.3'
+            USE_MOCK_SERVER: "use mock server"
     image:
       name: ${DOCKER_IMAGE}
       entrypoint: ['/builds/deepl/backend/oss-client-libs/deepl-ruby']
     script:
-        - bundle exec rake test
-        - bundle exec rspec --format RspecJunitFormatter --out rspec.xml
+      - >
+        if [[ ! -z "${USE_MOCK_SERVER}" ]]; then
+          echo "Using mock server"
+          export DEEPL_SERVER_URL=http://deepl-mock:3000
+          export DEEPL_MOCK_SERVER_PORT=3000
+          export DEEPL_PROXY_URL=http://deepl-mock:3001
+          export DEEPL_MOCK_PROXY_SERVER_PORT=3001
+        fi
+      - bundle exec rake test
+      - bundle exec rspec --format RspecJunitFormatter --out rspec.xml
     artifacts:
         reports:
             coverage_report:
