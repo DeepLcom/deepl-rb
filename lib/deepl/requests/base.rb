@@ -8,9 +8,10 @@ module DeepL
     class Base # rubocop:disable Metrics/ClassLength
       attr_reader :api, :response, :options
 
-      def initialize(api, options = {})
+      def initialize(api, options = {}, additional_headers = {})
         @api = api
         @options = options
+        @additional_headers = additional_headers
         @num_retries = 0
         @backoff_timer = Utils::BackoffTimer.new
       end
@@ -45,7 +46,8 @@ module DeepL
         end
       end
 
-      def execute_request_with_retries(req) # rubocop:disable all
+      # Files to reset: list of file objects to rewind when retrying the request
+      def execute_request_with_retries(req, files_to_reset = []) # rubocop:disable all
         api.configuration.logger&.info("Request to the DeepL API: #{self}")
         api.configuration.logger&.debug("Request details: #{details}")
         loop do
@@ -61,6 +63,18 @@ module DeepL
           api.configuration.logger&.info("Starting retry #{@backoff_timer.num_retries + 1} for " \
                                          "request #{request} after sleeping for " \
                                          "#{format('%.2f', @backoff_timer.time_until_deadline)}")
+          files_to_reset.each(&:rewind)
+          @backoff_timer.sleep_until_deadline
+          next
+        rescue Net::HTTPBadResponse, Net::HTTPServerError, Net::HTTPFatalError, Timeout::Error,
+               SocketError => e
+          unless e.nil?
+            api.configuration.logger&.info("Encountered a retryable exception: #{e.message}")
+          end
+          api.configuration.logger&.info("Starting retry #{@backoff_timer.num_retries + 1} for " \
+                                         "request #{request} after sleeping for " \
+                                         "#{format('%.2f', @backoff_timer.time_until_deadline)}")
+          files_to_reset.each(&:rewind)
           @backoff_timer.sleep_until_deadline
           next
         end
@@ -132,7 +146,7 @@ module DeepL
 
       def headers
         { 'Authorization' => "DeepL-Auth-Key #{api.configuration.auth_key}",
-          'User-Agent' => api.configuration.user_agent }
+          'User-Agent' => api.configuration.user_agent }.merge(@additional_headers)
       end
 
       def add_json_content_type(headers_to_add_to)

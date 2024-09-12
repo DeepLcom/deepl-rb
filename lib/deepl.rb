@@ -96,7 +96,7 @@ module DeepL
     @http_client
   end
 
-  def with_session(client_options = HTTPClientOptions.new()) # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
+  def with_session(client_options = HTTPClientOptions.new()) # rubocop:disable Metrics/AbcSize,Metrics/MethodLength,Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
     raise ArgumentError 'This method requires a block to be passed in which contains the actual API calls, see README for example usage.' unless block_given? # rubocop:disable Layout/LineLength
 
     has_proxy = client_options.proxy.key?('proxy_addr') and client_options.proxy.key?('proxy_port')
@@ -106,6 +106,10 @@ module DeepL
                            has_proxy ? client_options.proxy['proxy_port'] : nil)
       http.use_ssl = client_options.enable_ssl_verification
       http.ca_file = client_options.cert_path if client_options.cert_path
+      http.open_timeout = client_options.open_timeout unless client_options.open_timeout.nil?
+      http.read_timeout = client_options.read_timeout unless client_options.read_timeout.nil?
+      http.write_timeout = client_options.write_timeout unless client_options.write_timeout.nil?
+      http.ssl_timeout = client_options.ssl_timeout unless client_options.ssl_timeout.nil?
       http.start
       @http_client = http
       api.update_http_client(http)

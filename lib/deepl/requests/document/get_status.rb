@@ -6,8 +6,8 @@ module DeepL
       class GetStatus < Base
         attr_reader :document_id, :document_key
 
-        def initialize(api, document_id, document_key, options = {})
-          super(api, options)
+        def initialize(api, document_id, document_key, options = {}, additional_headers = {})
+          super(api, options, additional_headers)
           @document_id = document_id
           @document_key = document_key
         end

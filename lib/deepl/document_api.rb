@@ -22,12 +22,14 @@ module DeepL
     # @param [String, nil] filename The filename of the file, including its extension. Used to open
     #                               the different kinds of documents (PDFs, etc). If nil, will use
     #                               the filename of +input_file_path+.
-    # @param [Hash] options Additional options for the upload.
+    # @param [Hash] options Additional (body) options for the upload.
+    # @param [Hash] additional_headers Additional HTTP headers for the upload.
     # @return [DeepL::Resources::DocumentHandle] Document handle for the uploaded document.
 
-    def upload(input_file_path, source_lang, target_lang, filename = nil, options = {})
+    def upload(input_file_path, source_lang, target_lang, filename = nil, options = {},
+               additional_headers = {})
       DeepL::Requests::Document::Upload.new(@api, input_file_path, source_lang, target_lang,
-                                            filename, options)
+                                            filename, options, additional_headers)
                                        .request
     end
 
@@ -37,11 +39,13 @@ module DeepL
     # @param [DeepL::Resources::DocumentHandle] document_handle Handle returned by the `upload`
     # method.
     # @param [Hash] options Additional options for the upload.
+    # @param [Hash] additional_headers Additional HTTP headers for the status check.
     # @return [DeepL::Resources::DocumentTranslationStatus] Status of the document translation.
 
-    def get_status(document_handle, options = {})
+    def get_status(document_handle, options = {}, additional_headers = {})
       DeepL::Requests::Document::GetStatus.new(@api, document_handle.document_id,
-                                               document_handle.document_key, options).request
+                                               document_handle.document_key, options,
+                                               additional_headers).request
     end
 
     ##
@@ -78,10 +82,11 @@ module DeepL
     # @param [String, nil] filename The filename of the file, including its extension. Used to open
     #                               the different kinds of documents (PDFs, etc).
     # @param [Hash] options Additional options for the upload.
+    # @param [Hash] additional_headers Additional headers for the upload.
     # @return [DeepL::Resources::DocumentTranslationStatus] Status of the document translation.
 
-    def translate_document(input_file, output_file, source_lang, target_lang, filename, # rubocop:disable Metrics/MethodLength
-                           options = {})
+    def translate_document(input_file, output_file, source_lang, target_lang, filename, # rubocop:disable Metrics/MethodLength,Metrics/ParameterLists
+                           options = {}, additional_headers = {})
       raise IOError 'File already exists at output path' if File.exist?(output_file)
 
       begin

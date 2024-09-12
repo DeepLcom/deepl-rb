@@ -8,18 +8,19 @@ module DeepL
 
         SUPPORTED_OPTIONS = %w[formality glossary_id output_format].freeze
 
-        def initialize(api, input_file_path, source_lang, target_lang, filename = nil,
-                       options = {})
-          super(api, options)
+        def initialize(api, input_file_path, source_lang, target_lang, filename = nil, # rubocop:disable Metrics/ParameterLists
+                       options = {}, additional_headers = {})
+          super(api, options, additional_headers)
           @input_file_path = input_file_path
           @source_lang = source_lang
           @target_lang = target_lang
           @filename = filename
         end
 
-        def request # rubocop:disable Metrics/AbcSize
+        def request # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
+          input_file = File.open(input_file_path, 'rb')
           form_data = [
-            ['file', File.open(input_file_path, 'rb')], ['source_lang', source_lang],
+            ['file', input_file], ['source_lang', source_lang],
             ['target_lang', target_lang]
           ]
           filename_param = filename || File.basename(input_file_path)
@@ -28,7 +29,8 @@ module DeepL
           SUPPORTED_OPTIONS.each do |option|
             form_data.push([option, options[option]]) unless options[option].nil?
           end
-          build_doc_handle(*execute_request_with_retries(post_request_with_file(form_data)))
+          build_doc_handle(*execute_request_with_retries(post_request_with_file(form_data),
+                                                         [input_file]))
         end
 
         def details
