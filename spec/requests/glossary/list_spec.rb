@@ -8,6 +8,12 @@ require 'spec_helper'
 describe DeepL::Requests::Glossary::List do
   subject(:glossary_list) { described_class.new(api, options) }
 
+  around do |tests|
+    tmp_env = replace_env_preserving_deepl_vars_except_mock_server
+    tests.call
+    ENV.replace(tmp_env)
+  end
+
   let(:api) { build_deepl_api }
   let(:options) { {} }
 

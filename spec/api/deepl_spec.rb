@@ -10,7 +10,7 @@ describe DeepL do
   subject(:deepl) { described_class.dup }
 
   around do |tests|
-    tmp_env = replace_env_preserving_deepl_vars
+    tmp_env = replace_env_preserving_deepl_vars_except_mock_server
     tests.call
     ENV.replace(tmp_env)
   end
@@ -140,21 +140,22 @@ describe DeepL do
       let(:target_lang) { 'ES' }
       let(:output_file) { 'test_translated_doc.txt' }
       let(:options) { { param: 'fake' } }
+      let(:additional_headers) { { 'Fake-Header': 'fake_value' } }
 
       around do |example|
-        tmp_env = replace_env_preserving_deepl_vars
         deepl.configure
         VCR.use_cassette('deepl_document') { example.call }
-        ENV.replace(tmp_env)
       end
 
       context 'when uploading a document' do
         it 'creates an upload object' do
           expect(DeepL::Requests::Document::Upload).to receive(:new)
             .with(deepl.api, input_file, source_lang, target_lang,
-                  "#{File.basename(@tmpfile.path)}.txt", options).and_call_original
+                  "#{File.basename(@tmpfile.path)}.txt", options,
+                  additional_headers).and_call_original
           doc_handle = deepl.document.upload(input_file, source_lang, target_lang,
-                                             "#{File.basename(@tmpfile.path)}.txt", options)
+                                             "#{File.basename(@tmpfile.path)}.txt", options,
+                                             additional_headers)
           expect(doc_handle).to be_a(DeepL::Resources::DocumentHandle)
         end
       end
@@ -169,6 +170,7 @@ describe DeepL do
                                              nil)
       end
       let(:options) { { param: 'fake' } }
+      let(:additional_headers) { { 'Fake-Header': 'fake_value' } }
 
       around do |example|
         deepl.configure
@@ -182,9 +184,10 @@ describe DeepL do
               deepl.api,
               document_handle.document_id,
               document_handle.document_key,
-              options
+              options,
+              additional_headers
             ).and_call_original
-          status = deepl.document.get_status(document_handle, options)
+          status = deepl.document.get_status(document_handle, options, additional_headers)
           expect(status).to be_a(DeepL::Resources::DocumentTranslationStatus)
         end
       end

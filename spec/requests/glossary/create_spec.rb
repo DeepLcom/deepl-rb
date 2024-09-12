@@ -10,6 +10,12 @@ describe DeepL::Requests::Glossary::Create do
     described_class.new(api, name, source_lang, target_lang, entries, options)
   end
 
+  around do |tests|
+    tmp_env = replace_env_preserving_deepl_vars_except_mock_server
+    tests.call
+    ENV.replace(tmp_env)
+  end
+
   let(:api) { build_deepl_api }
   let(:name) { 'Mi Glosario' }
   let(:source_lang) { 'EN' }

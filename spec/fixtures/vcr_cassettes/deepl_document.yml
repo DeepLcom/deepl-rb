@@ -17,6 +17,8 @@ http_interactions:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
+      Fake-Header:
+      - fake_value
   response:
     status:
       code: 200
@@ -61,6 +63,8 @@ http_interactions:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
+      Fake-Header:
+      - fake_value
   response:
     status:
       code: 200

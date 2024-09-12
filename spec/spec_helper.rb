@@ -12,6 +12,7 @@ SimpleCov.formatter = SimpleCov::Formatter::CoberturaFormatter
 
 # Load lib
 require_relative '../lib/deepl'
+require_relative 'integration_tests/integration_test_utils'
 
 # Lib config
 ENV['DEEPL_AUTH_KEY'] ||= 'TEST-TOKEN'
@@ -69,9 +70,19 @@ end
 def replace_env_preserving_deepl_vars
   env_auth_key = ENV.fetch('DEEPL_AUTH_KEY', false)
   env_server_url = ENV.fetch('DEEPL_SERVER_URL', false)
+  env_mock_server_port = ENV.fetch('DEEPL_MOCK_SERVER_PORT', false)
   tmp_env = ENV.to_hash
   ENV.clear
   ENV['DEEPL_AUTH_KEY'] = (env_auth_key || 'VALID')
   ENV['DEEPL_SERVER_URL'] = (env_server_url || '')
+  ENV['DEEPL_MOCK_SERVER_PORT'] = (env_mock_server_port || '')
+  tmp_env
+end
+
+def replace_env_preserving_deepl_vars_except_mock_server
+  env_auth_key = ENV.fetch('DEEPL_AUTH_KEY', false)
+  tmp_env = ENV.to_hash
+  ENV.clear
+  ENV['DEEPL_AUTH_KEY'] = (env_auth_key || 'VALID')
   tmp_env
 end
