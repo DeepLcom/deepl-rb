@@ -8,23 +8,25 @@ module DeepL
     class ExceptionBuilder
       attr_reader :request, :response
 
-      ERROR_CODE_CLASS_MAP = {
-        '400' => Exceptions::BadRequest,
-        '401' => Exceptions::AuthorizationFailed,
-        '403' => Exceptions::AuthorizationFailed,
-        '404' => Exceptions::NotFound,
-        '413' => Exceptions::RequestEntityTooLarge,
-        '429' => Exceptions::LimitExceeded,
-        '456' => Exceptions::QuotaExceeded,
-        '500' => Exceptions::ServerError
-      }.freeze
+      def self.error_class_from_response_code(code) # rubocop:disable Metrics/CyclomaticComplexity
+        case code
+        when 400 then Exceptions::BadRequest
+        when 401, 403 then Exceptions::AuthorizationFailed
+        when 404 then Exceptions::NotFound
+        when 413 then Exceptions::RequestEntityTooLarge
+        when 429 then Exceptions::LimitExceeded
+        when 456 then Exceptions::QuotaExceeded
+        when 500..599 then Exceptions::ServerError
+        else Exceptions::RequestError
+        end
+      end
 
       def initialize(response)
         @response = response
       end
 
       def build
-        error_class = ERROR_CODE_CLASS_MAP[response.code.to_s] || Exceptions::RequestError
+        error_class = self.class.error_class_from_response_code(response.code.to_i)
         error_class.new(response)
       end
     end
