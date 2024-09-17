@@ -1,4 +1,4 @@
-# Copyright 2021 Daniel Herzog
+# Copyright 2024 DeepL SE
 # Use of this source code is governed by an MIT
 # license that can be found in the LICENSE.md file.
 # frozen_string_literal: true
