@@ -2,6 +2,7 @@ The MIT License (MIT)
 =====================
 
 Copyright © `2018` `Daniel Herzog`
+Copyright © `2024` `DeepL SE (https://www.deepl.com)`
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation

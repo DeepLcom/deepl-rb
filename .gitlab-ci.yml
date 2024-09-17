@@ -74,6 +74,15 @@ secret_detection:
   rules:
     - if: $CI_MERGE_REQUEST_ID
 
+license_check:
+  stage: check
+  before_script:
+    - echo "overriding default before_script..."
+  script:
+    - ./license_checker.sh '*.rb' | tee license_check_output.txt
+    - '[ ! -s license_check_output.txt ]'
+
+
 # stage: test ----------------------
 
 .test_base:

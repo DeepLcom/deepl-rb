@@ -1,22 +1,14 @@
-# Work in progress
-
-DeepL is working with the original creator of deepl-rb to take over
-responsibility for the project. This fork will eventually be the the basis for
-the gem and the place where future development will occur.
-
-In the meanwhile, though, the gem still points to https://github.com/wikiti/deepl-rb.
-
-When the handover is complete and we consider the fork "ready for release" (and
-the gem has been updated to point to our fork), we'll add the Ruby library to
-our API documentation: https://www.deepl.com/docs-api/api-access/client-libraries/
-
----
-
 [![Gem Version](https://badge.fury.io/rb/deepl-rb.svg)](https://badge.fury.io/rb/deepl-rb)
 
-# DeepL for ruby
+# DeepL Ruby Library
 
-A simple ruby wrapper for the [DeepL translation API (v2)](https://www.deepl.com/api.html).
+The [DeepL API](https://developers.deepl.com/docs/api-reference/translate) is a language translation API that allows other computer programs to send texts and documents to DeepL's servers and receive high-quality translations. This opens a whole universe of opportunities for developers: any translation product you can imagine can now be built on top of DeepL's best-in-class translation technology.
+
+The DeepL Ruby library offers a convenient way for applications written in Ruby to interact with the DeepL API. We intend to support all API functions with the library, though support for new features may be added to the library after they’re added to the API.
+
+## Getting an authentication key
+
+To use the DeepL Ruby Library, you'll need an API authentication key. To get a key, [please create an account here](https://www.deepl.com/pro?utm_source=github&utm_medium=github-ruby-readme#developer). With a DeepL API Free account you can translate up to 500,000 characters/month for free.
 
 ## Installation
 
@@ -411,7 +403,7 @@ bundle exec rake test
 ### Caution: Changing VCR Tests
 
 If you need to rerecord some of the VCR tests, simply setting `record: :new_episodes` and rerunning `rspec` won't be enough in some cases, specifically around document translation (due to its statefulness) and glossaries (since a glossary ID is associated with a specific API account).
-For example, there are document translations tests that split up the `upload`, `get_status` and `download` calls into separate test cases. You need to first rerecord the `upload` call, you can do execute a single test like this:
+For example, there are document translations tests that split up the `upload`, `get_status` and `download` calls into separate test cases. You need to first rerecord the `upload` call, you can do execute a single test like this (the line should be where the `it` block of the test starts):
 
 ```sh
 rspec ./spec/api/deepl_spec.rb:152

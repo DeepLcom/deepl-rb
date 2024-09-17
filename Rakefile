@@ -16,15 +16,17 @@ require 'juwelier'
 
 Juwelier::Tasks.new do |gem|
   gem.name = 'deepl-rb'
-  gem.homepage = 'http://github.com/wikiti/deepl-rb'
+  gem.homepage = 'https://github.com/DeepLcom/deepl-rb'
   gem.license = 'MIT'
-  gem.summary = 'A simple ruby wrapper for the DeepL API'
+  gem.summary = 'Official Ruby library for the DeepL language translation API.'
   gem.description =
-    'A simple ruby wrapper for the DeepL translation API (v1). ' \
+    'Official Ruby library for the DeepL language translation API (v2). ' \
     'For more information, check this: https://www.deepl.com/docs/api-reference.html'
 
-  gem.email = 'info@danielherzog.es'
-  gem.authors = ['Daniel Herzog']
+  gem.email = 'open-source@deepl.com'
+  gem.authors = ['DeepL SE']
+  gem.files.exclude '.github'
+  gem.files.exclude '.circleci'
 end
 
 Juwelier::RubygemsDotOrgTasks.new
