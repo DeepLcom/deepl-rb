@@ -33,6 +33,18 @@ describe DeepL::DocumentApi do
       expect(example_document_translation(target_lang)).to eq(output_file_contents)
     end
 
+    it 'Translates a document from a filepath without a filename' do
+      File.unlink(output_document_path)
+      source_lang = default_lang_args[:source_lang]
+      target_lang = default_lang_args[:target_lang]
+      example_doc_path = example_document_path(source_lang)
+      DeepL.document.translate_document(example_doc_path, output_document_path,
+                                        source_lang, target_lang)
+      output_file_contents = File.read(output_document_path)
+
+      expect(example_document_translation(target_lang)).to eq(output_file_contents)
+    end
+
     it 'Translates a document using the lower-level methods and returns the correct status' do # rubocop:disable RSpec/ExampleLength
       File.unlink(output_document_path)
       source_lang = default_lang_args[:source_lang]

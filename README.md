@@ -252,7 +252,7 @@ puts usage.character_limit
 To translate a document, use the `document.translate_document` method. Example:
 
 ```rb
-DeepL.document.translate_document('/path/to/spanish_document.pdf', 'ES', 'EN', '/path/to/translated_document.pdf')
+DeepL.document.translate_document('/path/to/spanish_document.pdf', '/path/to/translated_document.pdf', 'ES', 'EN')
 ```
 
 The lower level `upload`, `get_status` and `download` methods are also exposed, as well as the convenience method `wait_until_document_translation_finished` on the `DocumentHandle` object, which would replace `get_status`:

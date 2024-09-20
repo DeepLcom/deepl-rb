@@ -88,8 +88,8 @@ module DeepL
     # @param [Hash] additional_headers Additional headers for the upload.
     # @return [DeepL::Resources::DocumentTranslationStatus] Status of the document translation.
 
-    def translate_document(input_file, output_file, source_lang, target_lang, filename, # rubocop:disable Metrics/MethodLength,Metrics/ParameterLists
-                           options = {}, additional_headers = {})
+    def translate_document(input_file, output_file, source_lang, target_lang, # rubocop:disable Metrics/MethodLength,Metrics/ParameterLists
+                           filename = nil, options = {}, additional_headers = {})
       raise IOError 'File already exists at output path' if File.exist?(output_file)
 
       begin
