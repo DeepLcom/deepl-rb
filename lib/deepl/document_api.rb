@@ -83,7 +83,8 @@ module DeepL
     #                             ISO 639-1, 2-letter language codes, plus a hyphen "-" with the
     #                             variant identifier for languages with variants/dialects/... .
     # @param [String, nil] filename The filename of the file, including its extension. Used to open
-    #                               the different kinds of documents (PDFs, etc).
+    #                               the different kinds of documents (PDFs, etc). If nil, will use
+    #                               the filename of +input_file_path+.
     # @param [Hash] options Additional options for the upload.
     # @param [Hash] additional_headers Additional headers for the upload.
     # @return [DeepL::Resources::DocumentTranslationStatus] Status of the document translation.
