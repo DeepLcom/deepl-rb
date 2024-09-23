@@ -25,6 +25,12 @@ Juwelier::Tasks.new do |gem|
 
   gem.email = 'open-source@deepl.com'
   gem.authors = ['DeepL SE']
+  gem.metadata = {
+    'bug_tracker_uri' => 'https://github.com/DeepLcom/deepl-rb/issues',
+    'changelog_uri' => 'https://github.com/DeepLcom/deepl-rb/blob/main/CHANGELOG.md',
+    'documentation_uri' => 'https://github.com/DeepLcom/deepl-rb/blob/main/README.md',
+    'homepage_uri' => 'https://github.com/DeepLcom/deepl-rb'
+  }
   gem.files.exclude '.github'
   gem.files.exclude '.circleci'
 end
