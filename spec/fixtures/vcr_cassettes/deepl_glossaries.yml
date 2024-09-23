@@ -14,7 +14,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      - deepl-ruby/3.0.2 (darwin23) ruby/3.3.3
       Content-Type:
       - application/x-www-form-urlencoded
   response:
@@ -50,7 +50,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      - deepl-ruby/3.0.2 (darwin23) ruby/3.3.3
   response:
     status:
       code: 200
@@ -84,7 +84,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      - deepl-ruby/3.0.2 (darwin23) ruby/3.3.3
   response:
     status:
       code: 404
@@ -118,7 +118,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      - deepl-ruby/3.0.2 (darwin23) ruby/3.3.3
   response:
     status:
       code: 200
@@ -153,7 +153,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      - deepl-ruby/3.0.2 (darwin23) ruby/3.3.3
   response:
     status:
       code: 204
@@ -183,7 +183,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      - deepl-ruby/3.0.2 (darwin23) ruby/3.3.3
   response:
     status:
       code: 404
@@ -217,7 +217,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      - deepl-ruby/3.0.2 (darwin23) ruby/3.3.3
   response:
     status:
       code: 200
@@ -251,7 +251,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      - deepl-ruby/3.0.2 (darwin23) ruby/3.3.3
   response:
     status:
       code: 404
@@ -285,7 +285,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      - deepl-ruby/3.0.2 (darwin23) ruby/3.3.3
   response:
     status:
       code: 200
@@ -319,7 +319,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      - deepl-ruby/3.0.2 (darwin23) ruby/3.3.3
       Content-Type:
       - application/x-www-form-urlencoded
   response:
@@ -355,7 +355,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      - deepl-ruby/3.0.2 (darwin23) ruby/3.3.3
   response:
     status:
       code: 204
@@ -381,7 +381,7 @@ http_interactions:
       Authorization:
       - DeepL-Auth-Key VALID_TOKEN
       User-Agent:
-      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      - deepl-ruby/3.0.2 (darwin23) ruby/3.3.3
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -421,7 +421,7 @@ http_interactions:
       Authorization:
       - DeepL-Auth-Key VALID_TOKEN
       User-Agent:
-      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      - deepl-ruby/3.0.2 (darwin23) ruby/3.3.3
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -461,7 +461,7 @@ http_interactions:
       Authorization:
       - DeepL-Auth-Key VALID_TOKEN
       User-Agent:
-      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      - deepl-ruby/3.0.2 (darwin23) ruby/3.3.3
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -501,7 +501,7 @@ http_interactions:
       Authorization:
       - DeepL-Auth-Key VALID_TOKEN
       User-Agent:
-      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      - deepl-ruby/3.0.2 (darwin23) ruby/3.3.3
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -545,7 +545,7 @@ http_interactions:
       Authorization:
       - DeepL-Auth-Key VALID_TOKEN
       User-Agent:
-      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      - deepl-ruby/3.0.2 (darwin23) ruby/3.3.3
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -585,7 +585,7 @@ http_interactions:
       Authorization:
       - DeepL-Auth-Key VALID_TOKEN
       User-Agent:
-      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      - deepl-ruby/3.0.2 (darwin23) ruby/3.3.3
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -625,7 +625,7 @@ http_interactions:
       Authorization:
       - DeepL-Auth-Key VALID_TOKEN
       User-Agent:
-      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      - deepl-ruby/3.0.2 (darwin23) ruby/3.3.3
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -665,7 +665,7 @@ http_interactions:
       Authorization:
       - DeepL-Auth-Key VALID_TOKEN
       User-Agent:
-      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      - deepl-ruby/3.0.2 (darwin23) ruby/3.3.3
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -707,7 +707,7 @@ http_interactions:
       Authorization:
       - DeepL-Auth-Key VALID_TOKEN
       User-Agent:
-      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      - deepl-ruby/3.0.2 (darwin23) ruby/3.3.3
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -749,7 +749,7 @@ http_interactions:
       Authorization:
       - DeepL-Auth-Key VALID_TOKEN
       User-Agent:
-      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      - deepl-ruby/3.0.2 (darwin23) ruby/3.3.3
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -791,7 +791,7 @@ http_interactions:
       Authorization:
       - DeepL-Auth-Key VALID_TOKEN
       User-Agent:
-      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      - deepl-ruby/3.0.2 (darwin23) ruby/3.3.3
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -838,7 +838,7 @@ http_interactions:
       Authorization:
       - DeepL-Auth-Key VALID_TOKEN
       User-Agent:
-      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      - deepl-ruby/3.0.2 (darwin23) ruby/3.3.3
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -880,7 +880,7 @@ http_interactions:
       Authorization:
       - DeepL-Auth-Key VALID_TOKEN
       User-Agent:
-      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      - deepl-ruby/3.0.2 (darwin23) ruby/3.3.3
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -922,7 +922,7 @@ http_interactions:
       Authorization:
       - DeepL-Auth-Key VALID_TOKEN
       User-Agent:
-      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      - deepl-ruby/3.0.2 (darwin23) ruby/3.3.3
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -964,7 +964,7 @@ http_interactions:
       Authorization:
       - DeepL-Auth-Key VALID_TOKEN
       User-Agent:
-      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      - deepl-ruby/3.0.2 (darwin23) ruby/3.3.3
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -1008,7 +1008,7 @@ http_interactions:
       Authorization:
       - DeepL-Auth-Key VALID_TOKEN
       User-Agent:
-      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      - deepl-ruby/3.0.2 (darwin23) ruby/3.3.3
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -1052,7 +1052,7 @@ http_interactions:
       Authorization:
       - DeepL-Auth-Key VALID_TOKEN
       User-Agent:
-      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      - deepl-ruby/3.0.2 (darwin23) ruby/3.3.3
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -1094,7 +1094,7 @@ http_interactions:
       Authorization:
       - DeepL-Auth-Key VALID_TOKEN
       User-Agent:
-      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      - deepl-ruby/3.0.2 (darwin23) ruby/3.3.3
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -1134,7 +1134,7 @@ http_interactions:
       Authorization:
       - DeepL-Auth-Key VALID_TOKEN
       User-Agent:
-      - deepl-ruby/2.5.3 (darwin23) ruby/3.3.3
+      - deepl-ruby/3.0.2 (darwin23) ruby/3.3.3
       Content-Type:
       - application/json
       Accept-Encoding:

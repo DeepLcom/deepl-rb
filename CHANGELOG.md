@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Fixed
 * Fix metadata displayed on RubyGems.org for this library.
+* Fixed library version sent in the `User-Agent` string.
 
 ## [3.0.1] - 2024-09-23
 ### Fixed
