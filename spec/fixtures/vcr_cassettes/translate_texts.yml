@@ -10146,4 +10146,95 @@ http_interactions:
       encoding: UTF-8
       string: ''
   recorded_at: Tue, 09 Jul 2024 10:04:32 GMT
+- request:
+    method: post
+    uri: https://api.deepl.com/v2/translate
+    body:
+      encoding: UTF-8
+      string: '{"text":["That is hot!"],"source_lang":"EN","target_lang":"ES","context":""}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.0.2 (darwin22) ruby/3.2.1
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 25 Sep 2024 16:07:59 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=88, l7_lb_idle;dur=0, l7_lb_receive;dur=0, l7_lb_total;dur=126
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      X-Trace-Id:
+      - 53712edb2fc24c7f9d59e341bd80977a
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJ0cmFuc2xhdGlvbnMiOlt7ImRldGVjdGVkX3NvdXJjZV9sYW5ndWFnZSI6IkVOIiwidGV4dCI6IsKhRXNvIGVzdMOhIGNhbGllbnRlISJ9XX0=
+  recorded_at: Wed, 25 Sep 2024 16:07:59 GMT
+- request:
+    method: post
+    uri: https://api.deepl.com/v2/translate
+    body:
+      encoding: UTF-8
+      string: '{"text":["That is hot!"],"source_lang":"EN","target_lang":"ES","context":"He
+        did not like the jalapenos in his meal."}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.0.2 (darwin22) ruby/3.2.1
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 25 Sep 2024 16:08:00 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=67, l7_lb_idle;dur=0, l7_lb_receive;dur=0, l7_lb_total;dur=124
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      X-Trace-Id:
+      - 1704af9968bf4570b155c12cc0ae0665
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJ0cmFuc2xhdGlvbnMiOlt7ImRldGVjdGVkX3NvdXJjZV9sYW5ndWFnZSI6IkVOIiwidGV4dCI6IsKhRXNvIGVzIHBpY2FudGUhIn1dfQ==
+  recorded_at: Wed, 25 Sep 2024 16:08:00 GMT
 recorded_with: VCR 6.2.0

@@ -127,6 +127,16 @@ puts translation.text
 # => "<p>Una muestra</p>"
 ```
 
+To translate with context, simply supply the `context` parameter:
+
+```rb
+translation = DeepL.translate 'That is hot!', 'EN', 'ES',
+                              context: 'He did not like the jalapenos in his meal.'
+
+puts translation.text
+# => "¡Eso es picante!"
+```
+
 The following parameters will be automatically converted:
 
 | Parameter             | Conversion
@@ -139,6 +149,7 @@ The following parameters will be automatically converted:
 | `ignore_tags`         | Converts arrays to strings joining by commas
 | `formality`           | No conversion applied
 | `glossary_id`         | No conversion applied
+| `context`             | No conversion applied
 
 ### Glossaries
 

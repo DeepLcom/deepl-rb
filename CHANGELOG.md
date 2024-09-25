@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 ## [Unreleased]
+### Added
+* Added doc example and tests for context parameter
 ### Fixed
 * Fix metadata displayed on RubyGems.org for this library.
 * Fixed library version sent in the `User-Agent` string.

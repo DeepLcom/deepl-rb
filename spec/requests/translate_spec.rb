@@ -292,6 +292,30 @@ describe DeepL::Requests::Translate do
       end
     end
 
+    context 'when performing a valid request with context' do
+      let(:text) { 'That is hot!' }
+
+      context 'when context is empty' do
+        let(:options) { { context: '' } }
+
+        it 'translates correctly with empty context' do
+          res = translate.request
+          expect(res).to be_a(DeepL::Resources::Text)
+          expect(res.text).to eq('¡Eso está caliente!')
+        end
+      end
+
+      context 'when context is set' do
+        let(:options) { { context: 'He did not like the jalapenos in his meal.' } }
+
+        it 'translates correctly with context taken into account' do
+          res = translate.request
+          expect(res).to be_a(DeepL::Resources::Text)
+          expect(res.text).to eq('¡Eso es picante!')
+        end
+      end
+    end
+
     context 'when performing a bad request' do
       context 'when using an invalid token' do
         let(:api) do
