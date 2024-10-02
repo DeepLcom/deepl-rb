@@ -1,0 +1,13 @@
+0d52c9d0bd4a3ba8658082dc423b75eaef19df4b:spec/api/configuration_spec.rb:generic-api-key:60
+fc068fd7b86172928f9dd9084aca4c441f996880:spec/api/configuration_spec.rb:generic-api-key:60
+f71cdb11f9fe277fcfe90e8e694a52a27e2a5274:spec/api/configuration_spec.rb:generic-api-key:60
+af659c126c3deaa4129f3816174c69ba542e8e61:spec/fixtures/vcr_cassettes/deepl_document.yml:generic-api-key:45
+8cc9017bcce8fd0e56638eafdc91caff8faca8fe:spec/fixtures/vcr_cassettes/deepl_document.yml:generic-api-key:45
+fe1ca256e85c762b1a66007cd801dc92a7e2623c:spec/fixtures/vcr_cassettes/deepl_document.yml:generic-api-key:45
+e8b2673d7c0065d4d6b2a331145f752f159d5165:spec/fixtures/vcr_cassettes/deepl_document.yml:generic-api-key:45
+52c689005c97eb908cfdac19a181e01289bfae7e:spec/fixtures/vcr_cassettes/deepl_document.yml:generic-api-key:45
+af659c126c3deaa4129f3816174c69ba542e8e61:spec/fixtures/vcr_cassettes/deepl_document.yml:generic-api-key:52
+e8b2673d7c0065d4d6b2a331145f752f159d5165:spec/fixtures/vcr_cassettes/deepl_document.yml:generic-api-key:52
+8cc9017bcce8fd0e56638eafdc91caff8faca8fe:spec/fixtures/vcr_cassettes/deepl_document.yml:generic-api-key:52
+fe1ca256e85c762b1a66007cd801dc92a7e2623c:spec/fixtures/vcr_cassettes/deepl_document.yml:generic-api-key:52
+52c689005c97eb908cfdac19a181e01289bfae7e:spec/fixtures/vcr_cassettes/deepl_document.yml:generic-api-key:52
