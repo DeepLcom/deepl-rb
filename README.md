@@ -137,6 +137,23 @@ puts translation.text
 # => "¡Eso es picante!"
 ```
 
+To specify a type of translation model to use, you can use the `model_type` option:
+
+```rb
+translation = DeepL.translate 'That is hot!', 'EN', 'DE',
+                              model_type: 'quality_optimized'
+```
+
+This would use next-gen translation models for the translation. The available values are
+
+- `'quality_optimized'`: use a translation model that maximizes translation quality, at the
+  cost of response time. This option may be unavailable for some language pairs.
+- `'prefer_quality_optimized'`: use the highest-quality translation model for the given
+  language pair.
+- `'latency_optimized'`: use a translation model that minimizes response time, at the cost
+  of translation quality.
+
+
 The following parameters will be automatically converted:
 
 | Parameter             | Conversion

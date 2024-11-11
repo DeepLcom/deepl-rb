@@ -10237,4 +10237,136 @@ http_interactions:
       string: !binary |-
         eyJ0cmFuc2xhdGlvbnMiOlt7ImRldGVjdGVkX3NvdXJjZV9sYW5ndWFnZSI6IkVOIiwidGV4dCI6IsKhRXNvIGVzIHBpY2FudGUhIn1dfQ==
   recorded_at: Wed, 25 Sep 2024 16:08:00 GMT
+- request:
+    method: post
+    uri: https://api.deepl.com/v2/translate
+    body:
+      encoding: UTF-8
+      string: '{"text":["Sample text"],"source_lang":"EN","target_lang":"DE","model_type":"quality_optimized"}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.0.2 (darwin22) ruby/3.2.1
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 08 Nov 2024 15:57:39 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=89, l7_lb_idle;dur=0, l7_lb_receive;dur=0, l7_lb_total;dur=165
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      X-Trace-Id:
+      - 7d71b768eebc41da8c5b820c33e7cdc1
+    body:
+      encoding: ASCII-8BIT
+      string: '{"translations":[{"detected_source_language":"EN","text":"Mustertext","model_type_used":"quality_optimized"}]}'
+  recorded_at: Fri, 08 Nov 2024 15:57:39 GMT
+- request:
+    method: post
+    uri: https://api.deepl.com/v2/translate
+    body:
+      encoding: UTF-8
+      string: '{"text":["Sample text"],"source_lang":"EN","target_lang":"DE","model_type":"prefer_quality_optimized"}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.0.2 (darwin22) ruby/3.2.1
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 11 Nov 2024 10:58:59 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=98, l7_lb_idle;dur=1, l7_lb_receive;dur=0, l7_lb_total;dur=320
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      X-Trace-Id:
+      - 0fa07be47b3b458ebf50268ca2efe7fe
+    body:
+      encoding: ASCII-8BIT
+      string: '{"translations":[{"detected_source_language":"EN","text":"Mustertext","model_type_used":"quality_optimized"}]}'
+  recorded_at: Mon, 11 Nov 2024 10:58:59 GMT
+- request:
+    method: post
+    uri: https://api.deepl.com/v2/translate
+    body:
+      encoding: UTF-8
+      string: '{"text":["Sample text"],"source_lang":"EN","target_lang":"DE","model_type":"latency_optimized"}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.0.2 (darwin22) ruby/3.2.1
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 15 Nov 2024 11:35:22 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=136, l7_lb_idle;dur=2, l7_lb_receive;dur=0, l7_lb_total;dur=156
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      X-Trace-Id:
+      - de2645cb65c3418db54e3bdefd35fe52
+    body:
+      encoding: ASCII-8BIT
+      string: '{"translations":[{"detected_source_language":"EN","text":"Beispieltext","model_type_used":"latency_optimized"}]}'
+  recorded_at: Fri, 15 Nov 2024 11:35:22 GMT
 recorded_with: VCR 6.2.0

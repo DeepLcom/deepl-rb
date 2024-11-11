@@ -6,13 +6,14 @@
 module DeepL
   module Resources
     class Text < Base
-      attr_reader :text, :detected_source_language
+      attr_reader :text, :detected_source_language, :model_type_used
 
-      def initialize(text, detected_source_language, *args)
+      def initialize(text, detected_source_language, model_type_used, *args)
         super(*args)
 
         @text = text
         @detected_source_language = detected_source_language
+        @model_type_used = model_type_used
       end
 
       def to_s

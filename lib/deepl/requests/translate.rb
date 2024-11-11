@@ -27,7 +27,7 @@ module DeepL
       }.freeze
 
       attr_reader :text, :source_lang, :target_lang, :ignore_tags, :splitting_tags,
-                  :non_splitting_tags
+                  :non_splitting_tags, :model_type
 
       def initialize(api, text, source_lang, target_lang, options = {})
         super(api, options)
@@ -68,7 +68,7 @@ module DeepL
 
         texts = data['translations'].map do |translation|
           Resources::Text.new(translation['text'], translation['detected_source_language'],
-                              request, response)
+                              translation['model_type_used'], request, response)
         end
 
         texts.size == 1 ? texts.first : texts

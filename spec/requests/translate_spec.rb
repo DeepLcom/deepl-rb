@@ -190,6 +190,18 @@ describe DeepL::Requests::Translate do
         expect(request.options[:formality]).to eq('more')
       end
     end
+
+    context 'when using `model_type` options' do
+      it 'works with a nil value' do
+        request = described_class.new(api, nil, nil, nil, model_type: nil)
+        expect(request.options[:model_type]).to be_nil
+      end
+
+      it 'works with a string' do
+        request = described_class.new(api, nil, nil, nil, model_type: 'latency_optimized')
+        expect(request.options[:model_type]).to eq('latency_optimized')
+      end
+    end
   end
 
   describe '#request' do
@@ -312,6 +324,21 @@ describe DeepL::Requests::Translate do
           res = translate.request
           expect(res).to be_a(DeepL::Resources::Text)
           expect(res.text).to eq('¡Eso es picante!')
+        end
+      end
+    end
+
+    context 'when performing a request with a model type' do
+      let(:target_lang) { 'DE' }
+
+      %w[quality_optimized latency_optimized prefer_quality_optimized].each do |model_type_str|
+        it "translates correctly with #{model_type_str} models" do
+          options = { model_type: model_type_str }
+          translate = described_class.new(api, text, source_lang, target_lang, options)
+          res = translate.request
+          expect(res).to be_a(DeepL::Resources::Text)
+          expected_model_type = model_type_str.sub(/^prefer_/, '')
+          expect(res.model_type_used).to eq(expected_model_type)
         end
       end
     end

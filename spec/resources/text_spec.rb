@@ -6,7 +6,7 @@
 require 'spec_helper'
 
 describe DeepL::Resources::Text do
-  subject(:text) { described_class.new('Target', 'es', nil, nil) }
+  subject(:text) { described_class.new('Target', 'es', nil, nil, nil) }
 
   describe '#initialize' do
     context 'when building a basic object' do
