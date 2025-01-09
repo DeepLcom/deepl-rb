@@ -57,9 +57,13 @@ VCR.configure do |config|
   config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
   config.hook_into :webmock
   config.filter_sensitive_data('VALID_TOKEN') { ENV.fetch('DEEPL_AUTH_KEY', nil) }
+
+  # to record new or missing VCR cassettes, call rspec like this:
+  # $ VCR_RECORD_MODE=new_episodes bundle exec rspec
+
+  record_mode = ENV['VCR_RECORD_MODE'] ? ENV['VCR_RECORD_MODE'].to_sym : :none
   config.default_cassette_options = {
-    # Uncomment this line when adding new tests, run the tests once, then comment it again
-    # record: :new_episodes,
+    record: record_mode,
     match_requests_on: [:method, uri_ignoring_deepl_api_subdomain, :body,
                         headers_ignoring_user_agent]
   }

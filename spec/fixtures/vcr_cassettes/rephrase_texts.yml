@@ -1,0 +1,401 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.deepl.com/v2/write/rephrase
+    body:
+      encoding: UTF-8
+      string: '{"text":["As Gregor Samsa awoke one morning from uneasy dreams he found
+        himself transformed."],"target_lang":"EN"}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.0.2 (darwin24) ruby/3.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 10 Jan 2025 07:00:45 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Trace-Id:
+      - '09daf98547c94050b68e39cf38b0fe7d'
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=95, l7_lb_idle;dur=3, l7_lb_receive;dur=0, l7_lb_total;dur=378
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: ASCII-8BIT
+      string: '{"improvements":[{"text":"When Gregor Samsa awoke one morning from
+        troubled dreams, he found himself transformed.","detected_source_language":"en","target_language":"en-US"}]}'
+  recorded_at: Fri, 10 Jan 2025 07:00:45 GMT
+- request:
+    method: post
+    uri: https://api.deepl.com/v2/write/rephrase
+    body:
+      encoding: UTF-8
+      string: '{"text":["As Gregor Samsa awoke one morning from uneasy dreams he found
+        himself transformed.","He lay on his armour-like back, and if he lifted his
+        head a little"],"target_lang":"EN"}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.0.2 (darwin24) ruby/3.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 10 Jan 2025 07:00:45 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Trace-Id:
+      - df25db169c5f4c198ff7b5a319a16669
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=95, l7_lb_idle;dur=0, l7_lb_receive;dur=0, l7_lb_total;dur=423
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: ASCII-8BIT
+      string: '{"improvements":[{"text":"When Gregor Samsa awoke one morning from
+        troubled dreams, he found himself transformed.","detected_source_language":"en","target_language":"en-US"},{"text":"He
+        lay on his armor-like back, and when he lifted his head a little","detected_source_language":"en","target_language":"en-US"}]}'
+  recorded_at: Fri, 10 Jan 2025 07:00:45 GMT
+- request:
+    method: post
+    uri: https://api.deepl.com/v2/write/rephrase
+    body:
+      encoding: UTF-8
+      string: '{"text":["As Gregor Samsa awoke one morning from uneasy dreams he found
+        himself transformed."],"target_lang":"EN","tone":"friendly"}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.0.2 (darwin24) ruby/3.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 10 Jan 2025 07:00:46 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Trace-Id:
+      - 14fdbaa36544495a993136451b65e52b
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=94, l7_lb_idle;dur=0, l7_lb_receive;dur=0, l7_lb_total;dur=460
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: ASCII-8BIT
+      string: '{"improvements":[{"text":"One morning, Gregor Samsa woke up from restless
+        dreams to find himself in a strange new form.","detected_source_language":"en","target_language":"en-US"}]}'
+  recorded_at: Fri, 10 Jan 2025 07:00:46 GMT
+- request:
+    method: post
+    uri: https://api.deepl.com/v2/write/rephrase
+    body:
+      encoding: UTF-8
+      string: '{"text":["As Gregor Samsa awoke one morning from uneasy dreams he found
+        himself transformed.","He lay on his armour-like back, and if he lifted his
+        head a little"],"target_lang":"EN","tone":"friendly"}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.0.2 (darwin24) ruby/3.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 10 Jan 2025 07:00:46 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Trace-Id:
+      - a31d9cca4073414c9be843fffed914c3
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=93, l7_lb_idle;dur=1, l7_lb_receive;dur=0, l7_lb_total;dur=413
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: ASCII-8BIT
+      string: '{"improvements":[{"text":"One morning, Gregor Samsa woke up from restless
+        dreams to find himself in a strange new form.","detected_source_language":"en","target_language":"en-US"},{"text":"He
+        was lying on his armor-like back, and if he lifted his head just a little
+        bit...","detected_source_language":"en","target_language":"en-US"}]}'
+  recorded_at: Fri, 10 Jan 2025 07:00:47 GMT
+- request:
+    method: post
+    uri: https://api.deepl.com/v2/write/rephrase
+    body:
+      encoding: UTF-8
+      string: '{"text":["As Gregor Samsa awoke one morning from uneasy dreams he found
+        himself transformed."],"target_lang":"EN","writing_style":"business"}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.0.2 (darwin24) ruby/3.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 10 Jan 2025 07:00:47 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Trace-Id:
+      - 58d0bbf1167f40b2a62f87c2a6d7dda3
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=98, l7_lb_idle;dur=1, l7_lb_receive;dur=0, l7_lb_total;dur=385
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: ASCII-8BIT
+      string: '{"improvements":[{"text":"Gregor Samsa awoke one morning, having had
+        disturbing dreams, to find himself transformed.","detected_source_language":"en","target_language":"en-US"}]}'
+  recorded_at: Fri, 10 Jan 2025 07:00:47 GMT
+- request:
+    method: post
+    uri: https://api.deepl.com/v2/write/rephrase
+    body:
+      encoding: UTF-8
+      string: '{"text":["As Gregor Samsa awoke one morning from uneasy dreams he found
+        himself transformed.","He lay on his armour-like back, and if he lifted his
+        head a little"],"target_lang":"EN","writing_style":"business"}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.0.2 (darwin24) ruby/3.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 10 Jan 2025 07:00:48 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Trace-Id:
+      - 37a69ff78833465cbc9ddadd4f9aca36
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=96, l7_lb_idle;dur=0, l7_lb_receive;dur=0, l7_lb_total;dur=374
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: ASCII-8BIT
+      string: '{"improvements":[{"text":"Gregor Samsa awoke one morning, having had
+        disturbing dreams, to find himself transformed.","detected_source_language":"en","target_language":"en-US"},{"text":"He
+        was positioned on his back, which was similar to armor. If he lifted his head
+        slightly,","detected_source_language":"en","target_language":"en-US"}]}'
+  recorded_at: Fri, 10 Jan 2025 07:00:48 GMT
+- request:
+    method: post
+    uri: https://api.deepl.com/v2/write/rephrase
+    body:
+      encoding: UTF-8
+      string: '{"text":["As Gregor Samsa awoke one morning from uneasy dreams he found
+        himself transformed."],"target_lang":"EN","writing_style":"angry"}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.0.2 (darwin24) ruby/3.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Fri, 10 Jan 2025 07:00:48 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Trace-Id:
+      - b406cc026c004d4c80d76131df636d8a
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=98, l7_lb_idle;dur=1, l7_lb_receive;dur=0, l7_lb_total;dur=109
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: UTF-8
+      string: '{"message":"Bad request. Reason: Unsupported value for field writing_style."}'
+  recorded_at: Fri, 10 Jan 2025 07:00:48 GMT
+- request:
+    method: post
+    uri: https://api.deepl.com/v2/write/rephrase
+    body:
+      encoding: UTF-8
+      string: '{"text":["As Gregor Samsa awoke one morning from uneasy dreams he found
+        himself transformed."],"target_lang":"EN","writing_style":"business","tone":"friendly"}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.0.2 (darwin24) ruby/3.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Fri, 10 Jan 2025 07:00:48 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Trace-Id:
+      - 1b7680d714c24de49ded702b382c69b0
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=98, l7_lb_idle;dur=1, l7_lb_receive;dur=0, l7_lb_total;dur=105
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: UTF-8
+      string: '{"message":"Bad request. Reason: Both writing_style and tone defined.
+        Currently only style OR tone can be chosen for a single request.."}'
+  recorded_at: Fri, 10 Jan 2025 07:00:48 GMT
+- request:
+    method: post
+    uri: https://api.deepl.com/v2/write/rephrase
+    body:
+      encoding: UTF-8
+      string: '{"text":["As Gregor Samsa awoke one morning from uneasy dreams he found
+        himself transformed."],"target_lang":"EN"}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key invalid
+      User-Agent:
+      - deepl-ruby/3.0.2 (darwin24) ruby/3.3.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      Date:
+      - Fri, 10 Jan 2025 07:00:48 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Trace-Id:
+      - 568ef89e665f499ebcbc62b90ba09019
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Server-Timing:
+      - l7_lb_tls;dur=121, l7_lb_idle;dur=1, l7_lb_receive;dur=0, l7_lb_total;dur=132
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+    body:
+      encoding: ASCII-8BIT
+      string: '{"message":"Invalid API key."}'
+  recorded_at: Fri, 10 Jan 2025 07:00:48 GMT
+recorded_with: VCR 6.3.1

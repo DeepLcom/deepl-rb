@@ -168,6 +168,37 @@ The following parameters will be automatically converted:
 | `glossary_id`         | No conversion applied
 | `context`             | No conversion applied
 
+### Rephrase Text
+
+To rephrase or improve text, including changing the writing style or tone of the text, use the `rephrase` method:
+
+```rb
+rephrased_text = DeepL.rephrase 'you will acquire new rephrased text', 'EN'
+
+puts rephrased_text.class
+# => DeepL::Resources::Text
+puts rephrased_text.text
+# => 'You get new rephrased text.'
+```
+
+As with translate, the text input can be a single string or an array of strings.
+
+You can use the additional arguments to specify the writing style or tone you want for the rephrased text:
+
+```rb
+rephrased_text = DeepL.rephrase 'you will acquire new rephrased text', 'EN', 'casual'
+
+puts rephrased_text.text
+# => 'You'll get new, rephrased text.'
+```
+
+```rb
+rephrased_text = DeepL.rephrase 'you will acquire new rephrased text', 'EN', nil, 'friendly'
+
+puts rephrased_text.text
+# => 'You'll get to enjoy new, rephrased text!'
+```
+
 ### Glossaries
 
 To create a glossary, use the `glossaries.create` method. The glossary `entries` argument should be an array of text pairs. Each pair includes the source and the target translations.

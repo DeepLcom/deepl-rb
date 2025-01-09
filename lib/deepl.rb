@@ -34,6 +34,7 @@ require 'deepl/requests/glossary/list'
 require 'deepl/requests/languages'
 require 'deepl/requests/translate'
 require 'deepl/requests/usage'
+require 'deepl/requests/rephrase'
 
 # -- Responses and resources
 require 'deepl/resources/base'
