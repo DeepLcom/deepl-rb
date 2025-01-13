@@ -121,6 +121,17 @@ describe DeepL::Requests::Translate do
         request = described_class.new(api, nil, nil, nil, split_sentences: '1')
         expect(request.options[:split_sentences]).to eq('1')
       end
+
+      it 'works with provided constants' do
+        request = described_class.new(
+          api,
+          nil,
+          nil,
+          nil,
+          split_sentences: DeepL::Constants::SplitSentences::SPLIT_ON_PUNCTUATION_AND_NEWLINES
+        )
+        expect(request.options[:split_sentences]).to eq('1')
+      end
     end
 
     context 'when using `preserve_formatting` options' do
@@ -189,6 +200,12 @@ describe DeepL::Requests::Translate do
         request = described_class.new(api, nil, nil, nil, formality: 'more')
         expect(request.options[:formality]).to eq('more')
       end
+
+      it 'works with provided constants' do
+        request = described_class.new(api, nil, nil, nil,
+                                      formality: DeepL::Constants::Formality::MORE)
+        expect(request.options[:formality]).to eq('more')
+      end
     end
 
     context 'when using `model_type` options' do
@@ -199,6 +216,12 @@ describe DeepL::Requests::Translate do
 
       it 'works with a string' do
         request = described_class.new(api, nil, nil, nil, model_type: 'latency_optimized')
+        expect(request.options[:model_type]).to eq('latency_optimized')
+      end
+
+      it 'works with provided constants' do
+        request = described_class.new(api, nil, nil, nil,
+                                      model_type: DeepL::Constants::ModelType::LATENCY_OPTIMIZED)
         expect(request.options[:model_type]).to eq('latency_optimized')
       end
     end

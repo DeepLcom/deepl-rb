@@ -420,6 +420,30 @@ end
 
 This information is passed along when the library makes calls to the DeepL API. Both name and version are required. Please note that setting the `User-Agent` header via `deepl.configure` will override this setting, if you need to use this, please manually identify your Application in the `User-Agent` header.
 
+## Options Constants
+
+The available values for various possible options are provided under the `DeepL::Constants` namespace. The currently available options are
+
+`TagHandling`
+`SplitSentences`
+`ModelType`
+`Formality`
+`WritingStyle`
+`Tone`
+
+To view all the possible options for a given constant, call `options`:
+
+```rb
+all_available_tones = DeepL::Constants::Tones.options
+```
+
+To check if a given string is a possible option for a given constant, call `valid?`:
+
+```rb
+DeepL::Constants::Tones.valid?('friendly') # true
+DeepL::Constants::Tones.valid?('rude') # false
+```
+
 ## Integrations
 
 ### Ruby on Rails

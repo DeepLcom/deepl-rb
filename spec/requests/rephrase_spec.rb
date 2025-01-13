@@ -128,6 +128,16 @@ describe DeepL::Requests::Rephrase do
       end
     end
 
+    context 'with a writing style or tone from the provided constants applied' do
+      let(:writing_style) { DeepL::Constants::WritingStyle::BUSINESS }
+      let(:tone) { DeepL::Constants::Tone::FRIENDLY }
+
+      it 'has the correct writing style and tone applied' do
+        expect(rephrase.writing_style).to eq('business')
+        expect(rephrase.tone).to eq('friendly')
+      end
+    end
+
     context 'with an invalid writing style applied' do
       let(:writing_style) { 'angry' }
 

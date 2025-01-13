@@ -50,6 +50,15 @@ require 'deepl/resources/usage'
 require 'deepl/utils/exception_builder'
 require 'deepl/utils/backoff_timer'
 
+# -- Constants
+require 'deepl/constants/base_constant'
+require 'deepl/constants/formality'
+require 'deepl/constants/model_type'
+require 'deepl/constants/split_sentences'
+require 'deepl/constants/tag_handling'
+require 'deepl/constants/tone'
+require 'deepl/constants/writing_style'
+
 # -- HTTP Utils
 require 'http_client_options'
 

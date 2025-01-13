@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 ### Added
 * Added `rephrase` functionality to get a new version of submitted text with various possible styles or tones applied
+* Added `DeepL::Constants` namespace and associated constant values for options possibilities
 
 ## [3.1.0]
 ### Added
