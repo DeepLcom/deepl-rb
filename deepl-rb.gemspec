@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.metadata = { "bug_tracker_uri" => "https://github.com/DeepLcom/deepl-rb/issues", "changelog_uri" => "https://github.com/DeepLcom/deepl-rb/blob/main/CHANGELOG.md", "documentation_uri" => "https://github.com/DeepLcom/deepl-rb/blob/main/README.md", "homepage_uri" => "https://github.com/DeepLcom/deepl-rb" } if s.respond_to? :metadata=
   s.require_paths = ["lib".freeze]
   s.authors = ["DeepL SE".freeze]
-  s.date = "2025-01-14"
+  s.date = "2025-01-15"
   s.description = "Official Ruby library for the DeepL language translation API (v2). For more information, check this: https://www.deepl.com/docs/api-reference.html".freeze
   s.email = "open-source@deepl.com".freeze
   s.extra_rdoc_files = [
