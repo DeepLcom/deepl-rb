@@ -6,7 +6,7 @@
 module DeepL
   module Exceptions
     class LimitExceeded < RequestError
-      def message
+      def to_s
         'Limit exceeded. Please wait and send your request once again.'
       end
 

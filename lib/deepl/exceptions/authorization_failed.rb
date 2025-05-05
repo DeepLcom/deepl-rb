@@ -6,7 +6,7 @@
 module DeepL
   module Exceptions
     class AuthorizationFailed < RequestError
-      def message
+      def to_s
         'Authorization failed. Please supply a valid auth_key parameter.'
       end
     end

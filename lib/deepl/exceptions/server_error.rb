@@ -6,7 +6,7 @@
 module DeepL
   module Exceptions
     class ServerError < RequestError
-      def message
+      def to_s
         'An internal server error occured. Try again after waiting a short period.'
       end
 
