@@ -13,7 +13,7 @@ module DeepL
         @response = response
       end
 
-      def message
+      def to_s
         'Unknown error.'
       end
     end
