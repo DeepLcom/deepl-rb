@@ -33,6 +33,7 @@ Juwelier::Tasks.new do |gem|
   }
   gem.files.exclude '.github'
   gem.files.exclude '.circleci'
+  gem.files.exclude 'catalog-info.yaml'
 end
 
 Juwelier::RubygemsDotOrgTasks.new
