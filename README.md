@@ -167,6 +167,7 @@ The following parameters will be automatically converted:
 | `formality`           | No conversion applied
 | `glossary_id`         | No conversion applied
 | `context`             | No conversion applied
+| `extra_body_parameters` | Hash of extra parameters to pass in the body of the HTTP request. Can be used to access beta features, or to override built-in parameters for testing purposes. Extra parameters can override keys explicitly set by the client.
 
 ### Rephrase Text
 
@@ -321,6 +322,18 @@ doc_status = doc_handle.wait_until_document_translation_finished # alternatively
 # until the `doc_status.successful?`
 DeepL.document.download(doc_handle, '/path/to/translated_document.pdf') unless doc_status.error?
 ```
+
+You can also pass additional options to document translation methods, including `extra_body_parameters`:
+
+```rb
+options = {
+  formality: 'more',
+  extra_body_parameters: { example_param: 'true' }
+}
+doc_handle = DeepL.document.upload('/path/to/spanish_document.pdf', 'ES', 'EN', nil, options)
+```
+
+The `extra_body_parameters` option allows you to pass arbitrary parameters in the request body. This can be used to access beta features by adding new parameters, or to override built-in parameters (such as `target_lang`, `source_lang`, etc.) for testing purposes.
 
 ### Handle exceptions
 

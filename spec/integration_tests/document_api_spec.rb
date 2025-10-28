@@ -152,4 +152,26 @@ describe DeepL::DocumentApi do
     )
     expect(doc_status.status).to eq('done')
   end
+
+  it 'Translates a document with extra_body_parameters' do # rubocop:disable RSpec/ExampleLength
+    File.unlink(output_document_path)
+    source_lang = default_lang_args[:source_lang]
+    target_lang = default_lang_args[:target_lang]
+    example_doc_path = example_document_path(source_lang)
+
+    handle = DeepL.document.upload(example_doc_path, source_lang, target_lang,
+                                   File.basename(example_doc_path),
+                                   {
+                                     extra_body_parameters: {
+                                       target_lang: 'FR',
+                                       debug: '1'
+                                     }
+                                   })
+    doc_status = handle.wait_until_document_translation_finished
+    DeepL.document.download(handle, output_document_path) if doc_status.status != 'error'
+    output_file_contents = File.read(output_document_path)
+
+    expect(example_document_translation('FR')).to eq(output_file_contents)
+    expect(doc_status.status).to eq('done')
+  end
 end

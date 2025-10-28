@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+* Added `extra_body_parameters` option to text and document translation methods to pass arbitrary parameters in the request body. This can be used to access beta features or override built-in parameters (such as `target_lang`, `source_lang`, etc.).
+
 ## [3.2.0]
 ### Added
 * Added `rephrase` functionality to get a new version of submitted text with various possible styles or tones applied
@@ -54,7 +59,8 @@ The change in major version is only due to the change in maintainership, there i
 ### Fixed
 * Make RequestEntityTooLarge error message more clear
 
-[3.2.0]: https://github.com/DeepLcom/deepl-rb/compare/v3.1.0...3.2.0
+[Unreleased]: https://github.com/DeepLcom/deepl-rb/compare/v3.2.0...HEAD
+[3.2.0]: https://github.com/DeepLcom/deepl-rb/compare/v3.1.0...v3.2.0
 [3.1.0]: https://github.com/DeepLcom/deepl-rb/compare/v3.0.2...v3.1.0
 [3.0.2]: https://github.com/DeepLcom/deepl-rb/compare/v3.0.1...v3.0.2
 [3.0.1]: https://github.com/DeepLcom/deepl-rb/compare/v3.0.0...v3.0.1

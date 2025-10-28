@@ -366,6 +366,18 @@ describe DeepL::Requests::Translate do
       end
     end
 
+    context 'when performing a request with extra_body_parameters' do
+      it 'allows extra parameters to override standard parameters' do
+        extra_options = { extra_body_parameters: { target_lang: 'FR', debug: '1' } }
+        translate = described_class.new(api, text, source_lang, target_lang, extra_options)
+        res = translate.request
+
+        expect(res).to be_a(DeepL::Resources::Text)
+        expect(res.text).to eq('Texte modèle')
+        expect(res.detected_source_language).to eq('EN')
+      end
+    end
+
     context 'when performing a bad request' do
       context 'when using an invalid token' do
         let(:api) do

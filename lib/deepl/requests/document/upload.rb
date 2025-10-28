@@ -20,18 +20,10 @@ module DeepL
           @filename = filename
         end
 
-        def request # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
+        def request
           input_file = File.open(input_file_path, 'rb')
-          form_data = [
-            ['file', input_file], ['source_lang', source_lang],
-            ['target_lang', target_lang]
-          ]
-          filename_param = filename || File.basename(input_file_path)
-          form_data.push(['filename', filename_param]) unless filename_param.nil?
-          # Manually add options due to multipart/form-data request
-          SUPPORTED_OPTIONS.each do |option|
-            form_data.push([option, options[option]]) unless options[option].nil?
-          end
+          form_data = build_base_form_data(input_file)
+          apply_extra_body_parameters_to_form(form_data)
           build_doc_handle(*execute_request_with_retries(post_request_with_file(form_data),
                                                          [input_file]))
         end
@@ -48,6 +40,24 @@ module DeepL
         end
 
         private
+
+        def build_base_form_data(input_file)
+          form_data = [
+            ['file', input_file], ['source_lang', source_lang],
+            ['target_lang', target_lang]
+          ]
+          filename_param = filename || File.basename(input_file_path)
+          form_data.push(['filename', filename_param]) unless filename_param.nil?
+          add_supported_options_to_form(form_data)
+          form_data
+        end
+
+        def add_supported_options_to_form(form_data)
+          SUPPORTED_OPTIONS.each do |option_name|
+            option_value = option(option_name)
+            form_data.push([option_name, option_value]) unless option_value.nil?
+          end
+        end
 
         def build_doc_handle(request, response)
           parsed_response = JSON.parse(response.body)

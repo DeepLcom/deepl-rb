@@ -46,6 +46,40 @@ module DeepL
         end
       end
 
+      # Returns options excluding extra_body_parameters
+      # extra_body_parameters are applied separately via apply_extra_body_parameters_* methods
+      def options_without_extra_params
+        options.reject do |k, _|
+          k.to_s == 'extra_body_parameters' || k.to_sym == :extra_body_parameters
+        end
+      end
+
+      # Apply extra body parameters to a hash payload (for JSON/form-encoded requests)
+      # Extra parameters will override existing keys
+      def apply_extra_body_parameters_to_json(payload)
+        return unless option?(:extra_body_parameters)
+
+        extra_params = option(:extra_body_parameters)
+        extra_params.each do |key, value|
+          payload[key] = value.to_s
+        end
+      end
+
+      # Apply extra body parameters to multipart form data array
+      # Extra parameters will override existing keys
+      def apply_extra_body_parameters_to_form(form_data)
+        return unless option?(:extra_body_parameters)
+
+        extra_params = option(:extra_body_parameters)
+        extra_params.each do |key, value|
+          key_str = key.to_s
+          # Remove existing key if present to allow override.
+          # Required for form data as it would be duplicated otherwise
+          form_data.reject! { |field| field[0].to_s == key_str }
+          form_data.push([key_str, value.to_s])
+        end
+      end
+
       # Files to reset: list of file objects to rewind when retrying the request
       def execute_request_with_retries(req, files_to_reset = []) # rubocop:disable all
         api.configuration.logger&.info("Request to the DeepL API: #{self}")
@@ -88,17 +122,16 @@ module DeepL
       end
 
       def post_request(payload)
+        apply_extra_body_parameters_to_json(payload)
         http_headers = add_json_content_type(headers)
         post_req = Net::HTTP::Post.new(uri.path, http_headers)
-        post_req.body = payload.merge(options).to_json
+        post_req.body = payload.merge(options_without_extra_params).to_json
         post_req
       end
 
       def post_request_with_file(form_data)
         http_headers = add_multipart_form_content_type(headers)
         post_req = Net::HTTP::Post.new(uri.request_uri, http_headers)
-        # options are passed in `form_data`
-        form_data += options.map { |key, value| [key.to_s, value.to_s] }
         post_req.set_form(form_data, 'multipart/form-data')
         post_req
       end
@@ -106,14 +139,14 @@ module DeepL
       def get_request # rubocop:disable Naming/AccessorMethodName
         http_headers = add_json_content_type(headers)
         get_req = Net::HTTP::Get.new(uri.path, http_headers)
-        get_req.body = options.to_json
+        get_req.body = options_without_extra_params.to_json
         get_req
       end
 
       def delete_request
         http_headers = add_json_content_type(headers)
         del_req = Net::HTTP::Delete.new(uri.path, http_headers)
-        del_req.body = options.to_json
+        del_req.body = options_without_extra_params.to_json
         del_req
       end
 

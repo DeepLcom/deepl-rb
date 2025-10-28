@@ -10369,4 +10369,47 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"translations":[{"detected_source_language":"EN","text":"Beispieltext","model_type_used":"latency_optimized"}]}'
   recorded_at: Fri, 15 Nov 2024 11:35:22 GMT
-recorded_with: VCR 6.2.0
+- request:
+    method: post
+    uri: https://api-free.deepl.com/v2/translate
+    body:
+      encoding: UTF-8
+      string: '{"text":["Sample text"],"source_lang":"EN","target_lang":"FR","debug":"1"}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.0.2 (darwin24) ruby/3.3.3
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 28 Oct 2025 12:50:22 GMT
+      X-Trace-Id:
+      - b146de80d79542e8bd5d8f50c1410e3a
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      Server-Timing:
+      - l7_lb_tls;dur=71, l7_lb_idle;dur=2, l7_lb_receive;dur=0, l7_lb_total;dur=101
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJ0cmFuc2xhdGlvbnMiOlt7ImRldGVjdGVkX3NvdXJjZV9sYW5ndWFnZSI6IkVOIiwidGV4dCI6IlRleHRlIG1vZMOobGUifV19
+  recorded_at: Tue, 28 Oct 2025 12:50:23 GMT
+recorded_with: VCR 6.3.1
