@@ -6,7 +6,7 @@
 
 Gem::Specification.new do |s|
   s.name = "deepl-rb".freeze
-  s.version = "3.3.0".freeze
+  s.version = "3.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0".freeze) if s.respond_to? :required_rubygems_version=
   s.metadata = { "bug_tracker_uri" => "https://github.com/DeepLcom/deepl-rb/issues", "changelog_uri" => "https://github.com/DeepLcom/deepl-rb/blob/main/CHANGELOG.md", "documentation_uri" => "https://github.com/DeepLcom/deepl-rb/blob/main/README.md", "homepage_uri" => "https://github.com/DeepLcom/deepl-rb" } if s.respond_to? :metadata=
