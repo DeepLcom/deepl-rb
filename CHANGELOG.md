@@ -5,9 +5,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-
 ### Added
 * Added `extra_body_parameters` option to text and document translation methods to pass arbitrary parameters in the request body. This can be used to access beta features or override built-in parameters (such as `target_lang`, `source_lang`, etc.).
+* Added `rephrase` functionality to the top-level `DeepL` module for convenience.
+  * Thanks to [341bms](https://github.com/341bms) in [#14](https://github.com/DeepLcom/deepl-rb/issues/14) for the report!
 
 ## [3.2.0]
 ### Added

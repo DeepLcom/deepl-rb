@@ -1,0 +1,87 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.deepl.com/v2/write/rephrase
+    body:
+      encoding: UTF-8
+      string: '{"text":["Ih bin ei beispielsatz."]}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.0.2 (darwin22) ruby/3.2.1
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 04 Nov 2025 09:49:46 GMT
+      X-Trace-Id:
+      - 55e4d15b3b5f43d5911ddd20e43e4853
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      Server-Timing:
+      - l7_lb_tls;dur=39, l7_lb_idle;dur=0, l7_lb_receive;dur=0, l7_lb_total;dur=122
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: '{"improvements":[{"text":"Ich bin ein Beispiel.","detected_source_language":"de","target_language":"de"}]}'
+  recorded_at: Tue, 04 Nov 2025 09:49:47 GMT
+- request:
+    method: post
+    uri: https://api.deepl.com/v2/write/rephrase
+    body:
+      encoding: UTF-8
+      string: '{"text":["Ih bin ei beispielsatz."],"target_lang":"DE"}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.0.2 (darwin22) ruby/3.2.1
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 04 Nov 2025 09:49:47 GMT
+      X-Trace-Id:
+      - bdeb8592514b40b8a16068b3cff1a4ed
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      Server-Timing:
+      - l7_lb_tls;dur=40, l7_lb_idle;dur=0, l7_lb_receive;dur=0, l7_lb_total;dur=138
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: '{"improvements":[{"text":"Ich bin ein Beispiel.","detected_source_language":"de","target_language":"de"}]}'
+  recorded_at: Tue, 04 Nov 2025 09:49:47 GMT
+recorded_with: VCR 6.2.0

@@ -97,6 +97,11 @@ module DeepL
     GlossaryApi.new(api, options)
   end
 
+  def rephrase(text, target_lang = nil, writing_style = nil, tone = nil, options = {}) # rubocop:disable Metrics/ParameterLists
+    configure if @configuration.nil?
+    Requests::Rephrase.new(api, text, target_lang, writing_style, tone, options).request
+  end
+
   def usage(options = {})
     configure if @configuration.nil?
     Requests::Usage.new(api, options).request

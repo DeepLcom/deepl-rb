@@ -428,4 +428,33 @@ describe DeepL do
       end
     end
   end
+
+  describe '#rephrase' do
+    let(:text) { 'Ih bin ei beispielsatz.' }
+    let(:target_lang) { 'DE' }
+    let(:options) { {} }
+
+    around do |example|
+      deepl.configure
+      VCR.use_cassette('deepl_rephrase') { example.call }
+    end
+
+    context 'when rephrasing text' do
+      it 'creates and call a request object' do
+        expect(DeepL::Requests::Rephrase).to receive(:new)
+          .with(deepl.api, text, nil, nil, nil, {}).and_call_original
+
+        rephrased_text = deepl.rephrase(text)
+        expect(rephrased_text).to be_a(DeepL::Resources::Text)
+      end
+
+      it 'creates and call a request object when passing options' do
+        expect(DeepL::Requests::Rephrase).to receive(:new)
+          .with(deepl.api, text, target_lang, nil, nil, options).and_call_original
+
+        rephrased_text = deepl.rephrase(text, target_lang, nil, nil, options)
+        expect(rephrased_text).to be_a(DeepL::Resources::Text)
+      end
+    end
+  end
 end

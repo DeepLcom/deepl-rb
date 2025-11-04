@@ -8,7 +8,7 @@ module DeepL
     class Rephrase < Base
       attr_reader :text, :target_lang, :writing_style, :tone
 
-      def initialize(api, text, target_lang, writing_style = nil, tone = nil, options = {})
+      def initialize(api, text, target_lang = nil, writing_style = nil, tone = nil, options = {}) # rubocop:disable Metrics/ParameterLists
         super(api, options)
         @text = text
         @target_lang = target_lang
@@ -16,9 +16,10 @@ module DeepL
         @tone = tone
       end
 
-      def request
+      def request # rubocop:disable Metrics/AbcSize
         text_arrayified = text.is_a?(Array) ? text : [text]
-        payload = { text: text_arrayified, target_lang: target_lang }
+        payload = { text: text_arrayified }
+        payload[:target_lang] = target_lang unless target_lang.nil?
         payload[:writing_style] = writing_style unless writing_style.nil?
         payload[:tone] = tone unless tone.nil?
         build_texts(*execute_request_with_retries(post_request(payload)))
