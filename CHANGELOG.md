@@ -4,7 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [3.4.0] - 2025-11-17
+### Added
+- Added support for the `GET /v3/style_rules` endpoint in the client library, the
+  implementation can be found in the `StyleRuleApi` class. Please refer to the
+  README for usage instructions
+- Added `style_id` option to `translate()` which allows text translation with
+  style rules.
+
 ### Fixed
 - Send correct library version in user-agent. Expose library version in the module as a variable.
 
@@ -64,7 +71,7 @@ The change in major version is only due to the change in maintainership, there i
 ### Fixed
 - Make RequestEntityTooLarge error message more clear
 
-[Unreleased]: https://github.com/DeepLcom/deepl-rb/compare/v3.3.0...HEAD
+[3.4.0]: https://github.com/DeepLcom/deepl-rb/compare/v3.3.0...v3.4.0
 [3.3.0]: https://github.com/DeepLcom/deepl-rb/compare/v3.2.0...v3.3.0
 [3.2.0]: https://github.com/DeepLcom/deepl-rb/compare/v3.1.0...v3.2.0
 [3.1.0]: https://github.com/DeepLcom/deepl-rb/compare/v3.0.2...v3.1.0
