@@ -1,0 +1,92 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.deepl.com/v3/style_rules
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.0.2 (darwin24) ruby/3.2.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 11 Nov 2025 21:41:34 GMT
+      X-Trace-Id:
+      - 91581bb49e774db3a0521e222a037333
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      Server-Timing:
+      - l7_lb_tls;dur=135, l7_lb_idle;dur=0, l7_lb_receive;dur=0, l7_lb_total;dur=880
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: '{"style_rules":[{"style_id":"a4dfe768-8f34-41e3-8b22-9b832d39294c","name":"Korean
+        style rule","creation_time":"2025-11-04T16:59:14.940077Z","updated_time":"2025-11-04T16:59:14.940077Z","language":"ko","version":1},{"style_id":"d9c60f20-3e6a-4d62-bc44-3ce89b981ebe","name":"ZH
+        Style rule","creation_time":"2025-11-04T03:47:14.03409Z","updated_time":"2025-11-04T03:47:28.75149Z","language":"zh","version":3},{"style_id":"8e694a65-da89-4d30-911d-dcacbe7c962b","name":"Japanese
+        style rule","creation_time":"2025-11-04T03:46:45.90662Z","updated_time":"2025-11-04T03:46:49.288723Z","language":"ja","version":2},{"style_id":"5874b9c5-e353-4576-886d-0f6af62c9f02","name":"Talk
+        like a pirate","creation_time":"2025-10-31T12:44:26.679757Z","updated_time":"2025-10-31T12:46:20.102929Z","language":"en","version":3},{"style_id":"4f987ba6-80d1-41a3-a4aa-037c4f2a6fce","name":"My
+        style rule","creation_time":"2025-08-28T19:42:37.841254Z","updated_time":"2025-10-31T12:39:07.919025Z","language":"en","version":8},{"style_id":"1df39d69-d278-4353-b206-9f0d347146d0","name":"Style
+        Rule with Custom Instruction","creation_time":"2025-08-20T17:46:58.90728Z","updated_time":"2025-10-22T20:44:46.532386Z","language":"en","version":8}]}'
+  recorded_at: Tue, 11 Nov 2025 21:41:35 GMT
+- request:
+    method: get
+    uri: https://api.deepl.com/v3/style_rules
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - DeepL-Auth-Key invalid
+      User-Agent:
+      - deepl-ruby/3.0.2 (darwin24) ruby/3.2.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 11 Nov 2025 21:41:35 GMT
+      X-Trace-Id:
+      - e170bd92638c4c6db4e8c4d89fd4316d
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      Server-Timing:
+      - l7_lb_tls;dur=135, l7_lb_idle;dur=0, l7_lb_receive;dur=0, l7_lb_total;dur=136
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"message":"Authentication failed, provided API key is invalid. You
+        can find more info in our docs: https://developers.deepl.com/docs/getting-started/auth"}'
+  recorded_at: Tue, 11 Nov 2025 21:41:35 GMT
+recorded_with: VCR 6.3.1

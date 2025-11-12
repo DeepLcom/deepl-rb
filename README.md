@@ -166,6 +166,8 @@ The following parameters will be automatically converted:
 | `ignore_tags`         | Converts arrays to strings joining by commas
 | `formality`           | No conversion applied
 | `glossary_id`         | No conversion applied
+| `style_id`            | No conversion applied
+| `style_rule`          | No conversion applied (can be a string ID or a StyleRule object)
 | `context`             | No conversion applied
 | `extra_body_parameters` | Hash of extra parameters to pass in the body of the HTTP request. Can be used to access beta features, or to override built-in parameters for testing purposes. Extra parameters can override keys explicitly set by the client.
 
@@ -292,6 +294,62 @@ puts language_pairs.first.source_lang
 # => en
 puts language_pairs.first.target_lang
 # => de
+```
+
+### Style Rules
+
+Style rules allow you to customize your translations using a managed, shared list
+of rules for style, formatting, and more. Multiple style rules can be stored with
+your account, each with a user-specified name and a uniquely-assigned ID.
+
+#### Creating and managing style rules
+
+Currently style rules must be created and managed in the DeepL UI via
+https://www.deepl.com/en/custom-rules. Full CRUD functionality via the APIs will
+come shortly.
+
+#### Listing all style rules
+
+`style_rules.list` returns a list of `StyleRule` objects
+corresponding to all of your stored style rules. The method accepts optional
+parameters: `page` (page number for pagination, 0-indexed), `page_size` (number
+of items per page), and `detailed` (whether to include detailed configuration
+rules in the `configured_rules` property).
+
+```rb
+# Get all style rules
+style_rules = DeepL.style_rules.list
+style_rules.each do |rule|
+  puts "#{rule.name} (#{rule.style_id})"
+end
+
+# Get style rules with detailed configuration
+style_rules = DeepL.style_rules.list(detailed: true)
+style_rules.each do |rule|
+  if rule.configured_rules
+    puts "  Number formatting: #{rule.configured_rules.numbers.keys.join(', ')}"
+  end
+end
+```
+
+Created style rules can be used in the `translate` method by specifying the `style_id` option:
+
+```rb
+translation = DeepL.translate 'Hello World', 'EN', 'ES', style_id: 'dca2e053-8ae5-45e6-a0d2-881156e7f4e4'
+
+puts translation.class
+# => DeepL::Resources::Text
+puts translation.text
+# => 'Hola Mundo'
+```
+
+You can also pass a `StyleRule` object directly:
+
+```rb
+style_rules = DeepL.style_rules.list
+style_rule = style_rules.first
+
+translation = DeepL.translate 'Hello World', 'EN', 'ES', style_rule: style_rule
 ```
 
 ### Monitor usage

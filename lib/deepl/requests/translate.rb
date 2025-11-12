@@ -38,9 +38,19 @@ module DeepL
         tweak_parameters!
       end
 
-      def request
+      def request # rubocop:disable Metrics/MethodLength
         text_arrayified = text.is_a?(Array) ? text : [text]
         payload = { text: text_arrayified, source_lang: source_lang, target_lang: target_lang }
+
+        if option?(:style_rule)
+          style_rule = option(:style_rule)
+          payload[:style_id] = if style_rule.is_a?(DeepL::Resources::StyleRule)
+                                 style_rule.style_id
+                               else
+                                 style_rule.to_s
+                               end
+        end
+
         build_texts(*execute_request_with_retries(post_request(payload)))
       end
 

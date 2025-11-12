@@ -31,6 +31,7 @@ require 'deepl/requests/glossary/entries'
 require 'deepl/requests/glossary/find'
 require 'deepl/requests/glossary/language_pairs'
 require 'deepl/requests/glossary/list'
+require 'deepl/requests/style_rule/list'
 require 'deepl/requests/languages'
 require 'deepl/requests/translate'
 require 'deepl/requests/usage'
@@ -41,6 +42,7 @@ require 'deepl/resources/base'
 require 'deepl/resources/document_handle'
 require 'deepl/resources/document_translation_status'
 require 'deepl/resources/glossary'
+require 'deepl/resources/style_rule'
 require 'deepl/resources/language'
 require 'deepl/resources/language_pair'
 require 'deepl/resources/text'
@@ -70,6 +72,7 @@ require 'deepl/api'
 require 'deepl/configuration'
 require 'deepl/document_api'
 require 'deepl/glossary_api'
+require 'deepl/style_rule_api'
 
 # -- Gem interface
 module DeepL
@@ -98,6 +101,11 @@ module DeepL
   def glossaries(options = {})
     configure if @configuration.nil?
     GlossaryApi.new(api, options)
+  end
+
+  def style_rules(options = {})
+    configure if @configuration.nil?
+    StyleRuleApi.new(api, options)
   end
 
   def rephrase(text, target_lang = nil, writing_style = nil, tone = nil, options = {}) # rubocop:disable Metrics/ParameterLists
