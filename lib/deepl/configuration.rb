@@ -46,7 +46,7 @@ module DeepL
     end
 
     def construct_user_agent(send_platform_info, app_info_name, app_info_version)
-      library_info_str = 'deepl-ruby/3.0.2'
+      library_info_str = "deepl-ruby/#{DeepL::VERSION}"
       if send_platform_info
         library_info_str += " (#{RbConfig::CONFIG['host_os']}) ruby/#{RUBY_VERSION}"
       end

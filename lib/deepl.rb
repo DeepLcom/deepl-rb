@@ -62,6 +62,9 @@ require 'deepl/constants/writing_style'
 # -- HTTP Utils
 require 'http_client_options'
 
+# -- Version
+require 'version'
+
 # -- Other wrappers
 require 'deepl/api'
 require 'deepl/configuration'

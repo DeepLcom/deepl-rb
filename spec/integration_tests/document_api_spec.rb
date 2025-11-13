@@ -16,8 +16,9 @@ describe DeepL::DocumentApi do
     WebMock.disable_net_connect!
   end
 
-  default_lang_args = { source_lang: 'EN', target_lang: 'DE' }
   include_context 'with temp dir'
+
+  let(:default_lang_args) { { source_lang: 'EN', target_lang: 'DE' } }
 
   describe '#translate_document' do
     it 'Translates a document from a filepath' do

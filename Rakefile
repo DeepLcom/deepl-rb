@@ -13,6 +13,7 @@ end
 
 require 'rake'
 require 'juwelier'
+require_relative 'lib/version'
 
 Juwelier::Tasks.new do |gem|
   gem.name = 'deepl-rb'
@@ -22,6 +23,7 @@ Juwelier::Tasks.new do |gem|
   gem.description =
     'Official Ruby library for the DeepL language translation API (v2). ' \
     'For more information, check this: https://www.deepl.com/docs/api-reference.html'
+  gem.version = DeepL::VERSION
 
   gem.email = 'open-source@deepl.com'
   gem.authors = ['DeepL SE']
