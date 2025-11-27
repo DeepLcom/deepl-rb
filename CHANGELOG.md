@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Added `tag_handling_version` parameter to `translate()` to specify which version of the tag handling algorithm to use. Options are `v1` and `v2`.
 
+### Fixed
+- `extra_body_parameters` will no longer cast values to string, as this library sends JSON-encoded requests
+  (allows e.g. sending booleans)
+
 ## [3.5.0] - 2025-12-03
 ### Added
 - Added `custom_instructions` parameter to `translate()` to customize translation

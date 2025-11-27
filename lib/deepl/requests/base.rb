@@ -61,7 +61,7 @@ module DeepL
 
         extra_params = option(:extra_body_parameters)
         extra_params.each do |key, value|
-          payload[key] = value.to_s
+          payload[key] = value
         end
       end
 
