@@ -225,6 +225,30 @@ describe DeepL::Requests::Translate do
         expect(request.options[:model_type]).to eq('latency_optimized')
       end
     end
+
+    context 'when using `custom_instructions` options' do
+      it 'works with a nil value' do
+        request = described_class.new(api, nil, nil, nil, custom_instructions: nil)
+        expect(request.options[:custom_instructions]).to be_nil
+      end
+
+      it 'works with an array of strings' do
+        instructions = ['Use informal language', 'Be concise']
+        request = described_class.new(api, nil, nil, nil, custom_instructions: instructions)
+        expect(request.options[:custom_instructions]).to eq(instructions)
+      end
+
+      it 'works with a single string' do
+        request = described_class.new(api, nil, nil, nil, custom_instructions: ['Be concise'])
+        expect(request.options[:custom_instructions]).to eq(['Be concise'])
+      end
+
+      it 'works with a single string and converts it to an array' do
+        instructions = 'Use informal language,Be concise'
+        request = described_class.new(api, nil, nil, nil, custom_instructions: instructions)
+        expect(request.options[:custom_instructions]).to eq(['Use informal language', 'Be concise'])
+      end
+    end
   end
 
   describe '#request' do
@@ -375,6 +399,19 @@ describe DeepL::Requests::Translate do
         expect(res).to be_a(DeepL::Resources::Text)
         expect(res.text).to eq('Texte modèle')
         expect(res.detected_source_language).to eq('EN')
+      end
+    end
+
+    context 'when performing a request with custom_instructions' do
+      let(:text) { 'Hello world' }
+      let(:target_lang) { 'DE' }
+
+      it 'includes custom_instructions in the payload' do
+        options = { custom_instructions: ['Use formal language', 'Be concise'] }
+        translate = described_class.new(api, text, source_lang, target_lang, options)
+
+        # Verify the options are properly stored
+        expect(translate.options[:custom_instructions]).to eq(['Use formal language', 'Be concise'])
       end
     end
 

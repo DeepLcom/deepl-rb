@@ -153,6 +153,19 @@ This would use next-gen translation models for the translation. The available va
 - `'latency_optimized'`: use a translation model that minimizes response time, at the cost
   of translation quality.
 
+To translate with custom instructions, supply the `custom_instructions` parameter:
+
+```rb
+translation = DeepL.translate 'Hello, world!', 'EN', 'DE',
+                              custom_instructions: ['Use informal language', 'Be concise']
+
+puts translation.text
+```
+
+Up to 10 custom instructions can be specified, each with a maximum of 300 characters.
+The target language must be `de`, `en`, `es`, `fr`, `it`, `ja`, `ko`, `zh` or any variants.
+Note that using `custom_instructions` will automatically use `quality_optimized` models,
+and cannot be combined with `model_type: 'latency_optimized'`.
 
 The following parameters will be automatically converted:
 
@@ -169,6 +182,7 @@ The following parameters will be automatically converted:
 | `style_id`            | No conversion applied
 | `style_rule`          | No conversion applied (can be a string ID or a StyleRule object)
 | `context`             | No conversion applied
+| `custom_instructions` | No conversion applied
 | `extra_body_parameters` | Hash of extra parameters to pass in the body of the HTTP request. Can be used to access beta features, or to override built-in parameters for testing purposes. Extra parameters can override keys explicitly set by the client.
 
 ### Rephrase Text

@@ -23,11 +23,12 @@ module DeepL
         outline_detection: STRING_TO_BOOLEAN_CONVERSION,
         splitting_tags: STRING_TO_ARRAY_CONVERSION,
         non_splitting_tags: STRING_TO_ARRAY_CONVERSION,
-        ignore_tags: STRING_TO_ARRAY_CONVERSION
+        ignore_tags: STRING_TO_ARRAY_CONVERSION,
+        custom_instructions: STRING_TO_ARRAY_CONVERSION
       }.freeze
 
       attr_reader :text, :source_lang, :target_lang, :ignore_tags, :splitting_tags,
-                  :non_splitting_tags, :model_type
+                  :non_splitting_tags, :model_type, :custom_instructions
 
       def initialize(api, text, source_lang, target_lang, options = {})
         super(api, options)

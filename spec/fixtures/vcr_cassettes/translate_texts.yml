@@ -10412,4 +10412,47 @@ http_interactions:
       string: !binary |-
         eyJ0cmFuc2xhdGlvbnMiOlt7ImRldGVjdGVkX3NvdXJjZV9sYW5ndWFnZSI6IkVOIiwidGV4dCI6IlRleHRlIG1vZMOobGUifV19
   recorded_at: Tue, 28 Oct 2025 12:50:23 GMT
+- request:
+    method: post
+    uri: https://api.deepl.com/v2/translate
+    body:
+      encoding: UTF-8
+      string: '{"text":["Hello world"],"source_lang":"EN","target_lang":"DE","custom_instructions":["Use
+        formal language","Be concise"]}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.5.0 (darwin24) ruby/3.2.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 03 Dec 2025 06:07:36 GMT
+      X-Trace-Id:
+      - b50df453ea8d451bbd67df63f68e66da
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      Server-Timing:
+      - l7_lb_tls;dur=117, l7_lb_idle;dur=4, l7_lb_receive;dur=0, l7_lb_total;dur=340
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: '{"translations":[{"text":"Sehr geehrte Damen und Herren","detected_source_language":"EN"}]}'
+  recorded_at: Wed, 03 Dec 2025 06:07:36 GMT
 recorded_with: VCR 6.3.1
