@@ -28,7 +28,7 @@ module DeepL
       }.freeze
 
       attr_reader :text, :source_lang, :target_lang, :ignore_tags, :splitting_tags,
-                  :non_splitting_tags, :model_type, :custom_instructions
+                  :non_splitting_tags, :model_type, :custom_instructions, :tag_handling_version
 
       def initialize(api, text, source_lang, target_lang, options = {})
         super(api, options)

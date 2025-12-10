@@ -127,6 +127,18 @@ puts translation.text
 # => "<p>Una muestra</p>"
 ```
 
+To specify which version of the tag handling algorithm to use, you can use the `tag_handling_version` parameter:
+
+```rb
+translation = DeepL.translate '<p>A sample</p>', 'EN', 'ES',
+                              tag_handling: 'xml', tag_handling_version: 'v2'
+
+puts translation.text
+# => "<p>Una muestra</p>"
+```
+
+The available values are `'v1'` and `'v2'`.
+
 To translate with context, simply supply the `context` parameter:
 
 ```rb
@@ -183,6 +195,7 @@ The following parameters will be automatically converted:
 | `style_rule`          | No conversion applied (can be a string ID or a StyleRule object)
 | `context`             | No conversion applied
 | `custom_instructions` | No conversion applied
+| `tag_handling_version` | No conversion applied
 | `extra_body_parameters` | Hash of extra parameters to pass in the body of the HTTP request. Can be used to access beta features, or to override built-in parameters for testing purposes. Extra parameters can override keys explicitly set by the client.
 
 ### Rephrase Text

@@ -208,6 +208,23 @@ describe DeepL::Requests::Translate do
       end
     end
 
+    context 'when using `tag_handling_version` options' do
+      it 'works with a nil value' do
+        request = described_class.new(api, nil, nil, nil, tag_handling_version: nil)
+        expect(request.options[:tag_handling_version]).to be_nil
+      end
+
+      it 'works with v1' do
+        request = described_class.new(api, nil, nil, nil, tag_handling_version: 'v1')
+        expect(request.options[:tag_handling_version]).to eq('v1')
+      end
+
+      it 'works with v2' do
+        request = described_class.new(api, nil, nil, nil, tag_handling_version: 'v2')
+        expect(request.options[:tag_handling_version]).to eq('v2')
+      end
+    end
+
     context 'when using `model_type` options' do
       it 'works with a nil value' do
         request = described_class.new(api, nil, nil, nil, model_type: nil)
@@ -412,6 +429,23 @@ describe DeepL::Requests::Translate do
 
         # Verify the options are properly stored
         expect(translate.options[:custom_instructions]).to eq(['Use formal language', 'Be concise'])
+      end
+    end
+
+    context 'when performing a request with tag_handling_version' do
+      let(:text) { '<p>Hello world</p>' }
+      let(:target_lang) { 'DE' }
+
+      %w[v1 v2].each do |version|
+        it "translates correctly with tag_handling_version #{version}" do
+          options = { tag_handling: 'html', tag_handling_version: version }
+          translate = described_class.new(api, text, source_lang, target_lang, options)
+          res = translate.request
+
+          expect(res).to be_a(DeepL::Resources::Text)
+          expect(res.text).not_to be_nil
+          expect(res.text).not_to be_empty
+        end
       end
     end
 
