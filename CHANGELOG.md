@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.6.1] - 2025-12-19
+### Fixed
+- Fixed broken 3.6.0 release
+
 ## [3.6.0] - 2025-12-10
 ### Added
 - Added `tag_handling_version` parameter to `translate()` to specify which version of the tag handling algorithm to use. Options are `v1` and `v2`.
@@ -13,6 +17,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - `extra_body_parameters` will no longer cast values to string, as this library sends JSON-encoded requests
   (allows e.g. sending booleans)
+
+## [3.5.1] - 2025-12-19
+### Fixed
+- Fixed broken 3.5.0 release
 
 ## [3.5.0] - 2025-12-03
 ### Added
@@ -22,6 +30,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   Note: using the `custom_instructions` parameter will use the `quality_optimized`
   model type as the default. Requests combining `custom_instructions` and the
   `latency_optimized` model type will be rejected.
+
+## [3.4.1] - 2025-12-19
+### Fixed
+- Fixed broken 3.4.0 release
 
 ## [3.4.0] - 2025-11-17
 ### Added
@@ -90,9 +102,12 @@ The change in major version is only due to the change in maintainership, there i
 ### Fixed
 - Make RequestEntityTooLarge error message more clear
 
-[Unreleased]: https://github.com/DeepLcom/deepl-rb/compare/v3.6.0...HEAD
-[3.6.0]: https://github.com/DeepLcom/deepl-rb/compare/v3.5.0...v3.6.0
-[3.5.0]: https://github.com/DeepLcom/deepl-rb/compare/v3.4.0...v3.5.0
+[Unreleased]: https://github.com/DeepLcom/deepl-rb/compare/v3.6.1...HEAD
+[3.6.1]: https://github.com/DeepLcom/deepl-rb/compare/v3.6.0...v3.6.1
+[3.6.0]: https://github.com/DeepLcom/deepl-rb/compare/v3.5.1...v3.6.0
+[3.5.1]: https://github.com/DeepLcom/deepl-rb/compare/v3.5.0...v3.5.1
+[3.5.0]: https://github.com/DeepLcom/deepl-rb/compare/v3.4.1...v3.5.0
+[3.4.1]: https://github.com/DeepLcom/deepl-rb/compare/v3.4.0...v3.4.1
 [3.4.0]: https://github.com/DeepLcom/deepl-rb/compare/v3.3.0...v3.4.0
 [3.3.0]: https://github.com/DeepLcom/deepl-rb/compare/v3.2.0...v3.3.0
 [3.2.0]: https://github.com/DeepLcom/deepl-rb/compare/v3.1.0...v3.2.0
