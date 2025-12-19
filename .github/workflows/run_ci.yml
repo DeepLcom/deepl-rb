@@ -1,0 +1,126 @@
+name: Ruby CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:
+    - cron: '10 0 * * *'
+
+env:
+  SECRET_DETECTION_JSON_REPORT_FILE: "gitleaks.json"
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby_version: ['2.7', '3.2', '3.3']
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby_version }}
+          bundler-cache: true
+      - name: Build package
+        run: bundle exec rake build
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: pkg-${{ matrix.ruby_version }}
+          path: pkg/
+
+  rubocop:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby_version: ['2.7', '3.2', '3.3']
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby_version }}
+          bundler-cache: true
+      - name: Run rubocop
+        run: bundle exec rubocop
+
+  secret_detection:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install and run secret detection
+        run: |
+          wget https://github.com/gitleaks/gitleaks/releases/download/v8.19.3/gitleaks_8.19.3_linux_x64.tar.gz
+          tar -xzf gitleaks_8.19.3_linux_x64.tar.gz
+          EXITCODE=0
+          ./gitleaks detect -r ${SECRET_DETECTION_JSON_REPORT_FILE} --source . --log-opts="--all --full-history" || EXITCODE=$?
+          if [[ $EXITCODE -ne 0 ]]; then
+            exit $EXITCODE
+          fi
+      - name: Upload secret detection artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: secret-detection-results
+          path: gitleaks.json
+
+  license_check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Run license check
+        run: |
+          ./license_checker.sh '*.rb' | tee license_check_output.txt
+          [ ! -s license_check_output.txt ]
+
+
+# Test and gem publishing stage are disabled/missing for now. Code needs to be tested
+
+#######################################################
+# test:
+#     runs-on: ubuntu-latest
+#     strategy:
+#       matrix:
+#         include:
+#           - ruby_version: '2.7'
+#             use_mock_server: ''
+#           - ruby_version: '3.2'
+#             use_mock_server: ''
+#           - ruby_version: '3.3'
+#             use_mock_server: ''
+#           - ruby_version: '2.7'
+#             use_mock_server: 'use mock server'
+#           - ruby_version: '3.2'
+#             use_mock_server: 'use mock server'
+#           - ruby_version: '3.3'
+#             use_mock_server: 'use mock server'
+#     steps:
+#       - uses: actions/checkout@v4
+#       - name: Set up Ruby
+#         uses: ruby/setup-ruby@v1
+#         with:
+#           ruby-version: ${{ matrix.ruby_version }}
+#           bundler-cache: true
+#       - name: Configure Mock Server
+#         if: matrix.use_mock_server != ''
+#         run: |
+#           echo "Using mock server"
+#           export DEEPL_SERVER_URL=http://deepl-mock:3000
+#           export DEEPL_MOCK_SERVER_PORT=3000
+#           export DEEPL_PROXY_URL=http://deepl-mock:3001
+#           export DEEPL_MOCK_PROXY_SERVER_PORT=3001
+#       - name: Run Tests
+#         run: bundle exec rake test
+#       - name: Run RSpec Tests
+#         run: bundle exec rspec --format RspecJunitFormatter --out rspec.xml
+#       - name: Upload Test Results
+#         uses: actions/upload-artifact@v4
+#         with:
+#           name: test-results
+#           path: rspec.xml

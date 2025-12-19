@@ -581,6 +581,10 @@ To run tests (rspec and rubocop), use
 bundle exec rake test
 ```
 
+### Caution: Gitleaks and VCR tests
+
+When contributing to the library, in the CI `gitleaks` might pick up document keys (from the document translation workflow) or example API keys as leaked secrets. To fix this you can add them to the `.gitleaksignore` file, please see the [documentation](https://github.com/gitleaks/gitleaks?tab=readme-ov-file#gitleaksignore) for more details.
+
 ### Caution: Changing VCR Tests
 
 If you need to rerecord some of the VCR tests, simply setting `record: :new_episodes` and rerunning `rspec` won't be enough in some cases, specifically around document translation (due to its statefulness) and glossaries (since a glossary ID is associated with a specific API account).
