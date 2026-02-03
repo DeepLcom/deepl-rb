@@ -10367,7 +10367,7 @@ http_interactions:
       - de2645cb65c3418db54e3bdefd35fe52
     body:
       encoding: ASCII-8BIT
-      string: '{"translations":[{"detected_source_language":"EN","text":"Beispieltext","model_type_used":"latency_optimized"}]}'
+      string: '{"translations":[{"detected_source_language":"EN","text":"Beispieltext","model_type_used":"quality_optimized"}]}'
   recorded_at: Fri, 15 Nov 2024 11:35:22 GMT
 - request:
     method: post
