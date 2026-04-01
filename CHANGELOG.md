@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Changed
 - Updated unit test to expect the `model_type_used` to now be `quality_optimized`
+- Set explicit `image` for `gitlab release` CI job to avoid missing `$HOME` issues
 
 ## [3.6.1] - 2025-12-19
 ### Fixed
