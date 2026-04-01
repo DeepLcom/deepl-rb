@@ -21,11 +21,12 @@ module DeepL
         end
 
         def request
-          input_file = File.open(input_file_path, 'rb')
-          form_data = build_base_form_data(input_file)
-          apply_extra_body_parameters_to_form(form_data)
-          build_doc_handle(*execute_request_with_retries(post_request_with_file(form_data),
-                                                         [input_file]))
+          File.open(input_file_path, 'rb') do |input_file|
+            form_data = build_base_form_data(input_file)
+            apply_extra_body_parameters_to_form(form_data)
+            build_doc_handle(*execute_request_with_retries(post_request_with_file(form_data),
+                                                           [input_file]))
+          end
         end
 
         def details
