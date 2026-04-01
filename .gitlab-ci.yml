@@ -57,6 +57,8 @@ package:
   image:
     name: ruby:2.7
     entrypoint: ['/builds/deepl/backend/oss-client-libs/deepl-ruby']
+  variables:
+    HOME: /tmp
   script: bundle exec rubocop
 
 rubocop_scheduled:
