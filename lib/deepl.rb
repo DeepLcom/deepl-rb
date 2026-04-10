@@ -62,10 +62,10 @@ require 'deepl/constants/tone'
 require 'deepl/constants/writing_style'
 
 # -- HTTP Utils
-require 'http_client_options'
+require_relative 'http_client_options'
 
 # -- Version
-require 'version'
+require_relative 'version'
 
 # -- Other wrappers
 require 'deepl/api'
