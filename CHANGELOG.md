@@ -5,6 +5,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Added support for style rules CRUD operations via `DeepL.style_rules`:
+  `create()`, `find()`, `update_name()`, `update_configured_rules()`, and `destroy()`.
+- Added support for style rule custom instruction CRUD operations via `DeepL.style_rules`:
+  `create_custom_instruction()`, `find_custom_instruction()`,
+  `update_custom_instruction()`, and `destroy_custom_instruction()`.
+  Please refer to the README for usage instructions.
+
 ### Changed
 - Updated unit test to expect the `model_type_used` to now be `quality_optimized`
 - Set explicit `image` for `gitlab release` CI job to avoid missing `$HOME` issues

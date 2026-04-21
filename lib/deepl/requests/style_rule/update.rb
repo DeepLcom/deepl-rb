@@ -1,0 +1,42 @@
+# Copyright 2026 DeepL SE (https://www.deepl.com)
+# Use of this source code is governed by an MIT
+# license that can be found in the LICENSE.md file.
+# frozen_string_literal: true
+
+module DeepL
+  module Requests
+    module StyleRule
+      class Update < Base
+        def initialize(api, style_id, name, options = {})
+          super(api, options)
+          @style_id = style_id
+          @name = name
+        end
+
+        def request
+          payload = { name: @name }
+          build_style_rule(*execute_request_with_retries(patch_request(payload)))
+        end
+
+        def to_s
+          "PATCH #{uri.request_uri}"
+        end
+
+        private
+
+        def build_style_rule(request, response)
+          data = JSON.parse(response.body)
+          DeepL::Resources::StyleRule.new(data, request, response)
+        end
+
+        def uri
+          @uri ||= URI("#{host}/v3/#{path}")
+        end
+
+        def path
+          "style_rules/#{@style_id}"
+        end
+      end
+    end
+  end
+end

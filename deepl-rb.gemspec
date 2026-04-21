@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.metadata = { "bug_tracker_uri" => "https://github.com/DeepLcom/deepl-rb/issues", "changelog_uri" => "https://github.com/DeepLcom/deepl-rb/blob/main/CHANGELOG.md", "documentation_uri" => "https://github.com/DeepLcom/deepl-rb/blob/main/README.md", "homepage_uri" => "https://github.com/DeepLcom/deepl-rb" } if s.respond_to? :metadata=
   s.require_paths = ["lib".freeze]
   s.authors = ["DeepL SE".freeze]
-  s.date = "2025-12-19"
+  s.date = "2026-04-23"
   s.description = "Official Ruby library for the DeepL language translation API (v2). For more information, check this: https://www.deepl.com/docs/api-reference.html".freeze
   s.email = "open-source@deepl.com".freeze
   s.extra_rdoc_files = [
@@ -71,7 +71,16 @@ Gem::Specification.new do |s|
     "lib/deepl/requests/glossary/list.rb",
     "lib/deepl/requests/languages.rb",
     "lib/deepl/requests/rephrase.rb",
+    "lib/deepl/requests/style_rule/create.rb",
+    "lib/deepl/requests/style_rule/create_custom_instruction.rb",
+    "lib/deepl/requests/style_rule/destroy.rb",
+    "lib/deepl/requests/style_rule/destroy_custom_instruction.rb",
+    "lib/deepl/requests/style_rule/find.rb",
+    "lib/deepl/requests/style_rule/find_custom_instruction.rb",
     "lib/deepl/requests/style_rule/list.rb",
+    "lib/deepl/requests/style_rule/update.rb",
+    "lib/deepl/requests/style_rule/update_configured_rules.rb",
+    "lib/deepl/requests/style_rule/update_custom_instruction.rb",
     "lib/deepl/requests/translate.rb",
     "lib/deepl/requests/usage.rb",
     "lib/deepl/resources/base.rb",
@@ -104,6 +113,7 @@ Gem::Specification.new do |s|
     "spec/fixtures/vcr_cassettes/languages.yml",
     "spec/fixtures/vcr_cassettes/rephrase_texts.yml",
     "spec/fixtures/vcr_cassettes/style_rules.yml",
+    "spec/fixtures/vcr_cassettes/style_rules_crud.yml",
     "spec/fixtures/vcr_cassettes/translate_texts.yml",
     "spec/fixtures/vcr_cassettes/usage.yml",
     "spec/integration_tests/document_api_spec.rb",
@@ -118,6 +128,16 @@ Gem::Specification.new do |s|
     "spec/requests/glossary/list_spec.rb",
     "spec/requests/languages_spec.rb",
     "spec/requests/rephrase_spec.rb",
+    "spec/requests/style_rule/create_custom_instruction_spec.rb",
+    "spec/requests/style_rule/create_spec.rb",
+    "spec/requests/style_rule/destroy_custom_instruction_spec.rb",
+    "spec/requests/style_rule/destroy_spec.rb",
+    "spec/requests/style_rule/find_custom_instruction_spec.rb",
+    "spec/requests/style_rule/find_spec.rb",
+    "spec/requests/style_rule/list_spec.rb",
+    "spec/requests/style_rule/update_configured_rules_spec.rb",
+    "spec/requests/style_rule/update_custom_instruction_spec.rb",
+    "spec/requests/style_rule/update_spec.rb",
     "spec/requests/translate_spec.rb",
     "spec/requests/usage_spec.rb",
     "spec/resources/glossary_spec.rb",
@@ -129,7 +149,7 @@ Gem::Specification.new do |s|
   ]
   s.homepage = "https://github.com/DeepLcom/deepl-rb".freeze
   s.licenses = ["MIT".freeze]
-  s.rubygems_version = "3.4.6".freeze
+  s.rubygems_version = "3.4.10".freeze
   s.summary = "Official Ruby library for the DeepL language translation API.".freeze
 
   s.specification_version = 4

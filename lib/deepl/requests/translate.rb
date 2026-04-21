@@ -44,7 +44,7 @@ module DeepL
         payload = { text: text_arrayified, source_lang: source_lang, target_lang: target_lang }
 
         if option?(:style_rule)
-          style_rule = option(:style_rule)
+          style_rule = delete_option(:style_rule)
           payload[:style_id] = if style_rule.is_a?(DeepL::Resources::StyleRule)
                                  style_rule.style_id
                                else

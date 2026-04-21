@@ -29,9 +29,10 @@ module DeepL
     end
 
     class CustomInstruction
-      attr_reader :label, :prompt, :source_language
+      attr_reader :id, :label, :prompt, :source_language
 
       def initialize(custom_instruction_data)
+        @id = custom_instruction_data['id']
         @label = custom_instruction_data['label']
         @prompt = custom_instruction_data['prompt']
         @source_language = custom_instruction_data['source_language']

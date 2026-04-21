@@ -143,6 +143,22 @@ module DeepL
         get_req
       end
 
+      def patch_request(payload)
+        apply_extra_body_parameters_to_json(payload)
+        http_headers = add_json_content_type(headers)
+        req = Net::HTTP::Patch.new(uri.path, http_headers)
+        req.body = payload.merge(options_without_extra_params).to_json
+        req
+      end
+
+      def put_request(payload)
+        apply_extra_body_parameters_to_json(payload)
+        http_headers = add_json_content_type(headers)
+        req = Net::HTTP::Put.new(uri.path, http_headers)
+        req.body = payload.merge(options_without_extra_params).to_json
+        req
+      end
+
       def delete_request
         http_headers = add_json_content_type(headers)
         del_req = Net::HTTP::Delete.new(uri.path, http_headers)

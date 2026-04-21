@@ -65,6 +65,62 @@ describe DeepL::StyleRuleApi do
     end
   end
 
+  describe 'style rule management operations' do
+    it 'when performing all management operations on style rules' do # rubocop:disable RSpec/ExampleLength,RSpec/MultipleExpectations
+      skip 'Only runs on mock server' if real_server?
+
+      # Create a style rule
+      style_rule = DeepL.style_rules.create('Test Style Rule', 'en')
+      expect(style_rule).to be_a(DeepL::Resources::StyleRule)
+      expect(style_rule.style_id).not_to be_nil
+      style_id = style_rule.style_id
+
+      # Find the style rule
+      found_rule = DeepL.style_rules.find(style_id)
+      expect(found_rule).to be_a(DeepL::Resources::StyleRule)
+      expect(found_rule.style_id).to eq(style_id)
+
+      # Update the style rule name
+      updated_rule = DeepL.style_rules.update_name(style_id, 'Updated Style Rule')
+      expect(updated_rule).to be_a(DeepL::Resources::StyleRule)
+
+      # Update configured rules
+      configured_rules = {
+        'dates_and_times' => { 'calendar_era' => 'use_bc_and_ad' }
+      }
+      updated_rule = DeepL.style_rules.update_configured_rules(style_id, configured_rules)
+      expect(updated_rule).to be_a(DeepL::Resources::StyleRule)
+
+      # Create a custom instruction
+      custom_instruction = DeepL.style_rules.create_custom_instruction(
+        style_id, 'Test Instruction', 'Always use formal language'
+      )
+      expect(custom_instruction).to be_a(DeepL::Resources::CustomInstruction)
+      expect(custom_instruction.id).not_to be_nil
+      instruction_id = custom_instruction.id
+
+      # Find a custom instruction
+      fetched_instruction = DeepL.style_rules.find_custom_instruction(style_id, instruction_id)
+      expect(fetched_instruction).to be_a(DeepL::Resources::CustomInstruction)
+      expect(fetched_instruction.id).to eq(instruction_id)
+
+      # Update a custom instruction
+      updated_instruction = DeepL.style_rules.update_custom_instruction(
+        style_id, instruction_id, 'Updated Instruction', 'Use casual language'
+      )
+      expect(updated_instruction).to be_a(DeepL::Resources::CustomInstruction)
+
+      # Destroy the custom instruction
+      deleted_instruction_id = DeepL.style_rules.destroy_custom_instruction(style_id,
+                                                                            instruction_id)
+      expect(deleted_instruction_id).to eq(instruction_id)
+
+      # Destroy the style rule
+      deleted_style_id = DeepL.style_rules.destroy(style_id)
+      expect(deleted_style_id).to eq(style_id)
+    end
+  end
+
   def build_test_style_rule
     style_rule_data = {
       'style_id' => 'dca2e053-8ae5-45e6-a0d2-881156e7f4e4',

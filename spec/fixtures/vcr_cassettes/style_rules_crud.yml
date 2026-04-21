@@ -1,0 +1,926 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.deepl.com/v3/style_rules
+    body:
+      encoding: UTF-8
+      string: '{"name":"Instruction Test","language":"en"}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.6.1 (darwin24) ruby/3.2.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 21 Apr 2026 17:51:48 GMT
+      X-Trace-Id:
+      - ae0b8f4320414c8e8308340eca39b9b5
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      Server-Timing:
+      - l7_lb_tls;dur=190, l7_lb_idle;dur=1, l7_lb_receive;dur=0, l7_lb_total;dur=823
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: '{"style_id":"a8f08169-8d30-47f4-a06a-3a7d93100622","name":"Instruction
+        Test","creation_time":"2026-04-21T17:51:48.60032Z","updated_time":"2026-04-21T17:51:48.600543Z","language":"en","version":1,"custom_instructions":[],"configured_rules":{}}'
+  recorded_at: Tue, 21 Apr 2026 17:51:48 GMT
+- request:
+    method: post
+    uri: https://api.deepl.com/v3/style_rules/a8f08169-8d30-47f4-a06a-3a7d93100622/custom_instructions
+    body:
+      encoding: UTF-8
+      string: '{"label":"Test Instruction","prompt":"Always use formal language"}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.6.1 (darwin24) ruby/3.2.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 21 Apr 2026 17:51:48 GMT
+      X-Trace-Id:
+      - 8a07a54af0084c5ea8099c4a0b758e35
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      Server-Timing:
+      - l7_lb_tls;dur=188, l7_lb_idle;dur=1, l7_lb_receive;dur=0, l7_lb_total;dur=206
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"f35db85e-a3f7-4d84-bdc2-af9288cfffe5","label":"Test Instruction","prompt":"Always
+        use formal language"}'
+  recorded_at: Tue, 21 Apr 2026 17:51:49 GMT
+- request:
+    method: post
+    uri: https://api.deepl.com/v3/style_rules
+    body:
+      encoding: UTF-8
+      string: '{"name":"Test Style Rule","language":"en"}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.6.1 (darwin24) ruby/3.2.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 21 Apr 2026 17:51:50 GMT
+      X-Trace-Id:
+      - da221a0be9604d7fa5a3e9a955bdb927
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      Server-Timing:
+      - l7_lb_tls;dur=188, l7_lb_idle;dur=1, l7_lb_receive;dur=0, l7_lb_total;dur=774
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: '{"style_id":"85375882-5395-4a60-908d-05f2ca959905","name":"Test Style
+        Rule","creation_time":"2026-04-21T17:51:50.346052Z","updated_time":"2026-04-21T17:51:50.346291Z","language":"en","version":1,"custom_instructions":[],"configured_rules":{}}'
+  recorded_at: Tue, 21 Apr 2026 17:51:50 GMT
+- request:
+    method: post
+    uri: https://api.deepl.com/v3/style_rules
+    body:
+      encoding: UTF-8
+      string: '{"name":"Destroy Instruction Test","language":"en"}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.6.1 (darwin24) ruby/3.2.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 21 Apr 2026 17:51:50 GMT
+      X-Trace-Id:
+      - 3fd5be83412542fc83ebc579e1c23734
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      Server-Timing:
+      - l7_lb_tls;dur=187, l7_lb_idle;dur=0, l7_lb_receive;dur=0, l7_lb_total;dur=739
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: '{"style_id":"c36516d5-40da-4fe1-ab61-c562dc745fc3","name":"Destroy
+        Instruction Test","creation_time":"2026-04-21T17:51:51.468557Z","updated_time":"2026-04-21T17:51:51.468777Z","language":"en","version":1,"custom_instructions":[],"configured_rules":{}}'
+  recorded_at: Tue, 21 Apr 2026 17:51:51 GMT
+- request:
+    method: post
+    uri: https://api.deepl.com/v3/style_rules/c36516d5-40da-4fe1-ab61-c562dc745fc3/custom_instructions
+    body:
+      encoding: UTF-8
+      string: '{"label":"To Delete","prompt":"Delete me"}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.6.1 (darwin24) ruby/3.2.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 21 Apr 2026 17:51:51 GMT
+      X-Trace-Id:
+      - 3055983f385f44218d577c8e418c36fe
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      Server-Timing:
+      - l7_lb_tls;dur=191, l7_lb_idle;dur=1, l7_lb_receive;dur=0, l7_lb_total;dur=209
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"ecb6c4ec-7ec8-429d-9d80-455f8b7c1a0a","label":"To Delete","prompt":"Delete
+        me"}'
+  recorded_at: Tue, 21 Apr 2026 17:51:52 GMT
+- request:
+    method: delete
+    uri: https://api.deepl.com/v3/style_rules/c36516d5-40da-4fe1-ab61-c562dc745fc3/custom_instructions/ecb6c4ec-7ec8-429d-9d80-455f8b7c1a0a
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.6.1 (darwin24) ruby/3.2.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Date:
+      - Tue, 21 Apr 2026 17:51:52 GMT
+      X-Trace-Id:
+      - 5805f9033cce4e02a8fd0479128e6ad9
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      Server-Timing:
+      - l7_lb_tls;dur=187, l7_lb_idle;dur=0, l7_lb_receive;dur=0, l7_lb_total;dur=205
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Tue, 21 Apr 2026 17:51:52 GMT
+- request:
+    method: post
+    uri: https://api.deepl.com/v3/style_rules
+    body:
+      encoding: UTF-8
+      string: '{"name":"Destroy Test","language":"en"}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.6.1 (darwin24) ruby/3.2.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 21 Apr 2026 17:51:53 GMT
+      X-Trace-Id:
+      - 3e2fbfbd6f1e4b6a9ac42efbad488f1e
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      Server-Timing:
+      - l7_lb_tls;dur=190, l7_lb_idle;dur=1, l7_lb_receive;dur=0, l7_lb_total;dur=816
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: '{"style_id":"46a3dca4-657d-4390-b868-90609413d3d6","name":"Destroy
+        Test","creation_time":"2026-04-21T17:51:53.837769Z","updated_time":"2026-04-21T17:51:53.838009Z","language":"en","version":1,"custom_instructions":[],"configured_rules":{}}'
+  recorded_at: Tue, 21 Apr 2026 17:51:53 GMT
+- request:
+    method: delete
+    uri: https://api.deepl.com/v3/style_rules/46a3dca4-657d-4390-b868-90609413d3d6
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.6.1 (darwin24) ruby/3.2.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Date:
+      - Tue, 21 Apr 2026 17:51:54 GMT
+      X-Trace-Id:
+      - 19dff3dac0574015a916ed9b6aa5e457
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      Server-Timing:
+      - l7_lb_tls;dur=189, l7_lb_idle;dur=1, l7_lb_receive;dur=1, l7_lb_total;dur=202
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Tue, 21 Apr 2026 17:51:54 GMT
+- request:
+    method: delete
+    uri: https://api.deepl.com/v3/style_rules/invalid-uuid
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.6.1 (darwin24) ruby/3.2.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 21 Apr 2026 17:51:54 GMT
+      X-Trace-Id:
+      - '085e505956424bb8ad2a33857e9a7805'
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      Server-Timing:
+      - l7_lb_tls;dur=189, l7_lb_idle;dur=1, l7_lb_receive;dur=0, l7_lb_total;dur=192
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"message":"Bad request. Reason: Invalid or missing style rule id"}'
+  recorded_at: Tue, 21 Apr 2026 17:51:55 GMT
+- request:
+    method: post
+    uri: https://api.deepl.com/v3/style_rules
+    body:
+      encoding: UTF-8
+      string: '{"name":"Find Instruction Test","language":"en"}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.6.1 (darwin24) ruby/3.2.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 21 Apr 2026 17:51:55 GMT
+      X-Trace-Id:
+      - ab548c13f2854d6c8a8397f9c95008c7
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      Server-Timing:
+      - l7_lb_tls;dur=187, l7_lb_idle;dur=1, l7_lb_receive;dur=0, l7_lb_total;dur=796
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: '{"style_id":"b494e133-a2d8-4e4a-93b2-9476afb376cf","name":"Find Instruction
+        Test","creation_time":"2026-04-21T17:51:56.189654Z","updated_time":"2026-04-21T17:51:56.189806Z","language":"en","version":1,"custom_instructions":[],"configured_rules":{}}'
+  recorded_at: Tue, 21 Apr 2026 17:51:56 GMT
+- request:
+    method: post
+    uri: https://api.deepl.com/v3/style_rules/b494e133-a2d8-4e4a-93b2-9476afb376cf/custom_instructions
+    body:
+      encoding: UTF-8
+      string: '{"label":"Test","prompt":"Test prompt"}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.6.1 (darwin24) ruby/3.2.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 21 Apr 2026 17:51:56 GMT
+      X-Trace-Id:
+      - 9500242a186f4733be9e0371790469a4
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      Server-Timing:
+      - l7_lb_tls;dur=188, l7_lb_idle;dur=2, l7_lb_receive;dur=0, l7_lb_total;dur=205
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"a6084fe0-aca9-44bb-a411-09ddc99c05fc","label":"Test","prompt":"Test
+        prompt"}'
+  recorded_at: Tue, 21 Apr 2026 17:51:56 GMT
+- request:
+    method: get
+    uri: https://api.deepl.com/v3/style_rules/b494e133-a2d8-4e4a-93b2-9476afb376cf/custom_instructions/a6084fe0-aca9-44bb-a411-09ddc99c05fc
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.6.1 (darwin24) ruby/3.2.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 21 Apr 2026 17:51:57 GMT
+      X-Trace-Id:
+      - babb480d6e0f4e859406b3eeff4f36b7
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      Server-Timing:
+      - l7_lb_tls;dur=189, l7_lb_idle;dur=1, l7_lb_receive;dur=0, l7_lb_total;dur=209
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"a6084fe0-aca9-44bb-a411-09ddc99c05fc","label":"Test","prompt":"Test
+        prompt"}'
+  recorded_at: Tue, 21 Apr 2026 17:51:57 GMT
+- request:
+    method: post
+    uri: https://api.deepl.com/v3/style_rules
+    body:
+      encoding: UTF-8
+      string: '{"name":"Find Test","language":"en"}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.6.1 (darwin24) ruby/3.2.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 21 Apr 2026 17:51:57 GMT
+      X-Trace-Id:
+      - 4129dbf675a94aea94bd03110d920113
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      Server-Timing:
+      - l7_lb_tls;dur=204, l7_lb_idle;dur=0, l7_lb_receive;dur=0, l7_lb_total;dur=832
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: '{"style_id":"e87fb3f0-b938-4632-8932-2c0a7c6ab14c","name":"Find Test","creation_time":"2026-04-21T17:51:58.569257Z","updated_time":"2026-04-21T17:51:58.569561Z","language":"en","version":1,"custom_instructions":[],"configured_rules":{}}'
+  recorded_at: Tue, 21 Apr 2026 17:51:58 GMT
+- request:
+    method: get
+    uri: https://api.deepl.com/v3/style_rules/e87fb3f0-b938-4632-8932-2c0a7c6ab14c
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.6.1 (darwin24) ruby/3.2.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 21 Apr 2026 17:51:58 GMT
+      X-Trace-Id:
+      - 4ea86366185a41cfa4b6bc001eb26cca
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      Server-Timing:
+      - l7_lb_tls;dur=186, l7_lb_idle;dur=1, l7_lb_receive;dur=0, l7_lb_total;dur=195
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: '{"style_id":"e87fb3f0-b938-4632-8932-2c0a7c6ab14c","name":"Find Test","creation_time":"2026-04-21T17:51:58.569257Z","updated_time":"2026-04-21T17:51:58.569561Z","language":"en","version":1,"custom_instructions":[],"configured_rules":{}}'
+  recorded_at: Tue, 21 Apr 2026 17:51:59 GMT
+- request:
+    method: get
+    uri: https://api.deepl.com/v3/style_rules/invalid-uuid
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.6.1 (darwin24) ruby/3.2.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 21 Apr 2026 17:51:58 GMT
+      X-Trace-Id:
+      - 97cbaaafc66948dfa91292af99d9b48e
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      Server-Timing:
+      - l7_lb_tls;dur=187, l7_lb_idle;dur=0, l7_lb_receive;dur=0, l7_lb_total;dur=192
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"message":"Bad request. Reason: Invalid or missing style rule id"}'
+  recorded_at: Tue, 21 Apr 2026 17:51:59 GMT
+- request:
+    method: post
+    uri: https://api.deepl.com/v3/style_rules
+    body:
+      encoding: UTF-8
+      string: '{"name":"Configured Rules Test","language":"en"}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.6.1 (darwin24) ruby/3.2.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 21 Apr 2026 17:52:00 GMT
+      X-Trace-Id:
+      - 264419006ddb4e2cae1e260523435a0d
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      Server-Timing:
+      - l7_lb_tls;dur=186, l7_lb_idle;dur=1, l7_lb_receive;dur=0, l7_lb_total;dur=781
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: '{"style_id":"8d80ddd1-e6e6-40ab-b2bc-7b2574f256e5","name":"Configured
+        Rules Test","creation_time":"2026-04-21T17:52:00.91128Z","updated_time":"2026-04-21T17:52:00.911555Z","language":"en","version":1,"custom_instructions":[],"configured_rules":{}}'
+  recorded_at: Tue, 21 Apr 2026 17:52:01 GMT
+- request:
+    method: put
+    uri: https://api.deepl.com/v3/style_rules/8d80ddd1-e6e6-40ab-b2bc-7b2574f256e5/configured_rules
+    body:
+      encoding: UTF-8
+      string: '{"dates_and_times":{"calendar_era":"use_bc_and_ad"}}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.6.1 (darwin24) ruby/3.2.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 21 Apr 2026 17:52:00 GMT
+      X-Trace-Id:
+      - ec830f7057eb4038b44df018e31e1709
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      Server-Timing:
+      - l7_lb_tls;dur=189, l7_lb_idle;dur=1, l7_lb_receive;dur=0, l7_lb_total;dur=216
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: '{"style_id":"8d80ddd1-e6e6-40ab-b2bc-7b2574f256e5","name":"Configured
+        Rules Test","creation_time":"2026-04-21T17:52:00.91128Z","updated_time":"2026-04-21T17:52:01.5156185Z","language":"en","version":2,"custom_instructions":[],"configured_rules":{"dates_and_times":{"calendar_era":"use_bc_and_ad"}}}'
+  recorded_at: Tue, 21 Apr 2026 17:52:01 GMT
+- request:
+    method: post
+    uri: https://api.deepl.com/v3/style_rules
+    body:
+      encoding: UTF-8
+      string: '{"name":"Update Instruction Test","language":"en"}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.6.1 (darwin24) ruby/3.2.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 21 Apr 2026 17:52:02 GMT
+      X-Trace-Id:
+      - 68a63d3d4fde4a5bb5b2d22f91ea003d
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      Server-Timing:
+      - l7_lb_tls;dur=189, l7_lb_idle;dur=2, l7_lb_receive;dur=0, l7_lb_total;dur=602
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: '{"style_id":"dcd98ff9-3053-4ab9-bc97-1b525ae6d474","name":"Update Instruction
+        Test","creation_time":"2026-04-21T17:52:02.507758Z","updated_time":"2026-04-21T17:52:02.507958Z","language":"en","version":1,"custom_instructions":[],"configured_rules":{}}'
+  recorded_at: Tue, 21 Apr 2026 17:52:02 GMT
+- request:
+    method: post
+    uri: https://api.deepl.com/v3/style_rules/dcd98ff9-3053-4ab9-bc97-1b525ae6d474/custom_instructions
+    body:
+      encoding: UTF-8
+      string: '{"label":"Original","prompt":"Original prompt"}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.6.1 (darwin24) ruby/3.2.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 21 Apr 2026 17:52:02 GMT
+      X-Trace-Id:
+      - 3f9f2ed58f244d95ad05e0547c2db566
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      Server-Timing:
+      - l7_lb_tls;dur=189, l7_lb_idle;dur=1, l7_lb_receive;dur=0, l7_lb_total;dur=206
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"8f0d68e3-8544-4480-83c0-9eff49b3e1af","label":"Original","prompt":"Original
+        prompt"}'
+  recorded_at: Tue, 21 Apr 2026 17:52:03 GMT
+- request:
+    method: put
+    uri: https://api.deepl.com/v3/style_rules/dcd98ff9-3053-4ab9-bc97-1b525ae6d474/custom_instructions/8f0d68e3-8544-4480-83c0-9eff49b3e1af
+    body:
+      encoding: UTF-8
+      string: '{"label":"Updated Label","prompt":"Use casual language"}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.6.1 (darwin24) ruby/3.2.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 21 Apr 2026 17:52:03 GMT
+      X-Trace-Id:
+      - 0ffe73d1f5974f319d325fb101b40a77
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      Server-Timing:
+      - l7_lb_tls;dur=191, l7_lb_idle;dur=1, l7_lb_receive;dur=1, l7_lb_total;dur=210
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"8f0d68e3-8544-4480-83c0-9eff49b3e1af","label":"Updated Label","prompt":"Use
+        casual language"}'
+  recorded_at: Tue, 21 Apr 2026 17:52:03 GMT
+- request:
+    method: post
+    uri: https://api.deepl.com/v3/style_rules
+    body:
+      encoding: UTF-8
+      string: '{"name":"Update Test","language":"en"}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.6.1 (darwin24) ruby/3.2.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 21 Apr 2026 17:52:04 GMT
+      X-Trace-Id:
+      - e36d24e12c264fff8c46616f0327be60
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      Server-Timing:
+      - l7_lb_tls;dur=187, l7_lb_idle;dur=1, l7_lb_receive;dur=0, l7_lb_total;dur=647
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: '{"style_id":"0f49066c-7382-4a1b-922c-62a35ea7fce9","name":"Update Test","creation_time":"2026-04-21T17:52:04.728681Z","updated_time":"2026-04-21T17:52:04.728907Z","language":"en","version":1,"custom_instructions":[],"configured_rules":{}}'
+  recorded_at: Tue, 21 Apr 2026 17:52:04 GMT
+- request:
+    method: patch
+    uri: https://api.deepl.com/v3/style_rules/0f49066c-7382-4a1b-922c-62a35ea7fce9
+    body:
+      encoding: UTF-8
+      string: '{"name":"Updated Name"}'
+    headers:
+      Authorization:
+      - DeepL-Auth-Key VALID_TOKEN
+      User-Agent:
+      - deepl-ruby/3.6.1 (darwin24) ruby/3.2.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 21 Apr 2026 17:52:04 GMT
+      X-Trace-Id:
+      - e22dd6d04d964f9ca3be1018ddb7dd05
+      Access-Control-Expose-Headers:
+      - Server-Timing, X-Trace-ID
+      Server-Timing:
+      - l7_lb_tls;dur=188, l7_lb_idle;dur=2, l7_lb_receive;dur=0, l7_lb_total;dur=212
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: '{"style_id":"0f49066c-7382-4a1b-922c-62a35ea7fce9","name":"Updated
+        Name","creation_time":"2026-04-21T17:52:04.728681Z","updated_time":"2026-04-21T17:52:04.728907Z","language":"en","version":1,"custom_instructions":[],"configured_rules":{}}'
+  recorded_at: Tue, 21 Apr 2026 17:52:05 GMT
+recorded_with: VCR 6.3.1

@@ -191,7 +191,6 @@ The following parameters will be automatically converted:
 | `ignore_tags`         | Converts arrays to strings joining by commas
 | `formality`           | No conversion applied
 | `glossary_id`         | No conversion applied
-| `style_id`            | No conversion applied
 | `style_rule`          | No conversion applied (can be a string ID or a StyleRule object)
 | `context`             | No conversion applied
 | `custom_instructions` | No conversion applied
@@ -329,28 +328,52 @@ Style rules allow you to customize your translations using a managed, shared lis
 of rules for style, formatting, and more. Multiple style rules can be stored with
 your account, each with a user-specified name and a uniquely-assigned ID.
 
-#### Creating and managing style rules
+#### Creating a style rule
 
-Currently style rules must be created and managed in the DeepL UI via
-https://www.deepl.com/en/custom-rules. Full CRUD functionality via the APIs will
-come shortly.
-
-#### Listing all style rules
-
-`style_rules.list` returns a list of `StyleRule` objects
-corresponding to all of your stored style rules. The method accepts optional
-parameters: `page` (page number for pagination, 0-indexed), `page_size` (number
-of items per page), and `detailed` (whether to include detailed configuration
-rules in the `configured_rules` property).
+Use `create` to create a new style rule with a name and language code. You can
+optionally provide `configured_rules` and `custom_instructions`.
 
 ```rb
-# Get all style rules
+# Simple creation with just a name and language
+style_rule = DeepL.style_rules.create('My Style Rule', 'en')
+puts "Created: #{style_rule.name} (#{style_rule.style_id})"
+
+# Creation with configured rules and custom instructions
+style_rule = DeepL.style_rules.create(
+  'Formal English',
+  'en',
+  configured_rules: { style_and_tone: { formality: 'formal' } },
+  custom_instructions: [{ label: 'Tone', prompt: 'Always use formal language' }]
+)
+```
+
+#### Retrieving and listing style rules
+
+Use `find` to retrieve a single style rule by ID, or `list` to list all style
+rules.
+
+`list` returns a list of `StyleRule` objects corresponding to all of your stored
+style rules. The method accepts optional parameters: `page` (page number for
+pagination, 0-indexed), `page_size` (number of items per page), and `detailed`.
+When `true`, the response includes `configured_rules` and `custom_instructions`
+for each style rule. When `false` (default), these fields are omitted for faster
+responses.
+
+```rb
+# Get a single style rule by ID
+style_rule = DeepL.style_rules.find('YOUR_STYLE_ID')
+puts "#{style_rule.name} (#{style_rule.language})"
+
+# List all style rules
 style_rules = DeepL.style_rules.list
 style_rules.each do |rule|
   puts "#{rule.name} (#{rule.style_id})"
 end
 
-# Get style rules with detailed configuration
+# List with pagination
+style_rules = DeepL.style_rules.list(page: 0, page_size: 10)
+
+# List with detailed configuration
 style_rules = DeepL.style_rules.list(detailed: true)
 style_rules.each do |rule|
   if rule.configured_rules
@@ -359,24 +382,77 @@ style_rules.each do |rule|
 end
 ```
 
-Created style rules can be used in the `translate` method by specifying the `style_id` option:
+#### Updating a style rule
+
+Use `update_name` to rename a style rule, and `update_configured_rules` to
+update its configured rules.
 
 ```rb
-translation = DeepL.translate 'Hello World', 'EN', 'ES', style_id: 'dca2e053-8ae5-45e6-a0d2-881156e7f4e4'
+# Update the name
+updated = DeepL.style_rules.update_name('YOUR_STYLE_ID', 'New Name')
 
-puts translation.class
-# => DeepL::Resources::Text
-puts translation.text
-# => 'Hola Mundo'
+# Update configured rules
+updated = DeepL.style_rules.update_configured_rules(
+  'YOUR_STYLE_ID',
+  { style_and_tone: { formality: 'formal' } }
+)
 ```
 
-You can also pass a `StyleRule` object directly:
+The `configured_rules` hash supports the following categories: `dates_and_times`,
+`formatting`, `numbers`, `punctuation`, `spelling_and_grammar`, `style_and_tone`,
+and `vocabulary`.
+
+#### Managing custom instructions
+
+Custom instructions allow you to add free-text prompts to a style rule. Each
+instruction has an `id`, `label`, `prompt`, and `source_language`. Use
+`create_custom_instruction`, `find_custom_instruction`,
+`update_custom_instruction`, and `destroy_custom_instruction` to manage them.
 
 ```rb
-style_rules = DeepL.style_rules.list
-style_rule = style_rules.first
+# Create a custom instruction
+instruction = DeepL.style_rules.create_custom_instruction(
+  'YOUR_STYLE_ID', 'Formal tone', 'Always use formal language'
+)
+puts "Created instruction: #{instruction.id}"
 
-translation = DeepL.translate 'Hello World', 'EN', 'ES', style_rule: style_rule
+# Create with an optional source language
+instruction = DeepL.style_rules.create_custom_instruction(
+  'YOUR_STYLE_ID', 'Formal tone', 'Always use formal language', 'en'
+)
+
+# Get a custom instruction
+instruction = DeepL.style_rules.find_custom_instruction('YOUR_STYLE_ID', instruction.id)
+
+# Update a custom instruction
+updated = DeepL.style_rules.update_custom_instruction(
+  'YOUR_STYLE_ID', instruction.id, 'Updated label', 'Use very formal language'
+)
+
+# Delete a custom instruction
+DeepL.style_rules.destroy_custom_instruction('YOUR_STYLE_ID', instruction.id)
+```
+
+#### Deleting a style rule
+
+Use `destroy` to delete a style rule by ID.
+
+```rb
+DeepL.style_rules.destroy('YOUR_STYLE_ID')
+```
+
+#### Using style rules in translations
+
+Style rules can be used in the `translate` method by specifying the `style_rule` option
+with either a style rule ID string or a `StyleRule` object:
+
+```rb
+# Using a style rule ID
+translation = DeepL.translate 'Hello World', 'EN', 'ES', style_rule: 'dca2e053-8ae5-45e6-a0d2-881156e7f4e4'
+
+# Or using a StyleRule object
+style_rules = DeepL.style_rules.list
+translation = DeepL.translate 'Hello World', 'EN', 'ES', style_rule: style_rules.first
 ```
 
 ### Monitor usage
