@@ -41,6 +41,7 @@ require_relative 'deepl/requests/style_rule/create_custom_instruction'
 require_relative 'deepl/requests/style_rule/find_custom_instruction'
 require_relative 'deepl/requests/style_rule/update_custom_instruction'
 require_relative 'deepl/requests/style_rule/destroy_custom_instruction'
+require_relative 'deepl/requests/translation_memory/list'
 require_relative 'deepl/requests/languages'
 require_relative 'deepl/requests/translate'
 require_relative 'deepl/requests/usage'
@@ -52,6 +53,7 @@ require_relative 'deepl/resources/document_handle'
 require_relative 'deepl/resources/document_translation_status'
 require_relative 'deepl/resources/glossary'
 require_relative 'deepl/resources/style_rule'
+require_relative 'deepl/resources/translation_memory'
 require_relative 'deepl/resources/language'
 require_relative 'deepl/resources/language_pair'
 require_relative 'deepl/resources/text'
@@ -82,6 +84,7 @@ require_relative 'deepl/configuration'
 require_relative 'deepl/document_api'
 require_relative 'deepl/glossary_api'
 require_relative 'deepl/style_rule_api'
+require_relative 'deepl/translation_memory_api'
 
 # -- Gem interface
 module DeepL
@@ -115,6 +118,11 @@ module DeepL
   def style_rules(options = {})
     configure if @configuration.nil?
     StyleRuleApi.new(api, options)
+  end
+
+  def translation_memories(options = {})
+    configure if @configuration.nil?
+    TranslationMemoryApi.new(api, options)
   end
 
   def rephrase(text, target_lang = nil, writing_style = nil, tone = nil, options = {}) # rubocop:disable Metrics/ParameterLists

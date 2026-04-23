@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- Added support for listing translation memories via `DeepL.translation_memories.list`.
+- Added `translation_memory` and `translation_memory_threshold` parameters to `translate()`
+  to use a translation memory during text translation. The `translation_memory` parameter
+  accepts a string ID or a `TranslationMemory` object.
 - Added support for style rules CRUD operations via `DeepL.style_rules`:
   `create()`, `find()`, `update_name()`, `update_configured_rules()`, and `destroy()`.
 - Added support for style rule custom instruction CRUD operations via `DeepL.style_rules`:

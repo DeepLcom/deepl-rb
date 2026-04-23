@@ -192,6 +192,8 @@ The following parameters will be automatically converted:
 | `formality`           | No conversion applied
 | `glossary_id`         | No conversion applied
 | `style_rule`          | No conversion applied (can be a string ID or a StyleRule object)
+| `translation_memory`  | No conversion applied (can be a string ID or a TranslationMemory object)
+| `translation_memory_threshold` | No conversion applied (integer 0-100, recommended minimum 75)
 | `context`             | No conversion applied
 | `custom_instructions` | No conversion applied
 | `tag_handling_version` | No conversion applied
@@ -453,6 +455,59 @@ translation = DeepL.translate 'Hello World', 'EN', 'ES', style_rule: 'dca2e053-8
 # Or using a StyleRule object
 style_rules = DeepL.style_rules.list
 translation = DeepL.translate 'Hello World', 'EN', 'ES', style_rule: style_rules.first
+```
+
+### Translation Memories
+
+Translation memories allow you to store and reuse previously created translations.
+They can be used in text translation requests to improve consistency by matching
+against stored segments. Multiple translation memories can be stored with your
+account, each with a source language and one or more target languages.
+
+#### Uploading and managing translation memories
+
+Currently translation memories must be uploaded and managed in the DeepL UI via
+https://www.deepl.com/translation-memory. Full translation memory management via
+the API will come shortly.
+
+#### Listing translation memories
+
+`translation_memories.list` returns a list of `TranslationMemory` objects
+for your stored translation memories. The method accepts optional parameters:
+`page` (page number for pagination, 0-indexed) and `page_size` (number of items
+per page, max 25).
+
+```rb
+# List translation memories
+translation_memories = DeepL.translation_memories.list
+translation_memories.each do |tm|
+  puts "#{tm.name} (#{tm.translation_memory_id})"
+  puts "  Source: #{tm.source_language}, Targets: #{tm.target_languages.join(', ')}"
+  puts "  Segments: #{tm.segment_count}"
+end
+
+# List with pagination
+translation_memories = DeepL.translation_memories.list(page: 0, page_size: 10)
+```
+
+#### Using a translation memory in translations
+
+Pass the `translation_memory` parameter to `translate` to use a translation
+memory. You can pass either a string containing the translation memory ID, or a
+`TranslationMemory` object. Use `translation_memory_threshold` to control the
+minimum matching percentage for fuzzy matches (0-100, recommended minimum of
+75%).
+
+```rb
+# Using a translation memory ID
+translation = DeepL.translate 'Hello, world!', 'EN', 'DE',
+                              translation_memory: 'YOUR_TM_ID',
+                              translation_memory_threshold: 80
+
+# Or using a TranslationMemory object
+translation_memories = DeepL.translation_memories.list
+translation = DeepL.translate 'Hello, world!', 'EN', 'DE',
+                              translation_memory: translation_memories.first
 ```
 
 ### Monitor usage
