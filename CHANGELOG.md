@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [3.7.0] - 2026-05-14
 ### Added
 - Added support for listing translation memories via `DeepL.translation_memories.list`.
 - Added `translation_memory` and `translation_memory_threshold` parameters to `translate()`
@@ -117,7 +119,8 @@ The change in major version is only due to the change in maintainership, there i
 ### Fixed
 - Make RequestEntityTooLarge error message more clear
 
-[Unreleased]: https://github.com/DeepLcom/deepl-rb/compare/v3.6.1...HEAD
+[Unreleased]: https://github.com/DeepLcom/deepl-rb/compare/v3.7.0...HEAD
+[3.7.0]: https://github.com/DeepLcom/deepl-rb/compare/v3.6.1...v3.7.0
 [3.6.1]: https://github.com/DeepLcom/deepl-rb/compare/v3.6.0...v3.6.1
 [3.6.0]: https://github.com/DeepLcom/deepl-rb/compare/v3.5.1...v3.6.0
 [3.5.1]: https://github.com/DeepLcom/deepl-rb/compare/v3.5.0...v3.5.1
