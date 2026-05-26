@@ -551,6 +551,18 @@ doc_handle = DeepL.document.upload('/path/to/spanish_document.pdf', 'ES', 'EN', 
 
 The `extra_body_parameters` option allows you to pass arbitrary parameters in the request body. This can be used to access beta features by adding new parameters, or to override built-in parameters (such as `target_lang`, `source_lang`, etc.) for testing purposes.
 
+### Sending additional HTTP headers
+
+You can pass additional HTTP headers to `translate`, `rephrase`, and the
+`document` methods. For example, to send the `X-DeepL-Reporting-Tag` header
+for usage reporting (see the [cookbook entry](https://developers.deepl.com/docs/learning-how-tos/cookbook/sending-custom-reporting-tags-from-client-libraries)):
+
+```rb
+additional_headers = { 'X-DeepL-Reporting-Tag' => 'my-tag' }
+translation = DeepL.translate 'Hello, world!', 'EN', 'DE', {}, additional_headers
+rephrased = DeepL.rephrase 'Hello, world!', 'EN', nil, nil, {}, additional_headers
+```
+
 ### Handle exceptions
 
 You can capture and process exceptions that may be raised during API calls. These are all the possible exceptions:

@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Added support for passing additional HTTP headers to `translate()` and
+  `rephrase()`. This can be used to send the `X-DeepL-Reporting-Tag` header
+  for usage reporting.
 
 ## [3.7.0] - 2026-05-14
 ### Added

@@ -8,8 +8,9 @@ module DeepL
     class Rephrase < Base
       attr_reader :text, :target_lang, :writing_style, :tone
 
-      def initialize(api, text, target_lang = nil, writing_style = nil, tone = nil, options = {}) # rubocop:disable Metrics/ParameterLists
-        super(api, options)
+      def initialize(api, text, target_lang = nil, writing_style = nil, tone = nil, options = {}, # rubocop:disable Metrics/ParameterLists
+                     additional_headers = {})
+        super(api, options, additional_headers)
         @text = text
         @target_lang = target_lang
         @writing_style = writing_style

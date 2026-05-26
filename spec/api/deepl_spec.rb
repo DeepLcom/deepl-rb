@@ -69,7 +69,7 @@ describe DeepL do
     context 'when translating a text' do
       it 'creates and call a request object' do
         expect(DeepL::Requests::Translate).to receive(:new)
-          .with(deepl.api, input, source_lang, target_lang, options).and_call_original
+          .with(deepl.api, input, source_lang, target_lang, options, {}).and_call_original
 
         text = deepl.translate(input, source_lang, target_lang, options)
         expect(text).to be_a(DeepL::Resources::Text)
@@ -92,7 +92,7 @@ describe DeepL do
 
       it 'creates and call a request object' do
         expect(DeepL::Requests::Translate).to receive(:new)
-          .with(deepl.api, input, source_lang, target_lang, options).and_call_original
+          .with(deepl.api, input, source_lang, target_lang, options, {}).and_call_original
         text = deepl.translate(input, source_lang, target_lang, options)
         expect(text).to be_a(DeepL::Resources::Text)
         expect(text.text).to eq('Ojalá tuviéramos auto.')
@@ -442,7 +442,7 @@ describe DeepL do
     context 'when rephrasing text' do
       it 'creates and call a request object' do
         expect(DeepL::Requests::Rephrase).to receive(:new)
-          .with(deepl.api, text, nil, nil, nil, {}).and_call_original
+          .with(deepl.api, text, nil, nil, nil, {}, {}).and_call_original
 
         rephrased_text = deepl.rephrase(text)
         expect(rephrased_text).to be_a(DeepL::Resources::Text)
@@ -450,7 +450,7 @@ describe DeepL do
 
       it 'creates and call a request object when passing options' do
         expect(DeepL::Requests::Rephrase).to receive(:new)
-          .with(deepl.api, text, target_lang, nil, nil, options).and_call_original
+          .with(deepl.api, text, target_lang, nil, nil, options, {}).and_call_original
 
         rephrased_text = deepl.rephrase(text, target_lang, nil, nil, options)
         expect(rephrased_text).to be_a(DeepL::Resources::Text)

@@ -30,8 +30,8 @@ module DeepL
       attr_reader :text, :source_lang, :target_lang, :ignore_tags, :splitting_tags,
                   :non_splitting_tags, :model_type, :custom_instructions, :tag_handling_version
 
-      def initialize(api, text, source_lang, target_lang, options = {})
-        super(api, options)
+      def initialize(api, text, source_lang, target_lang, options = {}, additional_headers = {})
+        super(api, options, additional_headers)
         @text = text
         @source_lang = source_lang
         @target_lang = target_lang

@@ -100,9 +100,10 @@ module DeepL
     Requests::Languages.new(api, options).request
   end
 
-  def translate(text, source_lang, target_lang, options = {})
+  def translate(text, source_lang, target_lang, options = {}, additional_headers = {})
     configure if @configuration.nil?
-    Requests::Translate.new(api, text, source_lang, target_lang, options).request
+    Requests::Translate.new(api, text, source_lang, target_lang, options,
+                            additional_headers).request
   end
 
   def document(options = {})
@@ -125,9 +126,11 @@ module DeepL
     TranslationMemoryApi.new(api, options)
   end
 
-  def rephrase(text, target_lang = nil, writing_style = nil, tone = nil, options = {}) # rubocop:disable Metrics/ParameterLists
+  def rephrase(text, target_lang = nil, writing_style = nil, tone = nil, options = {}, # rubocop:disable Metrics/ParameterLists
+               additional_headers = {})
     configure if @configuration.nil?
-    Requests::Rephrase.new(api, text, target_lang, writing_style, tone, options).request
+    Requests::Rephrase.new(api, text, target_lang, writing_style, tone, options,
+                           additional_headers).request
   end
 
   def usage(options = {})

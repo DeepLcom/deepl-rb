@@ -23,6 +23,21 @@ describe DeepL::Requests::Rephrase do
   let(:tone) { nil }
   let(:options) { {} }
 
+  describe '#initialize' do
+    context 'when passing additional headers' do
+      it 'merges the headers into the request headers' do
+        request = described_class.new(api, text, target_lang, nil, nil, {},
+                                      { 'X-DeepL-Reporting-Tag' => 'my-tag' })
+        expect(request.send(:headers)).to include('X-DeepL-Reporting-Tag' => 'my-tag')
+      end
+
+      it 'defaults to no additional headers' do
+        request = described_class.new(api, text, target_lang)
+        expect(request.send(:headers).keys).to contain_exactly('Authorization', 'User-Agent')
+      end
+    end
+  end
+
   describe '#request' do
     around do |example|
       VCR.use_cassette('rephrase_texts') { example.call }
