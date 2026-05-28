@@ -118,6 +118,9 @@ semgrep-sast:
 .test_base:
     stage: test
     extends: .test
+    variables:
+        VALIDATE_REQUESTS_FOR_DEEPL_MOCK: '1'
+        VALIDATE_RESPONSES_FOR_DEEPL_MOCK: '1'
     parallel:
         matrix:
           - DOCKER_IMAGE: 'ruby:2.7'
@@ -163,7 +166,6 @@ test_manual:
   extends: .test_base
   rules:
     - if: $CI_PIPELINE_SOURCE != "schedule"
-
 
 # stage: publish ----------------------
 
