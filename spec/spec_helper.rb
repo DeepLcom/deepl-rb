@@ -14,8 +14,25 @@ SimpleCov.formatter = SimpleCov::Formatter::CoberturaFormatter
 require_relative '../lib/deepl'
 require_relative 'integration_tests/integration_test_utils'
 
+# Auto-load test helpers under spec/support
+Dir[File.expand_path('support/**/*.rb', __dir__)].sort.each { |f| require f }
+
 # Lib config
 ENV['DEEPL_AUTH_KEY'] ||= 'TEST-TOKEN'
+
+RSpec.configure do |config|
+  config.include ManagedGlossary
+  config.include ManagedStyleRule
+  config.include ManagedTranslationMemory
+
+  config.before(:each, :mock_server_only) do
+    skip 'Only runs on mock server' unless ENV.key?('DEEPL_MOCK_SERVER_PORT')
+  end
+
+  config.before(:each, :real_server_only) do
+    skip 'Only runs on real server' if ENV.key?('DEEPL_MOCK_SERVER_PORT')
+  end
+end
 
 # General helpers
 def build_deepl_api
