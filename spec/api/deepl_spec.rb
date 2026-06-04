@@ -270,11 +270,11 @@ describe DeepL do
           %w[World Mundo]
         ]
       end
-      let(:options) { { param: 'fake', entries_format: 'tsv' } }
+      let(:options) { { entries_format: 'tsv' } }
 
       around do |example|
         deepl.configure
-        VCR.use_cassette('deepl_glossaries') { example.call }
+        VCR.use_cassette('glossaries') { example.call }
       end
 
       context 'when creating a glossary' do
@@ -289,12 +289,12 @@ describe DeepL do
     end
 
     describe '#glossaries.find' do
-      let(:id) { 'e7a62637-7ef4-4959-a355-09ba61dd0126' }
+      let(:id) { '9ab5dac2-b7b2-4b4a-808a-e8e305df5ecb' }
       let(:options) { {} }
 
       around do |example|
         deepl.configure
-        VCR.use_cassette('deepl_glossaries') { example.call }
+        VCR.use_cassette('glossaries') { example.call }
       end
 
       context 'when fetching a glossary' do
@@ -308,7 +308,7 @@ describe DeepL do
       end
 
       context 'when fetching a non existing glossary' do
-        let(:id) { '00000000-0000-0000-0000-000000000000' }
+        let(:id) { 'a0af40e1-d81b-4aab-a95c-7cafbcfd1eb1' }
 
         it 'raises an exception when the glossary does not exist' do
           expect(DeepL::Requests::Glossary::Find).to receive(:new)
@@ -324,7 +324,7 @@ describe DeepL do
 
       around do |example|
         deepl.configure
-        VCR.use_cassette('deepl_glossaries') { example.call }
+        VCR.use_cassette('glossaries') { example.call }
       end
 
       context 'when fetching glossaries' do
@@ -339,12 +339,12 @@ describe DeepL do
     end
 
     describe '#glossaries.destroy' do
-      let(:id) { 'e7a62637-7ef4-4959-a355-09ba61dd0126' }
+      let(:id) { '9ab5dac2-b7b2-4b4a-808a-e8e305df5ecb' }
       let(:options) { {} }
 
       around do |example|
         deepl.configure
-        VCR.use_cassette('deepl_glossaries') { example.call }
+        VCR.use_cassette('glossaries') { example.call }
       end
 
       context 'when destroy a glossary' do
@@ -374,12 +374,12 @@ describe DeepL do
     end
 
     describe '#glossaries.entries' do
-      let(:id) { 'e7a62637-7ef4-4959-a355-09ba61dd0126' }
+      let(:id) { '9ab5dac2-b7b2-4b4a-808a-e8e305df5ecb' }
       let(:options) { {} }
 
       around do |example|
         deepl.configure
-        VCR.use_cassette('deepl_glossaries') { example.call }
+        VCR.use_cassette('glossaries') { example.call }
       end
 
       context 'when listing glossary entries' do
@@ -414,7 +414,7 @@ describe DeepL do
 
       around do |example|
         deepl.configure
-        VCR.use_cassette('deepl_glossaries') { example.call }
+        VCR.use_cassette('glossaries') { example.call }
       end
 
       context 'when fetching language pairs supported by glossaries' do

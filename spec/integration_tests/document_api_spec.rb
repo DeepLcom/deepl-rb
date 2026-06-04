@@ -63,8 +63,7 @@ describe DeepL::DocumentApi do
       expect(doc_status.status).to eq('done')
     end
 
-    it 'Translates a document after retrying the upload once' do # rubocop:disable RSpec/ExampleLength
-      skip 'Only runs on mock server' if real_server?
+    it 'Translates a document after retrying the upload once', :mock_server_only do # rubocop:disable RSpec/ExampleLength
       File.unlink(output_document_path)
       source_lang = default_lang_args[:source_lang]
       target_lang = default_lang_args[:target_lang]
@@ -85,8 +84,7 @@ describe DeepL::DocumentApi do
     end
   end
 
-  it 'Translates a document after waiting' do # rubocop:disable RSpec/ExampleLength
-    skip 'Only runs on mock server' if real_server?
+  it 'Translates a document after waiting', :mock_server_only do # rubocop:disable RSpec/ExampleLength
     File.unlink(output_document_path)
     source_lang = default_lang_args[:source_lang]
     target_lang = default_lang_args[:target_lang]
@@ -107,8 +105,7 @@ describe DeepL::DocumentApi do
     expect(doc_status.status).to eq('done')
   end
 
-  it 'Translates a large document' do # rubocop:disable RSpec/ExampleLength
-    skip 'Only runs on mock server' if real_server?
+  it 'Translates a large document', :mock_server_only do # rubocop:disable RSpec/ExampleLength
     File.unlink(output_document_path)
     source_lang = default_lang_args[:source_lang]
     target_lang = default_lang_args[:target_lang]
@@ -130,8 +127,7 @@ describe DeepL::DocumentApi do
     expect(doc_status.status).to eq('done')
   end
 
-  it 'Translates a document with formality set' do # rubocop:disable RSpec/ExampleLength
-    skip 'Only runs on mock server' if real_server?
+  it 'Translates a document with formality set', :mock_server_only do # rubocop:disable RSpec/ExampleLength
     File.unlink(output_document_path)
     source_lang = default_lang_args[:source_lang]
     target_lang = default_lang_args[:target_lang]

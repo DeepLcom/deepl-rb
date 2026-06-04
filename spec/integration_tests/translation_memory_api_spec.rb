@@ -5,7 +5,7 @@
 
 require 'spec_helper'
 
-describe DeepL::TranslationMemoryApi do
+describe DeepL::TranslationMemoryApi, :mock_server_only do
   before do
     VCR.turn_off!
     WebMock.allow_net_connect!
@@ -18,8 +18,6 @@ describe DeepL::TranslationMemoryApi do
 
   describe '#translate_with_translation_memory' do
     it 'when performing a request with translation_memory_id' do
-      skip 'Only runs on mock server' if real_server?
-
       source_lang = 'DE'
       target_lang = 'EN'
       text = 'Protonenstrahl'
@@ -31,8 +29,6 @@ describe DeepL::TranslationMemoryApi do
     end
 
     it 'when performing a request with translation_memory resource object' do
-      skip 'Only runs on mock server' if real_server?
-
       source_lang = 'DE'
       target_lang = 'EN'
       text = 'Protonenstrahl'
@@ -46,8 +42,6 @@ describe DeepL::TranslationMemoryApi do
 
   describe '#list_translation_memories' do
     it 'when requesting a list of all translation memories' do
-      skip 'Only runs on mock server' if real_server?
-
       translation_memories = DeepL.translation_memories.list
       expect(translation_memories).to be_an(Array)
       expect(translation_memories).not_to be_empty

@@ -5,7 +5,7 @@
 
 require 'spec_helper'
 
-describe DeepL::StyleRuleApi do
+describe DeepL::StyleRuleApi, :mock_server_only do
   before do
     VCR.turn_off!
     WebMock.allow_net_connect!
@@ -18,8 +18,6 @@ describe DeepL::StyleRuleApi do
 
   describe '#translate_with_style_rules' do
     it 'when performing a request with style_id' do
-      skip 'Only runs on mock server' if real_server?
-
       source_lang = 'DE'
       target_lang = 'EN-US'
       text = 'Hallo, Welt!'
@@ -30,8 +28,6 @@ describe DeepL::StyleRuleApi do
     end
 
     it 'when performing a request with style_rule object' do
-      skip 'Only runs on mock server' if real_server?
-
       source_lang = 'DE'
       target_lang = 'EN-US'
       text = 'Hallo, Welt!'
@@ -44,7 +40,6 @@ describe DeepL::StyleRuleApi do
 
   describe '#list_style_rules' do
     it 'when requesting a list of all style rules' do
-      skip 'Only runs on mock server' if real_server?
       style_rules = DeepL.style_rules.list(page: 0, page_size: 10, detailed: true)
       expect(style_rules).to be_an(Array)
       expect(style_rules.length).to eq(1)
@@ -55,7 +50,6 @@ describe DeepL::StyleRuleApi do
     end
 
     it 'when requesting a list of all style rules without detailed' do
-      skip 'Only runs on mock server' if real_server?
       style_rules = DeepL.style_rules.list
       expect(style_rules).to be_an(Array)
       expect(style_rules.length).to eq(1)
@@ -67,8 +61,6 @@ describe DeepL::StyleRuleApi do
 
   describe 'style rule management operations' do
     it 'when performing all management operations on style rules' do # rubocop:disable RSpec/ExampleLength,RSpec/MultipleExpectations
-      skip 'Only runs on mock server' if real_server?
-
       # Create a style rule
       style_rule = DeepL.style_rules.create('Test Style Rule', 'en')
       expect(style_rule).to be_a(DeepL::Resources::StyleRule)
