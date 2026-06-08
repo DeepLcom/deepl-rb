@@ -6,7 +6,7 @@
 require 'spec_helper'
 require 'tempfile'
 
-describe DeepL do
+describe DeepL do # rubocop:disable RSpec/SpecFilePathFormat
   subject(:deepl) { described_class.dup }
 
   around do |tests|
