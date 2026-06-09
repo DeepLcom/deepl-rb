@@ -5,17 +5,7 @@
 
 require 'spec_helper'
 
-describe DeepL::GlossaryApi, :mock_server_only do
-  before do
-    VCR.turn_off!
-    WebMock.allow_net_connect!
-  end
-
-  after do
-    VCR.turn_on!
-    WebMock.disable_net_connect!
-  end
-
+describe DeepL::GlossaryApi do
   let(:default_glossary_args) do
     {
       name: 'Integration Test Glossary',
@@ -32,6 +22,10 @@ describe DeepL::GlossaryApi, :mock_server_only do
         expect(glossary.id).to be_a(String)
         expect(glossary.name).to eq(default_glossary_args[:name])
         expect(glossary.entry_count).to eq(2)
+        expect(glossary.source_lang).to eq(default_glossary_args[:source_lang])
+        expect(glossary.target_lang).to eq(default_glossary_args[:target_lang])
+        expect(glossary.ready).to be(true).or be(false)
+        expect { Time.iso8601(glossary.creation_time) }.not_to raise_error
 
         listed = DeepL.glossaries.list
         expect(listed).to be_an(Array)
@@ -66,6 +60,36 @@ describe DeepL::GlossaryApi, :mock_server_only do
           [%w[Hello Hallo]]
         )
       end.to raise_error(DeepL::Exceptions::RequestError)
+    end
+  end
+
+  describe '#destroy' do
+    it 'returns the id of the destroyed glossary' do
+      glossary = DeepL.glossaries.create(
+        default_glossary_args[:name],
+        default_glossary_args[:source_lang],
+        default_glossary_args[:target_lang],
+        default_glossary_args[:entries]
+      )
+
+      expect(DeepL.glossaries.destroy(glossary.id)).to eq(glossary.id)
+    end
+  end
+
+  describe '#entries' do
+    it 'returns the glossary entries as an array of [source, target] pairs' do # rubocop:disable RSpec/ExampleLength
+      with_managed_glossary(**default_glossary_args) do |glossary|
+        entries = DeepL.glossaries.entries(glossary.id)
+
+        expect(entries).to be_an(Array)
+        expect(entries).to all(be_an(Array))
+        expect(entries.size).to eq(default_glossary_args[:entries].size)
+        entries.each do |entry|
+          expect(entry.size).to eq(2)
+          expect(entry.first).to be_a(String)
+          expect(entry.last).to be_a(String)
+        end
+      end
     end
   end
 

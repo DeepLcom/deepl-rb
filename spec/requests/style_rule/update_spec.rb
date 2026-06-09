@@ -26,23 +26,4 @@ describe DeepL::Requests::StyleRule::Update do
       end
     end
   end
-
-  describe '#request' do
-    around do |example|
-      VCR.use_cassette('style_rules_crud') { example.call }
-    end
-
-    context 'when performing a valid request' do
-      subject(:update) { described_class.new(api, new_rule.style_id, 'Updated Name') }
-
-      let(:new_rule) do
-        DeepL::Requests::StyleRule::Create.new(api, 'Update Test', 'en').request
-      end
-
-      it 'returns a style rule object' do
-        style_rule = update.request
-        expect(style_rule).to be_a(DeepL::Resources::StyleRule)
-      end
-    end
-  end
 end

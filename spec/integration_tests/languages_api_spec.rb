@@ -6,17 +6,7 @@
 require 'spec_helper'
 
 # Covers GET /v2/languages; the SDK has no v3 languages endpoint.
-describe 'DeepL.languages', :mock_server_only do # rubocop:disable RSpec/DescribeClass
-  before do
-    VCR.turn_off!
-    WebMock.allow_net_connect!
-  end
-
-  after do
-    VCR.turn_on!
-    WebMock.disable_net_connect!
-  end
-
+describe 'DeepL.languages' do # rubocop:disable RSpec/DescribeClass
   describe 'source languages' do
     it 'returns a non-empty array of Language resources with common codes' do
       languages = DeepL.languages

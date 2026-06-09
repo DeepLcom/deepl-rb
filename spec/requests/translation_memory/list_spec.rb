@@ -24,38 +24,4 @@ describe DeepL::Requests::TranslationMemory::List do
       end
     end
   end
-
-  describe '#request' do
-    around do |example|
-      VCR.use_cassette('translation_memories') { example.call }
-    end
-
-    context 'when requesting a list of all translation memories' do
-      it 'returns an array of translation memories' do
-        translation_memories = translation_memory_list.request
-        expect(translation_memories).to be_an(Array)
-        expect(translation_memories).not_to be_empty
-        expect(translation_memories.first).to be_a(DeepL::Resources::TranslationMemory)
-        expect(translation_memories.first.translation_memory_id).to be_a(String)
-        expect(translation_memories.first.name).to be_a(String)
-        expect(translation_memories.first.source_language).to be_a(String)
-        expect(translation_memories.first.target_languages).to be_an(Array)
-        expect(translation_memories.first.segment_count).to be_an(Integer)
-      end
-    end
-
-    context 'when performing a bad request' do
-      context 'when using an invalid token' do
-        let(:api) do
-          api = build_deepl_api
-          api.configuration.auth_key = 'invalid'
-          api
-        end
-
-        it 'raises an authorization failed error' do
-          expect { translation_memory_list.request }.to raise_error(DeepL::Exceptions::AuthorizationFailed)
-        end
-      end
-    end
-  end
 end

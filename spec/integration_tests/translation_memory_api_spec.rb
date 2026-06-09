@@ -6,16 +6,6 @@
 require 'spec_helper'
 
 describe DeepL::TranslationMemoryApi, :mock_server_only do
-  before do
-    VCR.turn_off!
-    WebMock.allow_net_connect!
-  end
-
-  after do
-    VCR.turn_on!
-    WebMock.disable_net_connect!
-  end
-
   describe '#translate_with_translation_memory' do
     it 'when performing a request with translation_memory_id' do
       source_lang = 'DE'

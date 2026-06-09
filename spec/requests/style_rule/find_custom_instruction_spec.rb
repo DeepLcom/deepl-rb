@@ -26,31 +26,4 @@ describe DeepL::Requests::StyleRule::FindCustomInstruction do
       end
     end
   end
-
-  describe '#request' do
-    around do |example|
-      VCR.use_cassette('style_rules_crud') { example.call }
-    end
-
-    context 'when performing a valid request' do
-      subject(:find_instruction) do
-        described_class.new(api, new_rule.style_id, new_instruction.id)
-      end
-
-      let(:new_rule) do
-        DeepL::Requests::StyleRule::Create.new(api, 'Find Instruction Test', 'en').request
-      end
-      let(:new_instruction) do
-        DeepL::Requests::StyleRule::CreateCustomInstruction.new(
-          api, new_rule.style_id, 'Test', 'Test prompt'
-        ).request
-      end
-
-      it 'returns a custom instruction object' do
-        instruction = find_instruction.request
-        expect(instruction).to be_a(DeepL::Resources::CustomInstruction)
-        expect(instruction.id).to eq(new_instruction.id)
-      end
-    end
-  end
 end

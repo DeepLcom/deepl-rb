@@ -24,17 +24,4 @@ describe DeepL::Requests::Glossary::LanguagePairs do
       end
     end
   end
-
-  describe '#request' do
-    around do |example|
-      VCR.use_cassette('glossaries') { example.call }
-    end
-
-    context 'when requesting a list of all language pairs supported by glossaries' do
-      it 'returns a language pairs object' do
-        language_pairs = language_pairs_obj.request
-        expect(language_pairs).to be_an(Array)
-      end
-    end
-  end
 end

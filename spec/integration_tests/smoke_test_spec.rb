@@ -5,17 +5,7 @@
 
 require 'spec_helper'
 
-describe 'SDK smoke test', :integration, :mock_server_only do # rubocop:disable RSpec/DescribeClass
-  before do
-    VCR.turn_off!
-    WebMock.allow_net_connect!
-  end
-
-  after do
-    VCR.turn_on!
-    WebMock.disable_net_connect!
-  end
-
+describe 'SDK smoke test', :integration do # rubocop:disable RSpec/DescribeClass
   it 'exercises translate, glossaries.list, and usage end-to-end' do # rubocop:disable RSpec/ExampleLength
     source_text = 'Hello, world!'
     result = DeepL.translate(source_text, 'EN', 'DE')

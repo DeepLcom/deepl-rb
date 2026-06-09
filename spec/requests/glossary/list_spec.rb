@@ -24,31 +24,4 @@ describe DeepL::Requests::Glossary::List do
       end
     end
   end
-
-  describe '#request' do
-    around do |example|
-      VCR.use_cassette('glossaries') { example.call }
-    end
-
-    context 'when requesting a list of all glossaries' do
-      it 'returns a glossaries object' do
-        glossaries = glossary_list.request
-        expect(glossaries).to be_an(Array)
-      end
-    end
-
-    context 'when performing a bad request' do
-      context 'when using an invalid token' do
-        let(:api) do
-          api = build_deepl_api
-          api.configuration.auth_key = 'invalid'
-          api
-        end
-
-        it 'raises an unauthorized error' do
-          expect { glossary_list.request }.to raise_error(DeepL::Exceptions::AuthorizationFailed)
-        end
-      end
-    end
-  end
 end

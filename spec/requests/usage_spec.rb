@@ -24,20 +24,4 @@ describe DeepL::Requests::Usage do
       end
     end
   end
-
-  describe '#request' do
-    around do |example|
-      VCR.use_cassette('usage') { example.call }
-    end
-
-    context 'when performing a valid request' do
-      it 'returns an usage object' do
-        usage = usage_req.request
-
-        expect(usage).to be_a(DeepL::Resources::Usage)
-        expect(usage.character_count).to be_a(Numeric)
-        expect(usage.character_limit).to be_a(Numeric)
-      end
-    end
-  end
 end

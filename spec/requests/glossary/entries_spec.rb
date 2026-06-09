@@ -24,39 +24,4 @@ describe DeepL::Requests::Glossary::Entries do
       end
     end
   end
-
-  describe '#request' do
-    around do |example|
-      VCR.use_cassette('glossaries') { example.call }
-    end
-
-    context 'when performing a valid request' do
-      it 'returns a list of entries in TSV format' do
-        entries = entries_obj.request
-        expect(entries).to be_a(Array)
-        expect(entries).to all(be_a(Array))
-        expect(entries.size).to eq(2)
-      end
-    end
-
-    context 'when requesting entries with a valid but non existing glossary id' do
-      subject(:entries_obj) { described_class.new(api, id) }
-
-      let(:id) { '00000000-0000-0000-0000-000000000000' }
-
-      it 'raises a not found error' do
-        expect { entries_obj.request }.to raise_error(DeepL::Exceptions::NotFound)
-      end
-    end
-
-    context 'when requesting entries with an invalid glossary id' do
-      subject(:entries_obj) { described_class.new(api, id) }
-
-      let(:id) { 'invalid-uuid' }
-
-      it 'raises a bad request error' do
-        expect { entries_obj.request }.to raise_error(DeepL::Exceptions::BadRequest)
-      end
-    end
-  end
 end

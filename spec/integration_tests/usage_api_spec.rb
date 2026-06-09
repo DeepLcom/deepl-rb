@@ -5,17 +5,7 @@
 
 require 'spec_helper'
 
-describe 'DeepL.usage', :mock_server_only do # rubocop:disable RSpec/DescribeClass
-  before do
-    VCR.turn_off!
-    WebMock.allow_net_connect!
-  end
-
-  after do
-    VCR.turn_on!
-    WebMock.disable_net_connect!
-  end
-
+describe 'DeepL.usage' do # rubocop:disable RSpec/DescribeClass
   describe 'happy path' do
     it 'returns a Usage resource with integer counters where count does not exceed limit' do
       usage = DeepL.usage

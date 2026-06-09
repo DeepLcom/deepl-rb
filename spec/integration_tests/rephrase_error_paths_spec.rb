@@ -6,7 +6,7 @@
 require 'securerandom'
 require 'spec_helper'
 
-describe 'DeepL.rephrase error paths', :mock_server_only do # rubocop:disable RSpec/DescribeClass
+describe 'DeepL.rephrase error paths' do # rubocop:disable RSpec/DescribeClass
   include IntegrationTestUtils
 
   include_context 'with a live mock server'
@@ -35,10 +35,16 @@ describe 'DeepL.rephrase error paths', :mock_server_only do # rubocop:disable RS
         DeepL.rephrase(sample_text, 'zzz')
       end.to raise_error(DeepL::Exceptions::BadRequest)
     end
+
+    it 'raises BadRequest when both writing_style and tone are provided' do
+      expect do
+        DeepL.rephrase(sample_text, 'en', 'business', 'friendly')
+      end.to raise_error(DeepL::Exceptions::BadRequest)
+    end
   end
 
   describe 'rate limiting' do
-    it 'raises LimitExceeded when the server responds with 429' do
+    it 'raises LimitExceeded when the server responds with 429', :mock_server_only do
       expect do
         rephrase_with_fresh_user(respond_with_429_header(1))
       end.to raise_error(DeepL::Exceptions::LimitExceeded)

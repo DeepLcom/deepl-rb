@@ -5,17 +5,7 @@
 
 require 'spec_helper'
 
-describe 'DeepL.rephrase', :mock_server_only do # rubocop:disable RSpec/DescribeClass
-  before do
-    VCR.turn_off!
-    WebMock.allow_net_connect!
-  end
-
-  after do
-    VCR.turn_on!
-    WebMock.disable_net_connect!
-  end
-
+describe 'DeepL.rephrase' do # rubocop:disable RSpec/DescribeClass
   describe 'happy path' do
     it 'rephrases an English sentence into English and returns a Text resource' do
       result = DeepL.rephrase('As Gregor Samsa awoke one morning he found himself transformed.',
@@ -44,6 +34,43 @@ describe 'DeepL.rephrase', :mock_server_only do # rubocop:disable RSpec/Describe
       expect(result).to be_a(DeepL::Resources::Text)
       expect(result.text).to be_a(String)
       expect(result.text).not_to be_empty
+    end
+
+    it 'rephrases with a tone option applied' do
+      result = DeepL.rephrase('As Gregor Samsa awoke one morning he found himself transformed.',
+                              'en', nil, 'friendly')
+
+      expect(result).to be_a(DeepL::Resources::Text)
+      expect(result.text).to be_a(String)
+      expect(result.text).not_to be_empty
+    end
+
+    it 'rephrases an array of texts with a tone applied' do
+      texts = [
+        'As Gregor Samsa awoke one morning he found himself transformed.',
+        'He lay on his armour-like back, and if he lifted his head a little.'
+      ]
+
+      results = DeepL.rephrase(texts, 'en', nil, 'friendly')
+
+      expect(results).to be_an(Array)
+      expect(results.size).to eq(2)
+      expect(results).to all(be_a(DeepL::Resources::Text))
+      expect(results.map(&:text)).to all(be_a(String).and(satisfy { |t| !t.empty? }))
+    end
+
+    it 'rephrases an array of texts with a writing_style applied' do
+      texts = [
+        'As Gregor Samsa awoke one morning he found himself transformed.',
+        'He lay on his armour-like back, and if he lifted his head a little.'
+      ]
+
+      results = DeepL.rephrase(texts, 'en', 'business')
+
+      expect(results).to be_an(Array)
+      expect(results.size).to eq(2)
+      expect(results).to all(be_a(DeepL::Resources::Text))
+      expect(results.map(&:text)).to all(be_a(String).and(satisfy { |t| !t.empty? }))
     end
 
     it 'rephrases an array of texts and returns an array of Text resources' do

@@ -24,35 +24,4 @@ describe DeepL::Requests::StyleRule::List do
       end
     end
   end
-
-  describe '#request' do
-    around do |example|
-      VCR.use_cassette('style_rules') { example.call }
-    end
-
-    context 'when requesting a list of all style rules' do
-      it 'returns an array of style rules' do
-        style_rules = style_rule_list.request
-        expect(style_rules).to be_an(Array)
-        expect(style_rules).not_to be_empty
-        expect(style_rules.first).to be_a(DeepL::Resources::StyleRule)
-        expect(style_rules.first.style_id).to be_a(String)
-        expect(style_rules.first.name).to be_a(String)
-      end
-    end
-
-    context 'when performing a bad request' do
-      context 'when using an invalid token' do
-        let(:api) do
-          api = build_deepl_api
-          api.configuration.auth_key = 'invalid'
-          api
-        end
-
-        it 'raises an authorization failed error' do
-          expect { style_rule_list.request }.to raise_error(DeepL::Exceptions::AuthorizationFailed)
-        end
-      end
-    end
-  end
 end

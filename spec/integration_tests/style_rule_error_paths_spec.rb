@@ -36,5 +36,10 @@ describe DeepL::StyleRuleApi, :mock_server_only do # rubocop:disable RSpec/SpecF
       expect { DeepL.style_rules.create('Nil Lang', nil) }
         .to raise_error(DeepL::Exceptions::BadRequest)
     end
+
+    it 'raises an error when #destroy is called with a malformed UUID' do
+      expect { DeepL.style_rules.destroy('invalid-uuid') }
+        .to raise_error(DeepL::Exceptions::Error)
+    end
   end
 end

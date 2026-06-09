@@ -26,20 +26,4 @@ describe DeepL::Requests::StyleRule::Create do
       end
     end
   end
-
-  describe '#request' do
-    around do |example|
-      VCR.use_cassette('style_rules_crud') { example.call }
-    end
-
-    context 'when performing a valid request' do
-      it 'returns a style rule object' do
-        style_rule = create.request
-        expect(style_rule).to be_a(DeepL::Resources::StyleRule)
-        expect(style_rule.style_id).to be_a(String)
-        expect(style_rule.name).to eq('Test Style Rule')
-        expect(style_rule.language).to eq('en')
-      end
-    end
-  end
 end

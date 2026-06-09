@@ -25,30 +25,4 @@ describe DeepL::Requests::StyleRule::DestroyCustomInstruction do
       end
     end
   end
-
-  describe '#request' do
-    around do |example|
-      VCR.use_cassette('style_rules_crud') { example.call }
-    end
-
-    context 'when performing a valid request' do
-      subject(:destroy_instruction) do
-        described_class.new(api, new_rule.style_id, new_instruction.id)
-      end
-
-      let(:new_rule) do
-        DeepL::Requests::StyleRule::Create.new(api, 'Destroy Instruction Test', 'en').request
-      end
-      let(:new_instruction) do
-        DeepL::Requests::StyleRule::CreateCustomInstruction.new(
-          api, new_rule.style_id, 'To Delete', 'Delete me'
-        ).request
-      end
-
-      it 'returns the deleted instruction id' do
-        response = destroy_instruction.request
-        expect(response).to eq(new_instruction.id)
-      end
-    end
-  end
 end

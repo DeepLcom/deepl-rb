@@ -24,31 +24,4 @@ describe DeepL::Requests::StyleRule::Destroy do
       end
     end
   end
-
-  describe '#request' do
-    around do |example|
-      VCR.use_cassette('style_rules_crud') { example.call }
-    end
-
-    context 'when performing a valid request' do
-      subject(:destroy) { described_class.new(api, new_rule.style_id) }
-
-      let(:new_rule) do
-        DeepL::Requests::StyleRule::Create.new(api, 'Destroy Test', 'en').request
-      end
-
-      it 'returns the deleted style rule id' do
-        response = destroy.request
-        expect(response).to eq(new_rule.style_id)
-      end
-    end
-
-    context 'when deleting a non existing style rule with an invalid id' do
-      let(:style_id) { 'invalid-uuid' }
-
-      it 'raises an error' do
-        expect { destroy.request }.to raise_error(DeepL::Exceptions::Error)
-      end
-    end
-  end
 end

@@ -6,16 +6,6 @@
 require 'spec_helper'
 
 describe DeepL::DocumentApi do
-  before do
-    VCR.turn_off!
-    WebMock.allow_net_connect!
-  end
-
-  after do
-    VCR.turn_on!
-    WebMock.disable_net_connect!
-  end
-
   include_context 'with temp dir'
 
   let(:default_lang_args) { { source_lang: 'EN', target_lang: 'DE' } }

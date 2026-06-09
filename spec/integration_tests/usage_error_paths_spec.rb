@@ -5,7 +5,7 @@
 
 require 'spec_helper'
 
-describe 'DeepL.usage error paths', :mock_server_only do # rubocop:disable RSpec/DescribeClass
+describe 'DeepL.usage error paths' do # rubocop:disable RSpec/DescribeClass
   include_context 'with a live mock server'
 
   describe 'authorization failures' do

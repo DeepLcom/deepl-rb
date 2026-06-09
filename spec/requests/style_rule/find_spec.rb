@@ -25,32 +25,4 @@ describe DeepL::Requests::StyleRule::Find do
       end
     end
   end
-
-  describe '#request' do
-    around do |example|
-      VCR.use_cassette('style_rules_crud') { example.call }
-    end
-
-    context 'when performing a valid request' do
-      subject(:style_rule_find) do
-        new_rule = DeepL::Requests::StyleRule::Create.new(api, 'Find Test', 'en').request
-        described_class.new(api, new_rule.style_id, options)
-      end
-
-      it 'returns a style rule object' do
-        style_rule = style_rule_find.request
-        expect(style_rule).to be_a(DeepL::Resources::StyleRule)
-        expect(style_rule.style_id).to be_a(String)
-        expect(style_rule.name).to be_a(String)
-      end
-    end
-
-    context 'when requesting a non existing style rule with an invalid id' do
-      let(:style_id) { 'invalid-uuid' }
-
-      it 'raises an error' do
-        expect { style_rule_find.request }.to raise_error(DeepL::Exceptions::Error)
-      end
-    end
-  end
 end

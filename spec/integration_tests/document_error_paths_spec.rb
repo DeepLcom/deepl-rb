@@ -5,7 +5,7 @@
 
 require 'spec_helper'
 
-describe DeepL::DocumentApi, :mock_server_only do # rubocop:disable RSpec/SpecFilePathFormat
+describe DeepL::DocumentApi do # rubocop:disable RSpec/SpecFilePathFormat
   include_context 'with a live mock server'
 
   let(:source_lang) { 'EN' }
@@ -22,7 +22,7 @@ describe DeepL::DocumentApi, :mock_server_only do # rubocop:disable RSpec/SpecFi
   end
 
   describe 'translation failures' do
-    it 'reports an error status when the server fails the document' do
+    it 'reports an error status when the server fails the document', :mock_server_only do
       handle = DeepL.document.upload(document_path, source_lang, target_lang,
                                      File.basename(document_path), {}, fail_docs_header(1))
       status = handle.wait_until_document_translation_finished

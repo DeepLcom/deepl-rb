@@ -24,45 +24,4 @@ describe DeepL::Requests::Languages do
       end
     end
   end
-
-  describe '#request' do
-    around do |example|
-      VCR.use_cassette('languages') { example.call }
-    end
-
-    context 'when requesting source languages' do
-      it 'returns a valid list of source languages' do
-        languages = languages_obj.request
-
-        expect(languages).to be_an(Array)
-        expect(languages.size).to eq(29)
-        expect(languages).to(be_any { |l| l.code == 'EN' && l.name == 'English' })
-        expect(languages).to(be_any { |l| l.code == 'ES' && l.name == 'Spanish' })
-      end
-    end
-
-    context 'when requesting target languages' do
-      let(:options) { { type: :target } }
-
-      it 'returns a valid list of target languages' do
-        languages = languages_obj.request
-
-        expect(languages).to be_an(Array)
-        expect(languages.size).to eq(31)
-        expect(languages).not_to(be_any { |l| l.code == 'EN' && l.name == 'English' })
-        expect(languages).to(be_any { |l| l.code == 'ES' && l.name == 'Spanish' })
-        expect(languages)
-          .to(be_any { |l| l.code == 'EN-US' && l.name == 'English (American)' })
-      end
-    end
-
-    context 'when using an invalid type' do
-      let(:options) { { type: :invalid } }
-
-      it 'returns an usage object' do
-        message = "Parameter 'type' is invalid. 'source' and 'target' are valid values."
-        expect { languages_obj.request }.to raise_error(DeepL::Exceptions::BadRequest, message)
-      end
-    end
-  end
 end

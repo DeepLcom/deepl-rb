@@ -6,16 +6,6 @@
 require 'spec_helper'
 
 describe DeepL::StyleRuleApi, :mock_server_only do
-  before do
-    VCR.turn_off!
-    WebMock.allow_net_connect!
-  end
-
-  after do
-    VCR.turn_on!
-    WebMock.disable_net_connect!
-  end
-
   describe '#translate_with_style_rules' do
     it 'when performing a request with style_id' do
       source_lang = 'DE'

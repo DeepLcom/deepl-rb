@@ -5,7 +5,7 @@
 
 require 'spec_helper'
 
-describe 'DeepL.languages error paths', :mock_server_only do # rubocop:disable RSpec/DescribeClass
+describe 'DeepL.languages error paths' do # rubocop:disable RSpec/DescribeClass
   include_context 'with a live mock server'
 
   describe 'authorization failures' do
@@ -13,6 +13,13 @@ describe 'DeepL.languages error paths', :mock_server_only do # rubocop:disable R
       request = DeepL::Requests::Languages.new(unauthorized_api)
 
       expect { request.request }.to raise_error(DeepL::Exceptions::AuthorizationFailed)
+    end
+  end
+
+  describe 'bad request errors' do
+    it 'raises BadRequest for an unsupported languages type' do
+      expect { DeepL.languages(type: :invalid) }
+        .to raise_error(DeepL::Exceptions::BadRequest)
     end
   end
 end

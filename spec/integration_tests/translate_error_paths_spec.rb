@@ -5,7 +5,7 @@
 
 require 'spec_helper'
 
-describe 'DeepL.translate error paths', :mock_server_only do # rubocop:disable RSpec/DescribeClass
+describe 'DeepL.translate error paths' do # rubocop:disable RSpec/DescribeClass
   include_context 'with a live mock server'
 
   let(:text) { 'proton beam' }
@@ -27,6 +27,22 @@ describe 'DeepL.translate error paths', :mock_server_only do # rubocop:disable R
     it 'raises BadRequest when no target language is given' do
       expect { DeepL.translate(text, 'EN', nil) }
         .to raise_error(DeepL::Exceptions::BadRequest)
+    end
+
+    # Real-server only: the mock coerces text:[null] to text:[""] and accepts it,
+    # so it cannot reproduce this; prod rejects [null] with 400.
+    it 'raises BadRequest when the text is nil', :real_server_only do
+      expect { DeepL.translate(nil, 'EN', 'DE') }
+        .to raise_error(DeepL::Exceptions::BadRequest)
+    end
+  end
+
+  describe 'request entity too large errors' do
+    it 'raises RequestEntityTooLarge when too many texts are sent in a single request' do
+      texts = Array.new(10_000) { |i| "This is the sentence number #{i}" }
+
+      expect { DeepL.translate(texts, 'EN', 'DE') }
+        .to raise_error(DeepL::Exceptions::RequestEntityTooLarge)
     end
   end
 end

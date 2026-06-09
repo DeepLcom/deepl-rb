@@ -5,7 +5,7 @@
 
 require 'spec_helper'
 
-describe DeepL::GlossaryApi, :mock_server_only do # rubocop:disable RSpec/SpecFilePathFormat
+describe DeepL::GlossaryApi do # rubocop:disable RSpec/SpecFilePathFormat
   include_context 'with a live mock server'
 
   let(:nonexistent_glossary_id) { '00000000-0000-0000-0000-000000000000' }
@@ -76,6 +76,32 @@ describe DeepL::GlossaryApi, :mock_server_only do # rubocop:disable RSpec/SpecFi
           valid_glossary_args[:entries]
         )
       end.to raise_error(DeepL::Exceptions::BadRequest)
+    end
+  end
+
+  describe 'BadRequest (400) from a malformed glossary id' do
+    let(:malformed_uuid) { 'invalid-uuid' }
+
+    it 'is raised by #find for a malformed glossary id' do
+      expect { DeepL.glossaries.find(malformed_uuid) }
+        .to raise_error(DeepL::Exceptions::BadRequest)
+    end
+
+    it 'is raised by #destroy for a malformed glossary id' do
+      expect { DeepL.glossaries.destroy(malformed_uuid) }
+        .to raise_error(DeepL::Exceptions::BadRequest)
+    end
+
+    it 'is raised by #entries for a malformed glossary id' do
+      expect { DeepL.glossaries.entries(malformed_uuid) }
+        .to raise_error(DeepL::Exceptions::BadRequest)
+    end
+  end
+
+  describe 'NotFound (404) from #entries' do
+    it 'is raised for a well-formed but unknown glossary id' do
+      expect { DeepL.glossaries.entries(nonexistent_glossary_id) }
+        .to raise_error(DeepL::Exceptions::NotFound)
     end
   end
 end
